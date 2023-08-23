@@ -32,6 +32,7 @@
       object-fit: cover;
       border-radius: 7px;
         }
+     
       </style>
 </head>
 
@@ -491,6 +492,10 @@
   </div>
 
   <div class="match_list_carsel owl-carousel owl-theme container my-1">
+    {% for my in  my_preference %}
+
+   
+    {% if my == "1" %}
     {% for key in alldata %}     
     <div class="item" data-bs-toggle="modal" data-bs-target="#{{key.target}}" >
       {% comment %} <img src="/media/images/girl1.png"> {% endcomment %}
@@ -516,7 +521,36 @@
     </div>
 
     {% endfor %}
-     
+
+    {% else %}
+    
+    {% for key in my_preference %}     
+    <div class="item" data-bs-toggle="modal" data-bs-target="#{{key.target}}" >
+      {% comment %} <img src="/media/images/girl1.png"> {% endcomment %}
+      <img class="matchingimage" src="{{key.profile_picture}}">
+
+      <button type="button" class="btn btn-primary match_list_btn1" data-bs-toggle="modal"
+        data-bs-target="#exampleModal">
+        <i class="far fa-ellipsis-v"></i>
+      </button>
+
+      <i class="fas fa-mountain match_list_icon2"></i>
+
+      <div class="match_list_content">
+
+        <p>ID: #{{key.uid}}</p>
+        <h6>{{key.address}}</h6>
+        <h6><em>{{key.profile_tag}}</em></h6>
+        <p><i class="fas fa-circle fa-xs "></i> Online</p>
+      </div>
+
+      <i class="far fa-hand-paper fa-xs match_list_icon3" style="font-size:1.8em;"></i>
+
+    </div>
+
+    {% endfor %}
+    {% endif %}
+    {% endfor %}
 
     <div class="item">
       <img class="matchingimage" src="/media/images/burger.png">

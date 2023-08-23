@@ -1667,6 +1667,9 @@ ul.nav.nav-tabs li a.nav-link.active.h6 {
    transition:0.5s;
 }
 @media(max-width:1440px){
+    .owl-nav{
+        display: block !important;
+    }
     .owl-next{
      right:-20px;
     }
@@ -1678,7 +1681,7 @@ ul.nav.nav-tabs li a.nav-link.active.h6 {
  
  @media(max-width:767px){
     .owl-nav{
-       top:-200px;
+       top:0px;
     }
  }
  
@@ -1694,6 +1697,7 @@ ul.nav.nav-tabs li a.nav-link.active.h6 {
  @media(max-width:1200px){
     .owl-nav{
         top:-200px;
+        display: block !important;
     }
  }
 /* over */

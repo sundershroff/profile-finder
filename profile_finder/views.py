@@ -1358,8 +1358,7 @@ def matching_list(request,id):
     # profile_finder_email = request.session['email']
     # mydata = profile_finder.objects.filter(email=profile_finder_email).values() 
     #mydatalen = len(mydata)
-    get_target = []
-    alluserdata =[]
+   
     my = requests.get(f"http://127.0.0.1:3000/alldata/{id}").json()
     my_intrest = my['your_intrest'][1:-2].replace("'","").replace(" ","").split(",")
     non_intrest = my['non_intrest'][1:-2].replace("'","").replace(" ","").split(",")
@@ -1374,6 +1373,9 @@ def matching_list(request,id):
     elif [my][0]['gender'] == "male":
         alldata = requests.get("http://127.0.0.1:3000/all_female_user_data/").json()
         allchanged_data = []
+    neww = alldata
+    print(alldata) 
+    alluserdata =[]
     # for x in alldata:
     #     comparision_intrest = x['your_intrest'][1:-2].replace("'","").replace(" ","").split(",")
     #     comparision_non_intrest = x['non_intrest'][1:-2].replace("'","").replace(" ","").split(",")
@@ -1428,6 +1430,8 @@ def matching_list(request,id):
     # print(alluserdata)
         
     mydata = [my]
+    my_preference=["1"]
+    
     #request sent
     if request.method == "POST":
         if 'request_phone_number' in request.POST:
@@ -1455,6 +1459,7 @@ def matching_list(request,id):
                 'h':request.POST['Working']
             }
             
+            p = []
             for x in alldata:
                 if matc['a'] == x['marital_status'] :
                     a = x['uid']
@@ -1507,43 +1512,50 @@ def matching_list(request,id):
                 pref = {a,b,c,d,e,f,g,h}
                 if "no" not in pref:
                     pref.remove("")
-                    print(pref)
-        
+                    for con in pref:
+                       p.append(con)
+                       print(p)
+                # else:
+                #     pref.remove("")
+                #     print(pref)
+
+            print(p)
                     
-                request_sent=[]
-                userlist=[]
-                for y in alluserdata:
-                    userlist.append(y['uid'])
-                print(userlist)
-                # for x in pref:
-                #     print(x)
-                #     numb = userlist.index(x)
-                #     print(numb)
-                #     get_Selected = alluserdata[numb]
-                #     request_sent.append(get_Selected)
-                # print(request_sent)
+            my_preference=[]
+            userlist=[]
+            for y in alluserdata:
+                userlist.append(y['uid'])
+            print(userlist)
+            for x in p:
+                print(x)
+                numb = userlist.index(x)
+                print(numb)
+                get_Selected = alluserdata[numb]
+                my_preference.append(get_Selected)
+    print(my_preference)
             
-    # print(mydata)                                          
+                                             
     context = {'mydata':mydata,
-               'alldata':alluserdata,
+               'alldata':alldata,
                'profile_pic':profile_pic,
+               'my_preference':my_preference,
                }
     return render(request,'matching_list.html',context)
 def match_list_person(request):
-    alluserdata =[]
-    alldata = requests.get("http://127.0.0.1:3000/alluserdata/").json()
-    my = requests.get(f"http://127.0.0.1:3000/alldata/{id}").json()
-    for x in alldata:
-        res = ''.join([j for j in x['uid'] if not j.isdigit()])
-        print(res)
-        x['target']=res
-        alluserdata.append(x)
-    print(alluserdata)
-    context = {'alldata':alluserdata,
+    # alluserdata_one =[]
+    # alldata = requests.get("http://127.0.0.1:3000/alluserdata/").json()
+    # my = requests.get(f"http://127.0.0.1:3000/alldata/{id}").json()
+    # for x in alldata:
+    #     res = ''.join([j for j in x['uid'] if not j.isdigit()])
+    #     print(res)
+    #     x['target']=res
+    #     alluserdata_one.append(x)
+    # print(alluserdata_one)
+    context = {'alldata_one':"alluserdata_one",
            }
     return render(request,"match_list_person.html",context)
 def viewallmatch(request,id):
-    alluserdata =[]
+    alluserdata_two =[]
     alldata = requests.get("http://127.0.0.1:3000/alluserdata/").json()
     my = requests.get(f"http://127.0.0.1:3000/alldata/{id}").json()
     profile_pic = [my][0]['profile_picture']
@@ -1552,9 +1564,9 @@ def viewallmatch(request,id):
         res = ''.join([j for j in x['uid'] if not j.isdigit()])
         print(res)
         x['target']=res
-        alluserdata.append(x)
-    print(alluserdata)
-    context = {'alldata':alluserdata,
+        alluserdata_two.append(x)
+    print(alluserdata_two)
+    context = {'alldata':alluserdata_two,
                'mydata':mydata,
                'profile_pic':profile_pic,
            }
