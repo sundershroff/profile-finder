@@ -25,7 +25,8 @@ from django.db import connections
 # Create your views here.
 from django.core import serializers
 from django.http import HttpResponse
-all_image_url = "http://127.0.0.1:3000/"
+all_url = "http://127.0.0.1:3000/"
+# all_url = "http://18.205.163.238/"
 def mainpage(request):
     return render(request,'mainpage.html')
 def signin(request):
@@ -35,7 +36,7 @@ def signin(request):
     if request.method == "POST":
         print(request.POST)
         # response = requests.post("http://54.159.186.219:8000/signin/",data=request.POST)
-        response = requests.post(all_image_url+"signin/",data=request.POST)
+        response = requests.post(all_url+"signin/",data=request.POST)
         print(response.status_code)
         print(response.text)
         uidd = (response.text[1:-1])
@@ -72,7 +73,7 @@ def signup(request):
             "referal_code" : "no referal code",
         }
                 # response = requests.post('http://54.159.186.219:8000/signup/',data=data)
-                response = requests.post(all_image_url+'signup/',data=data)
+                response = requests.post(all_url+'signup/',data=data)
                 print(response.status_code)
                 print(response.text)
                 uidd = (response.text[1:-1])
@@ -82,7 +83,7 @@ def signup(request):
                
             else:
                 # response = requests.post('http://54.159.186.219:8000/signup/',data=request.POST)
-                response = requests.post(all_image_url+'signup/',data=request.POST)
+                response = requests.post(all_url+'signup/',data=request.POST)
                 print(response.status_code)
                 print(response.text)
                 uidd = (response.text[1:-1])
@@ -170,7 +171,7 @@ def opt_check(request,id):
         }
         print(data)
         # response = requests.post(f"http://54.159.186.219:8000/otp/{id}",   data=data)
-        response = requests.post(fall_image_url+"otp/{id}", data=data)
+        response = requests.post(all_url+"otp/{id}", data=data)
 
        
         print(response)
@@ -1504,12 +1505,11 @@ def matching_list(request,id):
                 else:
                     h = "no"
                 pref = {a,b,c,d,e,f,g,h}
-                print(pref)
-                if "no" in pref:
-                  pass
-                else:
+                if "no" not in pref:
                     pref.remove("")
                     print(pref)
+        
+                    
                 request_sent=[]
                 userlist=[]
                 for y in alluserdata:
