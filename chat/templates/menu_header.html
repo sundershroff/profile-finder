@@ -1,0 +1,60 @@
+<section class="shadow">
+    <nav class="navbar navbar-expand-sm bg-white navbar-dark">
+        <div class="container">
+        
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+              <li class="nav-item me-1">
+                <a class="nav-link text-black ps-3 pe-3" href="profile_page">Profile</a>
+              </li>
+              <li class="nav-item me-1">
+                <a class="nav-link text-black ps-3 pe-3" href="matching_list">Matching List</a>
+              </li>
+              <li class="nav-item me-1">
+                <a class="nav-link text-black ps-3 pe-3" href="request_received">Requested Lists</a>
+              </li>
+              <li class="nav-item me-1">
+                <a class="nav-link text-black ps-3 pe-3" href="#">Saved Search</a>
+              </li>
+              <li class="nav-item me-1">
+                <a class="nav-link text-black ps-3 pe-3" href="#">Happy Couples</a>
+              </li>
+              <li class="nav-item me-1">
+                <a class="nav-link text-black ps-3 pe-3" href="#">Settings</a>
+              </li>
+              <li class="nav-item me-1">
+                <a class="nav-link text-black ps-3 pe-3" href="#">Chat</a>
+              </li>
+              <!-- <li class="nav-item text-end float-right">
+                <a class="nav-link text-black" href="#">Chat</a>
+              </li> -->
+            </ul>
+            <div class="text-end w-30 pt-3 ms-auto" style="width:30%">
+                <p class="float-left">Profile Completeness</p>
+                <div class="progress mt-1 ms-2 float-left" style="width:50%">
+                    <div class="progress-bar bg-success" style="width:80%"></div>
+                </div>
+                <p>80%</p>
+            </div>
+          </div>
+        </div>
+      </nav>
+</section>
+
+<script>
+  currentUrl = window.location.href;
+  parts = currentUrl.split("/");
+  lastIndex = parts.length - 1;
+  if(parts[lastIndex] == "profile_page"){
+    $("section.shadow nav ul li:nth-child(1) a").addClass("active");
+  }
+  else if(parts[lastIndex] == "matching_list"){
+    $("section.shadow nav ul li:nth-child(2) a").addClass("active");
+  }
+  else if(parts[lastIndex] == "request_received"){
+    $("section.shadow nav ul li:nth-child(3) a").addClass("active");
+  }
+</script>
