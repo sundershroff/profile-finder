@@ -182,12 +182,12 @@
 
           <div class="modal-body p-4">
             <div class="match_list_modal1">
-              <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal2">Block this profile</a>
+              <a href="#" data-bs-toggle="modal" data-bs-target="#block{{key.target}}">Block this profile</a>
               <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal1">Hi</a>
               <a href="#" data-bs-toggle="modal" data-bs-target="#request{{key.target}}">Request</a>
-              <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal3">ComplaInt</a>
+              {% comment %} <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal333">ComplaInt</a> {% endcomment %}
               <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal6">Share to</a>
-              <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal5">Report</a>
+              {% comment %} <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal5">Report</a> {% endcomment %}
             </div>
           </div>
 
@@ -232,24 +232,26 @@
     </div>
     <!-- over -->
     <!-- modal4-->
-    <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="block{{key.target}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
 
           <div class="modal-body p-4">
             <div class="match_list_modal3 ">
-              <form action="#" method="post">
+              <form method="POST">
                 {% csrf_token %}
-                <h4>Complaints</h4>
-                <h6 class="my-3">Write your complaints here.</h6>
+                <h4>Block</h4>
+                <h6 class="my-3">Write your Reason here.</h6>
 
-                <textarea name="" class="form-control my-4" rows="7"></textarea>
+                <textarea name="reason" class="form-control my-4" rows="7"></textarea>
+
+                <input type="text" name="blocked_id" value="{{key.uid}}" style="display:none">
 
                 <div class="match_list_modbtn prof_page_btn1 mt-4">
                   <div>
                     <button type="button" class="btn prof_btns" data-bs-dismiss="modal">Cancel</button>
                     <button type="submit" class="btn prof_btns" data-bs-toggle="modal"
-                      data-bs-target="#exampleModal8">Submit</button>
+                      data-bs-target="#exampleModal8" >Submit</button>
                   </div>
                 </div>
 
@@ -454,7 +456,7 @@
 
             <i class="fas fa-check-circle py-2"></i>
             <h4 class="py-2">Done!</h4>
-            <h6 class="py-1">Complaint has been sent</h6>
+            <h6 class="py-1">Blocked This Profile Successfully</h6>
           </div>
         </div>
 
@@ -564,10 +566,10 @@
   <div class="container">
     <div class="row">
 
-      <div class="match_list_sec1 my-3">
+      <div class="match_list_sec1 my-3">cxs
 
         <div>
-          <h3>Followed List</h3>
+          <h3>Favorites List</h3>
           <h6><span>75</span> Matching profiles are available for you</h6>
         </div>
 

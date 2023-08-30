@@ -171,7 +171,7 @@ def opt_check(request,id):
         }
         print(data)
         # response = requests.post(f"http://54.159.186.219:8000/otp/{id}",   data=data)
-        response = requests.post(all_url+"otp/{id}", data=data)
+        response = requests.post(f"http://127.0.0.1:3000/otp/{id}", data=data)
 
        
         print(response)
@@ -1443,11 +1443,16 @@ def matching_list(request,id):
                 elif request.POST[x] == "":
                     data[x] = "none"
             print(data)
-            # response = requests.post('http://54.159.186.219:8000/signup/',data=data)
+            # response = requests.post('http://54.159.186.219:8000/requested_list/',data=data)
             response = requests.post(f'http://127.0.0.1:3000/requested_list/{id}',data=data)
+        
+        elif 'reason' in request.POST:
+            print(request.POST)
+            # response = requests.post('http://54.159.186.219:8000/block/',data=data)
+            response = requests.post(f'http://127.0.0.1:3000/block/{id}',data=request.POST)
 
         elif 'marital_status' in request.POST:
-            print(request.POST)
+            # print(request.POST)
             matc={
                 'a':request.POST['marital_status'],
                 'b':request.POST['physical_mental_status'],
@@ -1514,25 +1519,25 @@ def matching_list(request,id):
                     pref.remove("")
                     for con in pref:
                        p.append(con)
-                       print(p)
+                    #    print(p)
                 # else:
                 #     pref.remove("")
                 #     print(pref)
 
-            print(p)
+            # print(p)
                     
             my_preference=[]
             userlist=[]
             for y in alluserdata:
                 userlist.append(y['uid'])
-            print(userlist)
+            # print(userlist)
             for x in p:
-                print(x)
+                # print(x)
                 numb = userlist.index(x)
-                print(numb)
+                # print(numb)
                 get_Selected = alluserdata[numb]
                 my_preference.append(get_Selected)
-    print(my_preference)
+    # print(my_preference)
             
                                              
     context = {'mydata':mydata,
@@ -1614,6 +1619,22 @@ def received(request,id):
             'received':rece,
                }
     return render(request,'received.html',context)
+
+def myfavorites(request,id):
+    my = requests.get(f"http://127.0.0.1:3000/alldata/{id}").json()
+    sent = requests.get(f"http://127.0.0.1:3000/requested_list/{id}").json()
+    # print(sent[id])
+    profile_pic = [my][0]['profile_picture']
+    gender = [my][0]['gender']
+    mydata=[my]
+    
+
+    context = {
+            'mydata':mydata,
+            'profile_pic':profile_pic,
+            'sent':sent[id],
+               }
+    return render(request,'myfavorites.html',context)
 
 def saved_search(request,id):
     my = requests.get(f"http://127.0.0.1:3000/alldata/{id}").json()

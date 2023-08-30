@@ -39,6 +39,8 @@ urlpatterns = [
     path('request_received',views.follow_request1),
     path('sucess_story',views.happy_couples),
     path('hai',views.test2),
+    #favorites
+    path('myfavorites/<id>',views.myfavorites),
     #happy Couple
     path('happycouples/<id>', views.happycouple),
     path('success_story/<id>', views.success_Story),
