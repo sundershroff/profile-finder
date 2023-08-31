@@ -1585,6 +1585,19 @@ def menu_header(request):
     # print(mydata)
     return render(request,'menu_header.html')
 
+def package_matching(request,id):
+    my = requests.get(f"http://127.0.0.1:3000/alldata/{id}").json()
+    # print(sent[id])
+    profile_pic = [my][0]['profile_picture']
+    gender = [my][0]['gender']
+    mydata=[my]
+    
+
+    context = {
+            'mydata':mydata,
+            'profile_pic':profile_pic,
+               }
+    return render(request,'package_matching.html',context)
 
 def requested_list(request,id):
     my = requests.get(f"http://127.0.0.1:3000/alldata/{id}").json()

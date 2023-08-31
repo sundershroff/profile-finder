@@ -742,7 +742,7 @@
                       </div>
                     </div>
                     {% endfor %}
-                    {% for key in education %}
+                    {% comment %} {% for key in education %}
                     <div class="col-md-4 mb-3 prof_page_bord">
                       <div class="border p-3" style="border-radius:8px;">
                         <p class="keep">Education & Qualification</p>
@@ -757,7 +757,7 @@
                         <b>{{ key.profession_0 }}</b>
                       </div>
                     </div>
-                    {% endfor %}
+                    {% endfor %} {% endcomment %}
                     {% for key in mydata %}
                     <div class="col-md-4 mb-3 prof_page_bord">
                       <div class="border p-3" style="border-radius:8px;">

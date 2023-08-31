@@ -33,6 +33,7 @@ urlpatterns = [
     path('payment',views.payment),
     path('matching_list/<id>',views.matching_list),
     path('viewallmatch/<id>',views.viewallmatch),
+    path('package_matching/<id>',views.package_matching),
     path('requested_list/<id>',views.requested_list),
     path('received/<id>',views.received),
     path('saved_Search/<id>',views.saved_search),

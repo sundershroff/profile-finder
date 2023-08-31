@@ -64,6 +64,10 @@
 	display:flex;
 	justify-content:space-between;
 }
+a.subs {
+    color: white;
+    text-decoration: auto;
+}
 
 @media(max-width:438px){
 	.sigin_page_part1 button{
@@ -1455,6 +1459,8 @@ ul.nav.nav-tabs li a.nav-link.active.h6 {
     border:2px solid #E0E5F2;
     border-radius: 4px; 
 }
+
+
  
 .matchlist-checkbox:hover input ~ .matchcheckmark{
     background-color: #ccc;
