@@ -7,6 +7,10 @@
 	background-color:rgba(0, 0, 255, 0.1);
 }
 
+a.subs {
+    color: white;
+    text-decoration: none;
+}
 
 .sub_par1,.sub_par2,.sub_par3,.sub_par4,.sub_par5{
 

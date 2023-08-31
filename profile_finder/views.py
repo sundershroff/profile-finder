@@ -1373,8 +1373,122 @@ def matching_list(request,id):
     elif [my][0]['gender'] == "male":
         alldata = requests.get("http://127.0.0.1:3000/all_female_user_data/").json()
         allchanged_data = []
-    neww = alldata
-    print(alldata) 
+    neww = []
+    your_intrest_value=x=[]
+    for x in alldata:
+        #sibling details
+        print(x['sibling_name'])
+        sibling_name_value=[]
+        sibling_relation_value=[]
+        sibling_occupation_value=[]
+        sibling_name = x['sibling_name'][1:-1].split(", ")
+        sibling_relation = x['sibling_relation'][1:-1].split(", ")
+        sibling_occupation = x['sibling_occupation'][1:-1].split(", ")
+        for sibling_name_x in sibling_name:
+            sibling_name_value.append(sibling_name_x[1:-1])
+        for sibling_relation_x in sibling_relation:
+            sibling_relation_value.append(sibling_relation_x[1:-1])
+        for sibling_occupation_x in sibling_occupation:
+            sibling_occupation_value.append(sibling_occupation_x[1:-1])
+        print(type(sibling_name_value))
+        sibling=x
+        # sib = [sibling]
+        for i, sibling_name_data in enumerate(sibling_name_value):
+                sibling[f'sibling_name_{i}'] = sibling_name_data
+        for i, sibling_relation_data in enumerate(sibling_relation_value):
+                sibling[f'sibling_relation_{i}'] = sibling_relation_data
+        for i, sibling_occupation_data in enumerate(sibling_occupation_value):
+                sibling[f'sibling_occupation_{i}'] = sibling_occupation_data
+        
+        neww.append(sibling)
+        #education
+        education_school_value=[]
+        education_year_value=[]
+        education_course_value=[]
+        education_school = x['education_school'][1:-1].split(", ")
+        education_year = x['education_year'][1:-1].split(", ")
+        education_course = x['education_course'][1:-1].split(", ")
+        for education_school_x in education_school:
+            education_school_value.append(education_school_x[1:-1])
+        for education_year_x in education_year:
+            education_year_value.append(education_year_x[1:-1])
+        for education_course_x in education_course:
+            education_course_value.append(education_course_x[1:-1])
+        education=x
+        # edu = [education]
+        for i, education_school_data in enumerate(education_school_value):
+                education[f'education_school_{i}'] = education_school_data
+        for i, education_year_data in enumerate(education_year_value):
+                education[f'education_year_{i}'] = education_year_data
+        for i, education_course_data in enumerate(education_course_value):
+                education[f'education_course_{i}'] = education_course_data
+        neww.append(education)
+        #working experience
+        company_name_value=[]
+        position_value=[]
+        salary_range_value=[]
+        profession_value = []
+        company_name = x['company_name'][1:-1].split(", ")
+        position = x['position'][1:-1].split(", ")
+        salary_range = x['salary_range'][1:-1].split(", ")
+        profession = x['profession'][1:-1].split(", ")
+        for company_name_x in company_name:
+            company_name_value.append(company_name_x[1:-1])
+        for position_x in position:
+            position_value.append(position_x[1:-1])
+        for salary_range_x in salary_range:
+            salary_range_value.append(salary_range_x[1:-1])
+        for profession_x in profession:
+            profession_value.append(profession_x[1:-1])
+        working=x
+        # wor = [working]
+        for i, company_name_data in enumerate(company_name_value):
+                working[f'company_name_{i}'] = company_name_data
+        for i, position_data in enumerate(position_value):
+                working[f'position_{i}'] = position_data
+        for i, salary_range_data in enumerate(salary_range_value):
+                working[f'salary_range_{i}'] = salary_range_data
+        for i, profession_data in enumerate(profession_value):
+                working[f'profession_{i}'] = profession_data
+        neww.append(working)
+        # print(wor)
+        #intrest
+        intrestt = x
+        your_intrest = x['your_intrest'][1:-1].replace("'","").replace(" ","").split(",")
+        print(your_intrest)
+        for i, your_intrest_data in enumerate(your_intrest):
+                # neww.append({'myintrest':your_intrest_data[1:-1]})
+                intrestt[f'intrest_{i}'] = your_intrest_data
+        # print(intrestt)
+        neww.append(intrestt)
+        #non-intrest
+        non_intrestt = x
+        n_intrest = x['non_intrest'][1:-1].replace("'","").replace(" ","").split(",")
+        # print(your_intrest)
+        for i, your_intrest_data in enumerate(n_intrest):
+                # neww.append({'myintrest':your_intrest_data[1:-1]})
+                non_intrestt[f'non_intrest_{i}'] = your_intrest_data
+        neww.append(non_intrestt)
+        #complexion
+        complexion_list = x
+        complexion_change_list = x['complexion'][1:-1].replace("'","").replace(" ","").split(",")
+        # print(your_intrest)
+        for i, your_intrest_data in enumerate(complexion_change_list):
+                # neww.append({'myintrest':your_intrest_data[1:-1]})
+                complexion_list[f'complexion_{i}'] = your_intrest_data
+        neww.append(complexion_list)
+        #food_taste
+        food_taste_list = x
+        food_taste_change_list = x['food_taste'][1:-1].replace("'","").replace(" ","").split(",")
+        # print(your_intrest)
+        for i, your_intrest_data in enumerate(food_taste_change_list):
+                # neww.append({'myintrest':your_intrest_data[1:-1]})
+                food_taste_list[f'food_taste_{i}'] = your_intrest_data
+        neww.append(food_taste_list)
+    
+
+    
+    # print(neww) 
     alluserdata =[]
     # for x in alldata:
     #     comparision_intrest = x['your_intrest'][1:-2].replace("'","").replace(" ","").split(",")
@@ -1442,12 +1556,12 @@ def matching_list(request,id):
                     data[x] = request.POST.getlist(x)[0]
                 elif request.POST[x] == "":
                     data[x] = "none"
-            print(data)
+            # print(data)
             # response = requests.post('http://54.159.186.219:8000/requested_list/',data=data)
             response = requests.post(f'http://127.0.0.1:3000/requested_list/{id}',data=data)
         
         elif 'reason' in request.POST:
-            print(request.POST)
+            # print(request.POST)
             # response = requests.post('http://54.159.186.219:8000/block/',data=data)
             response = requests.post(f'http://127.0.0.1:3000/block/{id}',data=request.POST)
 
@@ -1542,8 +1656,10 @@ def matching_list(request,id):
                                              
     context = {'mydata':mydata,
                'alldata':alldata,
+               'neww':neww,
                'profile_pic':profile_pic,
                'my_preference':my_preference,
+               'your_intrest_value':your_intrest_value,
                }
     return render(request,'matching_list.html',context)
 def match_list_person(request):

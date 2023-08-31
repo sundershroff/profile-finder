@@ -3,6 +3,10 @@
 	font-size:1.4em;
 }
 
+a.subs {
+    color: white;
+    text-decoration: none;
+}
 .prof_personal_det button{
 	padding:0;
 	border:none;

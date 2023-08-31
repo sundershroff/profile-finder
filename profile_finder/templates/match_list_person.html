@@ -23,7 +23,7 @@
 
   {% comment %} <button type="button" class="btn btn-primary" data-bs-toggle="modal"
     data-bs-target="#match_list_person">click</button> {% endcomment %}
-    {% for key in alldata %}
+    {% for key in neww %}
   <div class="modal fade modal-xl" id="{{key.target}}" tabindex="-1" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog">
@@ -378,6 +378,9 @@
                       <p>Name</p>
 
                       <h5>{{ key.sibling_name_0 }}</h5>
+                      {% if key.sibling_name_1%}
+                      <h5>{{ key.sibling_name_1 }}</h5>
+                      {% endif %}
                       
                     </div>
 
@@ -386,6 +389,9 @@
                       <p>Type Of Relation</p>
 
                       <h5>{{ key.sibling_relation_0 }}</h5>
+                      {% if key.sibling_relation_1%}
+                      <h5>{{ key.sibling_relation_1 }}</h5>
+                      {% endif %}
                       
                     </div>
 
@@ -393,7 +399,12 @@
 
                       <p>Jobs</p>
 
-                      <h5>{{ key.sibling_occupation_0 }}</div>
+                      <h5>{{ key.sibling_occupation_0 }}
+                        {% if key.sibling_occupation_1%}
+                        <h5>{{ key.sibling_occupation_1 }}</h5>
+                        {% endif %}
+                      </div>
+                       
                       
                     </div>
 
@@ -427,9 +438,11 @@
 
                     <p>School Name</p>
 
-                    <h6 class="my-3">BMMS</h6>
+                    <h6 class="my-3">{{ key.education_school_0 }}</h6>
 
-                    <h6 class="my-3">BMMS</h6>
+                    {% if key.education_school_1%}
+                    <h6 class="my-3">{{ key.education_school_1 }}</h6>
+                    {% endif %}
 
                   
                     
@@ -439,9 +452,11 @@
 
                     <p>School Year</p>
 
-                    <h6 class="my-3">2021</h6>
+                    <h6 class="my-3">{{ key.education_year_0 }}</h6>
 
-                    <h6 class="my-3">2021</h6>
+                    {% if key.education_year_1%}
+                    <h6 class="my-3">{{ key.education_year_1 }}</h6>
+                    {% endif %}
 
                   
                     
@@ -451,9 +466,11 @@
 
                     <p>Course/Degree</p>
 
-                    <h6 class="my-3">BCA</h6>
+                    <h6 class="my-3">{{ key.education_course_0 }}</h6>
 
-                    <h6 class="my-3">BCA</h6>
+                    {% if key.education_course_1%}
+                    <h6 class="my-3">{{ key.education_course_1 }}</h6>
+                    {% endif %}
 
                   
                     
@@ -488,8 +505,11 @@
 
                     <p>Company Name</p>
 
-                    <h6 class="my-3">clovion</h6>
-                    <h6 class="my-3">{{ key.current_status }}</h6>
+                    <h6 class="my-3">{{ key.company_name_0 }}</h6>
+                    {% if key.company_name_1%}
+                    <h6 class="my-3">{{ key.company_name_1 }}</h6>
+                    {% endif %}
+
 
                   
                     
@@ -499,8 +519,10 @@
 
                     <p>Position</p>
 
-                    <h6 class="my-3">right</h6>
-                    <h6 class="my-3">{{ key.current_status }}</h6>
+                    <h6 class="my-3">{{ key.position_0 }}</h6>
+                    {% if key.position_1%}
+                    <h6 class="my-3">{{ key.position_1 }}</h6>
+                    {% endif %}
 
                   
                     
@@ -510,8 +532,10 @@
 
                     <p>Tenure (month)</p>
 
-                    <h6 class="my-3">949449</h6>
-                    <h6 class="my-3">{{ key.current_status }}</h6>
+                    <h6 class="my-3">{{ key.salary_range_0 }}</h6>
+                    {% if key.salary_range_1%}
+                    <h6 class="my-3">{{ key.salary_range_1 }}</h6>
+                    {% endif %}
 
                   
                     
@@ -540,13 +564,43 @@
             <div class="card-body p-5">
 
               <div class="prof_personal_par1">
-
-                <h6>Music</h6>
-                <h6>Photography</h6>
-                <h6>Writing</h6>
-                <h6>Sports</h6> 
-                <h6>Artist</h6> 
-                <h6>Singing</h6>  
+              {% if key.intrest_0 %}
+                <h6>{{key.intrest_0}}</h6>
+                {% endif %}
+              {% if key.intrest_1 %}
+                <h6>{{key.intrest_1}}</h6>
+                {% endif %}
+              {% if key.intrest_2 %}
+                <h6>{{key.intrest_2}}</h6>
+                {% endif %}
+                {% if key.intrest_3 %}
+                <h6>{{key.intrest_3}}</h6>
+                {% endif %}
+                {% if key.intrest_4 %}
+                <h6>{{key.intrest_4}}</h6>
+                {% endif %}
+                {% if key.intrest_5 %}
+                <h6>{{key.intrest_5}}</h6>
+                {% endif %}
+                {% if key.intrest_6 %}
+                <h6>{{key.intrest_6}}</h6>
+                {% endif %}
+                {% if key.intrest_7 %}
+                <h6>{{key.intrest_7}}</h6>
+                {% endif %}
+                {% if key.intrest_8 %}
+                <h6>{{key.intrest_8}}</h6>
+                {% endif %}
+                {% if key.intrest_9 %}
+                <h6>{{key.intrest_9}}</h6>
+                {% endif %}
+                {% if key.intrest_10 %}
+                <h6>{{key.intrest_10}}</h6>
+                {% endif %}
+                {% if key.intrest_11 %}
+                <h6>{{key.intrest_11}}</h6>
+                {% endif %}
+             
                 
               </div>
               
@@ -569,10 +623,42 @@
             <div class="card-body p-5">
 
               <div class="prof_personal_par1">
-
-                <h6>Music</h6>
-               
-                <h6>Singing</h6>  
+                {% if key.non_intrest_0 %}
+                <h6>{{key.non_intrest_0}}</h6>
+                {% endif %}
+              {% if key.non_intrest_1 %}
+                <h6>{{key.non_intrest_1}}</h6>
+                {% endif %}
+              {% if key.non_intrest_2 %}
+                <h6>{{key.non_intrest_2}}</h6>
+                {% endif %}
+                {% if key.non_intrest_3 %}
+                <h6>{{key.non_intrest_3}}</h6>
+                {% endif %}
+                {% if key.non_intrest_4 %}
+                <h6>{{key.non_intrest_4}}</h6>
+                {% endif %}
+                {% if key.non_intrest_5 %}
+                <h6>{{key.non_intrest_5}}</h6>
+                {% endif %}
+                {% if key.non_intrest_6 %}
+                <h6>{{key.non_intrest_6}}</h6>
+                {% endif %}
+                {% if key.non_intrest_7 %}
+                <h6>{{key.non_intrest_7}}</h6>
+                {% endif %}
+                {% if key.non_intrest_8 %}
+                <h6>{{key.non_intrest_8}}</h6>
+                {% endif %}
+                {% if key.non_intrest_9 %}
+                <h6>{{key.non_intrest_9}}</h6>
+                {% endif %}
+                {% if key.non_intrest_10 %}
+                <h6>{{key.non_intrest_10}}</h6>
+                {% endif %}
+                {% if key.non_intrest_11 %}
+                <h6>{{key.non_intrest_11}}</h6>
+                {% endif %}
                 
               </div>
               
@@ -595,12 +681,24 @@
             <div class="card-body p-5">
 
               <div class="prof_personal_par1">
-
-                <h6>Medium</h6>
-               
-                <h6>ModerateFair</h6>
-
-                <h6>Fair</h6>  
+                {% if key.complexion_0 %}
+                <h6>{{key.complexion_0}}</h6>
+                {% endif %}
+              {% if key.complexion_1 %}
+                <h6>{{key.complexion_1}}</h6>
+                {% endif %}
+              {% if key.complexion_2 %}
+                <h6>{{key.complexion_2}}</h6>
+                {% endif %}
+                {% if key.complexion_3 %}
+                <h6>{{key.complexion_3}}</h6>
+                {% endif %}
+                {% if key.complexion_4 %}
+                <h6>{{key.complexion_4}}</h6>
+                {% endif %}
+                {% if key.complexion_5 %}
+                <h6>{{key.complexion_5}}</h6>
+                {% endif %}
                 
               </div>
               
@@ -624,9 +722,24 @@
 
               <div class="prof_personal_par1">
 
-                <h6>Sweet</h6>
-               
-                <h6>Umaml</h6>  
+                {% if key.food_taste_0 %}
+                <h6>{{key.food_taste_0}}</h6>
+                {% endif %}
+              {% if key.food_taste_1 %}
+                <h6>{{key.food_taste_1}}</h6>
+                {% endif %}
+              {% if key.food_taste_2 %}
+                <h6>{{key.food_taste_2}}</h6>
+                {% endif %}
+                {% if key.food_taste_3 %}
+                <h6>{{key.food_taste_3}}</h6>
+                {% endif %}
+                {% if key.food_taste_4 %}
+                <h6>{{key.food_taste_4}}</h6>
+                {% endif %}
+                {% if key.food_taste_5 %}
+                <h6>{{key.food_taste_5}}</h6>
+                {% endif %}
                 
               </div>
               

@@ -32,7 +32,6 @@
       object-fit: cover;
       border-radius: 7px;
         }
-     
       </style>
 </head>
 
@@ -182,12 +181,12 @@
 
           <div class="modal-body p-4">
             <div class="match_list_modal1">
-              <a href="#" data-bs-toggle="modal" data-bs-target="#block{{key.target}}">Block this profile</a>
+              <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal2">Block this profile</a>
               <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal1">Hi</a>
               <a href="#" data-bs-toggle="modal" data-bs-target="#request{{key.target}}">Request</a>
-              {% comment %} <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal333">ComplaInt</a> {% endcomment %}
+              <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal3">ComplaInt</a>
               <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal6">Share to</a>
-              {% comment %} <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal5">Report</a> {% endcomment %}
+              <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal5">Report</a>
             </div>
           </div>
 
@@ -232,26 +231,24 @@
     </div>
     <!-- over -->
     <!-- modal4-->
-    <div class="modal fade" id="block{{key.target}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
 
           <div class="modal-body p-4">
             <div class="match_list_modal3 ">
-              <form method="POST">
+              <form action="#" method="post">
                 {% csrf_token %}
-                <h4>Block</h4>
-                <h6 class="my-3">Write your Reason here.</h6>
+                <h4>Complaints</h4>
+                <h6 class="my-3">Write your complaints here.</h6>
 
-                <textarea name="reason" class="form-control my-4" rows="7"></textarea>
-
-                <input type="text" name="blocked_id" value="{{key.uid}}" style="display:none">
+                <textarea name="" class="form-control my-4" rows="7"></textarea>
 
                 <div class="match_list_modbtn prof_page_btn1 mt-4">
                   <div>
                     <button type="button" class="btn prof_btns" data-bs-dismiss="modal">Cancel</button>
                     <button type="submit" class="btn prof_btns" data-bs-toggle="modal"
-                      data-bs-target="#exampleModal8" >Submit</button>
+                      data-bs-target="#exampleModal8">Submit</button>
                   </div>
                 </div>
 
@@ -456,7 +453,7 @@
 
             <i class="fas fa-check-circle py-2"></i>
             <h4 class="py-2">Done!</h4>
-            <h6 class="py-1">Blocked This Profile Successfully</h6>
+            <h6 class="py-1">Complaint has been sent</h6>
           </div>
         </div>
 
@@ -494,10 +491,6 @@
   </div>
 
   <div class="match_list_carsel owl-carousel owl-theme container my-1">
-    {% for my in  my_preference %}
-
-   
-    {% if my == "1" %}
     {% for key in alldata %}     
     <div class="item" data-bs-toggle="modal" data-bs-target="#{{key.target}}" >
       {% comment %} <img src="/media/images/girl1.png"> {% endcomment %}
@@ -523,36 +516,7 @@
     </div>
 
     {% endfor %}
-
-    {% else %}
-    
-    {% for key in my_preference %}     
-    <div class="item" data-bs-toggle="modal" data-bs-target="#{{key.target}}" >
-      {% comment %} <img src="/media/images/girl1.png"> {% endcomment %}
-      <img class="matchingimage" src="{{key.profile_picture}}">
-
-      <button type="button" class="btn btn-primary match_list_btn1" data-bs-toggle="modal"
-        data-bs-target="#exampleModal">
-        <i class="far fa-ellipsis-v"></i>
-      </button>
-
-      <i class="fas fa-mountain match_list_icon2"></i>
-
-      <div class="match_list_content">
-
-        <p>ID: #{{key.uid}}</p>
-        <h6>{{key.address}}</h6>
-        <h6><em>{{key.profile_tag}}</em></h6>
-        <p><i class="fas fa-circle fa-xs "></i> Online</p>
-      </div>
-
-      <i class="far fa-hand-paper fa-xs match_list_icon3" style="font-size:1.8em;"></i>
-
-    </div>
-
-    {% endfor %}
-    {% endif %}
-    {% endfor %}
+     
 
     <div class="item">
       <img class="matchingimage" src="/media/images/burger.png">
@@ -566,10 +530,10 @@
   <div class="container">
     <div class="row">
 
-      <div class="match_list_sec1 my-3">cxs
+      <div class="match_list_sec1 my-3">
 
         <div>
-          <h3>Favorites List</h3>
+          <h3>Followed List</h3>
           <h6><span>75</span> Matching profiles are available for you</h6>
         </div>
 
