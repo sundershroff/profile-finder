@@ -1368,11 +1368,13 @@ def matching_list(request,id):
     
     #find gender
     if [my][0]['gender'] == "female":
-       alldata = requests.get("http://127.0.0.1:3000/all_male_user_data/").json()
+       male = requests.get(f"http://127.0.0.1:3000/all_male_user_data/{id}").json()
+       alldata = male[id]
        
     elif [my][0]['gender'] == "male":
-        alldata = requests.get("http://127.0.0.1:3000/all_female_user_data/").json()
-        allchanged_data = []
+        female = requests.get(f"http://127.0.0.1:3000/all_female_user_data/{id}").json()
+        alldata = female[id]
+        print(alldata)
     neww = []
     your_intrest_value=x=[]
     for x in alldata:
@@ -1561,7 +1563,7 @@ def matching_list(request,id):
             response = requests.post(f'http://127.0.0.1:3000/requested_list/{id}',data=data)
         
         elif 'reason' in request.POST:
-            # print(request.POST)
+            print(request.POST)
             # response = requests.post('http://54.159.186.219:8000/block/',data=data)
             response = requests.post(f'http://127.0.0.1:3000/block/{id}',data=request.POST)
 
