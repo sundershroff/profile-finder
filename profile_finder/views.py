@@ -1558,7 +1558,7 @@ def matching_list(request,id):
                     data[x] = request.POST.getlist(x)[0]
                 elif request.POST[x] == "":
                     data[x] = "none"
-            # print(data)
+            print(data)
             # response = requests.post('http://54.159.186.219:8000/requested_list/',data=data)
             response = requests.post(f'http://127.0.0.1:3000/requested_list/{id}',data=data)
         
