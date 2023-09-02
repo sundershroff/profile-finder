@@ -53,6 +53,14 @@ urlpatterns = [
     # path('happycouples1/', views.happycouples1),
     path('happy_couples_test', views.happy_couples_test),
     path('Block', views.block),
+    #settings
+    path('settings_notification/<id>', views.settings_notification),
+    path('settings_privacy/<id>', views.settings_privacy),
+    path('settings_security/<id>', views.settings_security),
+    path('settings_subscription/<id>', views.settings_subscription),
+    path('settings_wallet/<id>', views.settings_wallet),
+    path('settings_about/<id>', views.settings_about),
+
 
 
 ]

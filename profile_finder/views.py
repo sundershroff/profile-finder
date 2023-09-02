@@ -2076,3 +2076,81 @@ def block(request):
             print(block)
             profile_finder.objects.filter(email=profile_finder_email).update(block_list=block)
     return redirect('/matching_list')
+#settings
+def settings_notification(request,id):
+    my = requests.get(f"http://127.0.0.1:3000/alldata/{id}").json()
+    profile_pic = [my][0]['profile_picture']
+    gender = [my][0]['gender']
+    mydata=[my]
+    
+
+    context = {
+            'mydata':mydata,
+            'profile_pic':profile_pic,
+               }
+    return render(request,'settings_notification.html',context)
+
+def settings_privacy(request,id):
+    my = requests.get(f"http://127.0.0.1:3000/alldata/{id}").json()
+    profile_pic = [my][0]['profile_picture']
+    gender = [my][0]['gender']
+    mydata=[my]
+    
+
+    context = {
+            'mydata':mydata,
+            'profile_pic':profile_pic,
+               }
+    return render(request,'settings_privacy.html',context)
+
+def settings_security(request,id):
+    my = requests.get(f"http://127.0.0.1:3000/alldata/{id}").json()
+    profile_pic = [my][0]['profile_picture']
+    gender = [my][0]['gender']
+    mydata=[my]
+    
+
+    context = {
+            'mydata':mydata,
+            'profile_pic':profile_pic,
+               }
+    return render(request,'settings_security.html',context)
+
+def settings_subscription(request,id):
+    my = requests.get(f"http://127.0.0.1:3000/alldata/{id}").json()
+    profile_pic = [my][0]['profile_picture']
+    gender = [my][0]['gender']
+    mydata=[my]
+    
+
+    context = {
+            'mydata':mydata,
+            'profile_pic':profile_pic,
+               }
+    return render(request,'settings_subscription.html',context)
+
+def settings_wallet(request,id):
+    my = requests.get(f"http://127.0.0.1:3000/alldata/{id}").json()
+    profile_pic = [my][0]['profile_picture']
+    gender = [my][0]['gender']
+    mydata=[my]
+    
+
+    context = {
+            'mydata':mydata,
+            'profile_pic':profile_pic,
+               }
+    return render(request,'settings_wallet.html',context)
+
+def settings_about(request,id):
+    my = requests.get(f"http://127.0.0.1:3000/alldata/{id}").json()
+    profile_pic = [my][0]['profile_picture']
+    gender = [my][0]['gender']
+    mydata=[my]
+    
+
+    context = {
+            'mydata':mydata,
+            'profile_pic':profile_pic,
+               }
+    return render(request,'settings_about.html',context)
