@@ -2,6 +2,9 @@
 .prof_personal_det i{
 	font-size:1.4em;
 }
+.owl-carousel .owl-dots.disabled, .owl-carousel .owl-nav.disabled {
+    display: block !important;
+}
 
 a.subs {
     color: white;

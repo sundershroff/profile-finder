@@ -1,3 +1,3 @@
-for x in range(0,3):
-   for y in range(0,3):
-      print(y,end="")
+import queue
+a=['1','2','3','4','5']
+b =queue(a)

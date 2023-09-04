@@ -1490,52 +1490,53 @@ def matching_list(request,id):
     
 
     
-    # print(neww) 
+    # percentage
     alluserdata =[]
-    # for x in alldata:
-    #     comparision_intrest = x['your_intrest'][1:-2].replace("'","").replace(" ","").split(",")
-    #     comparision_non_intrest = x['non_intrest'][1:-2].replace("'","").replace(" ","").split(",")
-    #     comparision_complexion = x['complexion'][1:-2].replace("'","").replace(" ","").split(",")
-    #     comparision_food_taste = x['food_taste'][1:-2].replace("'","").replace(" ","").split(",")
-    #     comparision_daily_diet_plan = x['daily_diet_plan'][1:-2].replace("'","").replace(" ","").split(",")
-    #     #intrest
-    #     ci=0
-    #     for i,y in enumerate(my_intrest):
-    #       if y in comparision_intrest:
-    #         ci+=len(y[1:-2].replace("'","").replace(" ","").split(","))
-    #     print("")
-    #     inte= int((ci*100)/len(my_intrest))
-    #     #non_intrest
-    #     cn = 0
-    #     for j,z in enumerate(non_intrest):
-    #       if z in comparision_non_intrest:
-    #         cn+=len(z[1:-2].replace("'","").replace(" ","").split(","))
-    #     print("")
-    #     ninte = int((cn*100)/len(non_intrest))
-    #     #complexion
-    #     co = 0
-    #     for j,h in enumerate(complexion):
-    #       if h in comparision_complexion:
-    #         co+=len(h[1:-2].replace("'","").replace(" ","").split(","))
-    #     print("")
-    #     comp = int((co*100)/len(complexion))
-    #     #food_taste
-    #     ft = 0
-    #     for j,f in enumerate(food_taste):
-    #       if f in comparision_food_taste:
-    #         ft+=len(f[1:-2].replace("'","").replace(" ","").split(","))
-    #     print("")
-    #     food = int((ft*100)/len(food_taste))
-    #     #daily dite plan
-    #     ddp = 0
-    #     for j,dp in enumerate(daily_diet_plan):
-    #       if dp in comparision_daily_diet_plan:
-    #         ddp+=len(dp[1:-2].replace("'","").replace(" ","").split(","))
-    #     print("")
-    #     diet = int((ddp*100)/len(daily_diet_plan))
-    #     total = inte+ninte+comp+food+diet
-    #     x['percentage'] = int(total/5)
-    #     alluserdata.append(x)
+    for x in alldata:
+        comparision_intrest = x['your_intrest'][1:-2].replace("'","").replace(" ","").split(",")
+        comparision_non_intrest = x['non_intrest'][1:-2].replace("'","").replace(" ","").split(",")
+        comparision_complexion = x['complexion'][1:-2].replace("'","").replace(" ","").split(",")
+        comparision_food_taste = x['food_taste'][1:-2].replace("'","").replace(" ","").split(",")
+        comparision_daily_diet_plan = x['daily_diet_plan'][1:-2].replace("'","").replace(" ","").split(",")
+        #intrest
+        ci=0
+        for i,y in enumerate(my_intrest):
+          if y in comparision_intrest:
+            ci+=len(y[1:-2].replace("'","").replace(" ","").split(","))
+        print("")
+        inte= int((ci*100)/len(my_intrest))
+        #non_intrest
+        cn = 0
+        for j,z in enumerate(non_intrest):
+          if z in comparision_non_intrest:
+            cn+=len(z[1:-2].replace("'","").replace(" ","").split(","))
+        print("")
+        ninte = int((cn*100)/len(non_intrest))
+        #complexion
+        co = 0
+        for j,h in enumerate(complexion):
+          if h in comparision_complexion:
+            co+=len(h[1:-2].replace("'","").replace(" ","").split(","))
+        print("")
+        comp = int((co*100)/len(complexion))
+        #food_taste
+        ft = 0
+        for j,f in enumerate(food_taste):
+          if f in comparision_food_taste:
+            ft+=len(f[1:-2].replace("'","").replace(" ","").split(","))
+        print("")
+        food = int((ft*100)/len(food_taste))
+        #daily dite plan
+        ddp = 0
+        for j,dp in enumerate(daily_diet_plan):
+          if dp in comparision_daily_diet_plan:
+            ddp+=len(dp[1:-2].replace("'","").replace(" ","").split(","))
+        print("")
+        diet = int((ddp*100)/len(daily_diet_plan))
+        total = inte+ninte+comp+food+diet
+        x['percentage'] = int(total/5)
+        alluserdata.append(x)
+    print(alldata)
         
     profile_pic = [my][0]['profile_picture']
     #for target
@@ -1566,6 +1567,9 @@ def matching_list(request,id):
             print(request.POST)
             # response = requests.post('http://54.159.186.219:8000/block/',data=data)
             response = requests.post(f'http://127.0.0.1:3000/block/{id}',data=request.POST)
+        
+        elif 'myfavorite' in request.POST:
+            print(request.POST)
 
         elif 'marital_status' in request.POST:
             # print(request.POST)
@@ -1655,9 +1659,9 @@ def matching_list(request,id):
                 my_preference.append(get_Selected)
     # print(my_preference)
             
-                                             
+    # print(alldata[::-1])                           
     context = {'mydata':mydata,
-               'alldata':alldata,
+               'alldata':alldata[::-1],
                'neww':neww,
                'profile_pic':profile_pic,
                'my_preference':my_preference,

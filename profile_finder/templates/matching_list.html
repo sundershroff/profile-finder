@@ -157,11 +157,12 @@
           <h6><em>{{key.profile_tag}}</em></h6>
           <p><i class="fas fa-circle fa-xs "></i> Online</p>
         </div>
-
-        <i class="far fa-hand-paper fa-xs match_list_icon3" style="font-size:1.8em;"></i>
-
+<form method="POST">
+  {% csrf_token %}
+        <button type="submit" name="myfavorite" value="{{key.uid}}"><i class="far fa-hand-paper fa-xs match_list_icon3" style="font-size:1.8em;"></i>
+        </button>
       </div>
-
+    </form>
       {% endfor %}
        
 
@@ -566,7 +567,7 @@
   <div class="container">
     <div class="row">
 
-      <div class="match_list_sec1 my-3">cxs
+      <div class="match_list_sec1 my-3">
 
         <div>
           <h3>Favorites List</h3>
@@ -656,6 +657,7 @@
 
   <div class="match_list_carsel owl-carousel owl-theme container mt-1 mb-5">
     {% for key in alldata %}     
+    {% if key.percentage >= 50 %}
       <div class="item" data-bs-toggle="modal" data-bs-target="#{{key.target}}" >
         {% comment %} <img src="/media/images/girl1.png"> {% endcomment %}
         <img class="matchingimage" src="{{key.profile_picture}}">
@@ -678,6 +680,7 @@
         <i class="far fa-hand-paper fa-xs match_list_icon3" style="font-size:1.8em;"></i>
 
       </div>
+      {% endif %}
 
       {% endfor %}
        
