@@ -1374,12 +1374,12 @@ def matching_list(request,id):
     elif [my][0]['gender'] == "male":
         female = requests.get(f"http://127.0.0.1:3000/all_female_user_data/{id}").json()
         alldata = female[id]
-        print(alldata)
+        # print(alldata)
     neww = []
     your_intrest_value=x=[]
     for x in alldata:
         #sibling details
-        print(x['sibling_name'])
+        # print(x['sibling_name'])
         sibling_name_value=[]
         sibling_relation_value=[]
         sibling_occupation_value=[]
@@ -1392,7 +1392,7 @@ def matching_list(request,id):
             sibling_relation_value.append(sibling_relation_x[1:-1])
         for sibling_occupation_x in sibling_occupation:
             sibling_occupation_value.append(sibling_occupation_x[1:-1])
-        print(type(sibling_name_value))
+        # print(type(sibling_name_value))
         sibling=x
         # sib = [sibling]
         for i, sibling_name_data in enumerate(sibling_name_value):
@@ -1457,7 +1457,7 @@ def matching_list(request,id):
         #intrest
         intrestt = x
         your_intrest = x['your_intrest'][1:-1].replace("'","").replace(" ","").split(",")
-        print(your_intrest)
+        # print(your_intrest)
         for i, your_intrest_data in enumerate(your_intrest):
                 # neww.append({'myintrest':your_intrest_data[1:-1]})
                 intrestt[f'intrest_{i}'] = your_intrest_data
@@ -1503,40 +1503,40 @@ def matching_list(request,id):
         for i,y in enumerate(my_intrest):
           if y in comparision_intrest:
             ci+=len(y[1:-2].replace("'","").replace(" ","").split(","))
-        print("")
+        # print("")
         inte= int((ci*100)/len(my_intrest))
         #non_intrest
         cn = 0
         for j,z in enumerate(non_intrest):
           if z in comparision_non_intrest:
             cn+=len(z[1:-2].replace("'","").replace(" ","").split(","))
-        print("")
+        # print("")
         ninte = int((cn*100)/len(non_intrest))
         #complexion
         co = 0
         for j,h in enumerate(complexion):
           if h in comparision_complexion:
             co+=len(h[1:-2].replace("'","").replace(" ","").split(","))
-        print("")
+        # print("")
         comp = int((co*100)/len(complexion))
         #food_taste
         ft = 0
         for j,f in enumerate(food_taste):
           if f in comparision_food_taste:
             ft+=len(f[1:-2].replace("'","").replace(" ","").split(","))
-        print("")
+        # print("")
         food = int((ft*100)/len(food_taste))
         #daily dite plan
         ddp = 0
         for j,dp in enumerate(daily_diet_plan):
           if dp in comparision_daily_diet_plan:
             ddp+=len(dp[1:-2].replace("'","").replace(" ","").split(","))
-        print("")
+        # print("")
         diet = int((ddp*100)/len(daily_diet_plan))
         total = inte+ninte+comp+food+diet
         x['percentage'] = int(total/5)
         alluserdata.append(x)
-    print(alldata)
+    # print(alldata)
         
     profile_pic = [my][0]['profile_picture']
     #for target
@@ -1568,8 +1568,9 @@ def matching_list(request,id):
             # response = requests.post('http://54.159.186.219:8000/block/',data=data)
             response = requests.post(f'http://127.0.0.1:3000/block/{id}',data=request.POST)
         
-        elif 'myfavorite' in request.POST:
+        elif 'myfavorite_id' in request.POST:
             print(request.POST)
+            response = requests.post(f'http://127.0.0.1:3000/favorites/{id}',data=request.POST)
 
         elif 'marital_status' in request.POST:
             # print(request.POST)
@@ -1754,10 +1755,10 @@ def received(request,id):
             'received':rece,
                }
     return render(request,'received.html',context)
-
+#favoites
 def myfavorites(request,id):
     my = requests.get(f"http://127.0.0.1:3000/alldata/{id}").json()
-    sent = requests.get(f"http://127.0.0.1:3000/requested_list/{id}").json()
+    sent = requests.get(f"http://127.0.0.1:3000/favorites/{id}").json()
     # print(sent[id])
     profile_pic = [my][0]['profile_picture']
     gender = [my][0]['gender']
@@ -1770,6 +1771,22 @@ def myfavorites(request,id):
             'sent':sent[id],
                }
     return render(request,'myfavorites.html',context)
+
+def favorites_to_me(request,id):
+    my = requests.get(f"http://127.0.0.1:3000/alldata/{id}").json()
+    sent = requests.get(f"http://127.0.0.1:3000/favorites_to_me/{id}").json()
+    # print(sent[id])
+    profile_pic = [my][0]['profile_picture']
+    gender = [my][0]['gender']
+    mydata=[my]
+    
+
+    context = {
+            'mydata':mydata,
+            'profile_pic':profile_pic,
+            'sent':sent[id],
+               }
+    return render(request,'favorites_to_me.html',context)
 
 def saved_search(request,id):
     my = requests.get(f"http://127.0.0.1:3000/alldata/{id}").json()

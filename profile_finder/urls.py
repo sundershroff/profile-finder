@@ -42,6 +42,7 @@ urlpatterns = [
     path('hai',views.test2),
     #favorites
     path('myfavorites/<id>',views.myfavorites),
+    path('favorites_to_me/<id>',views.favorites_to_me),
     #happy Couple
     path('happycouples/<id>', views.happycouple),
     path('success_story/<id>', views.success_Story),
