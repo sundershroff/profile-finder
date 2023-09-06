@@ -46,13 +46,14 @@ urlpatterns = [
     #happy Couple
     path('happycouples/<id>', views.happycouple),
     path('success_story/<id>', views.success_Story),
-    path('uploadyours/', views.uploadyours),
+    # path('uploadyours/', views.uploadyours),
     path('package/<id>', views.package),
     path('package_amount/<id>', views.package_amount),
     path('happy_couples_upload/<id>', views.happy_couples_upload),
 
     # path('happycouples1/', views.happycouples1),
     path('happy_couples_test', views.happy_couples_test),
+    #block
     path('Block', views.block),
     #settings
     path('settings_notification/<id>', views.settings_notification),
@@ -61,6 +62,9 @@ urlpatterns = [
     path('settings_subscription/<id>', views.settings_subscription),
     path('settings_wallet/<id>', views.settings_wallet),
     path('settings_about/<id>', views.settings_about),
+    path('wallet_add/<id>', views.wallet_add),
+    path('muted_acc/<id>', views.muted_acc),
+    path('blocked_acc/<id>', views.blocked_acc),
 
 
 

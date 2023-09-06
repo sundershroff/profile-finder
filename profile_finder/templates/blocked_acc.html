@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" type="text/css" href="/media/css/settings_privacy.css">
+  <link rel="stylesheet" type="text/css" href="/media/css/blocked_acc.css">
   <link rel="stylesheet" href="/media/css/style.css">
   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
     integrity="    sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
@@ -16,14 +16,13 @@
     integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
     crossorigin="anonymous"></script>
   <!-- over -->
-  <title>Privacy</title>
+  <title>Blocked Accounts</title>
 </head>
 
 <body class="sub_sec1">
   {% include 'header.html' %}
 
   {% include 'menu_header.html' %}
-
   <div class="container-fluid">
 
     <div class="parent my-5">
@@ -34,6 +33,7 @@
 
 
         
+
         {% for i in mydata %}
 
         <div class="row my-4 py-2">
@@ -156,13 +156,13 @@
 
             <div class="setting_par1">
                
-              <h5>Privacy</h5>
+              <h5><span style="color:#6E717A;font-weight:400;">Privacy </span> > Blocked Accounts</h5>
               <i class="fas fa-bars" id="click_event"></i>
 
               <div class="setting_par3" id="popsec1">
 
                 <div class="py-3"></div>
-                
+
                 <ul>
                   <li><a href="/settings_notification/{{i.uid}}">Notification</a></li>
                   <li><a href="/settings_privacy/{{i.uid}}">Privacy</a></li>
@@ -182,50 +182,87 @@
           
         </div>
 
-        <div class="row p-5">
+        <div class="row p-5 set_aco_scrol1">
 
           <div class="col-12">
 
-            <div class="setting_par7">
 
-            <div class="setting_par2">
+          <div class="set_aco_block">
+           
 
-              {% for i in mydata %}
-              <div class="setting_par4 my-4">
-                 <h6><a href="/blocked_acc/{{i.uid}}">Blocked Accounts</a> </h6>
-              </div>
-              
-              <div class="setting_par4 my-4">
-                 <h6><a href="/muted_acc/{{i.uid}}">Muted Accounts</a></h6>
-              </div>
-{% endfor %}
-              <div class="setting_par4 my-4">
-                 <h6><a href="#">All Request accept one Time</a> </h6>
-              </div>
+           <div class="row my-2 set_aco_unblock">
 
-             
- 
+            <div class="col-4 set_blc_acou1">
+              <img src="girl1.png ">
             </div>
 
-            <div class="setting_par5">
-
-
-
-                <div class="setting_par6 set_lab5">
-                
-                   <label class="switch">
-                   <input type="checkbox">
-                   <span class="slider round"></span>
-                  </label>
-              
-              </div>
-
-               
-
-         
-
-             
+             <div class="col-6">
+              <h6>Brooklyn Simmons</h6>
+              <p>Algerian</p>
             </div>
+
+             <div class="col-2">
+                <a href="#">Unblock</a>
+            </div>
+             
+           </div> 
+
+            <div class="row my-2 set_aco_unblock">
+
+            <div class="col-4 set_blc_acou1">
+              <img src="girl3.png ">
+            </div>
+
+             <div class="col-6">
+              <h6>Wade Warren</h6>
+              <p>American</p>
+            </div>
+
+             <div class="col-2">
+                <a href="#">Unblock</a>
+            </div>
+             
+           </div> 
+
+
+ <div class="row my-2 set_aco_unblock">
+
+            <div class="col-4 set_blc_acou1">
+              <img src="girl5.png ">
+            </div>
+
+             <div class="col-6">
+              <h6>Floyd Miles</h6>
+              <p>Algerian</p>
+            </div>
+
+             <div class="col-2">
+                <a href="#">Unblock</a>
+            </div>
+             
+           </div> 
+
+
+
+            <div class="row my-2 set_aco_unblock">
+
+            <div class="col-4 set_blc_acou1">
+              <img src="girl3.png ">
+            </div>
+
+             <div class="col-6">
+              <h6>Wade Warren</h6>
+              <p>American</p>
+            </div>
+
+             <div class="col-2">
+                <a href="#">Unblock</a>
+            </div>
+             
+           </div>    
+          </div>
+
+       
 
             </div>
             
@@ -245,6 +282,8 @@
 
 
 {% include 'footer.html' %}
+
+
 </body>
   
 </html>

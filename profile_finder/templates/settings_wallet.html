@@ -160,7 +160,7 @@
 
             <div class="setting_par1">
                
-              <h5>Notification</h5>
+              <h5>Wallet</h5>
               <i class="fas fa-bars" id="click_event"></i>
 
               <div class="setting_par3" id="popsec1">
@@ -193,12 +193,12 @@
              <div class="setting_par11">
 
                 <div class="setting_par10">
-
+                  {% for i in mydata %}
   
                 <div class="wallet_sec1">
-                  <h1>1,000</h1><img src="/media/img/coins_ico.png" class="mb-2">
+                  <h1>1,000</h1><a href = "/wallet_add/{{i.uid}}"><img src="/media/img/coins_ico.png"   class="mb-2"></a>
                 </div>
-
+{% endfor %}
                 <div class="wallet_sec2">
                    <h6 class="mt-2" style="color:#4F4F4F;">Total Amount</h6>
                 </div>

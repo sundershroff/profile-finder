@@ -1913,6 +1913,8 @@ def happycouple(request,id):
     my = requests.get(f"http://127.0.0.1:3000/alldata/{id}").json()
     profile_pic = [my][0]['profile_picture']
     mydata = [my]
+    happy_couples_all_data = requests.get("http://127.0.0.1:3000/happy_couples_all/").json()
+
     if request.method=="POST":
         print(request.POST)
         return redirect(f"/package_amount/{id}")
@@ -1943,6 +1945,7 @@ def happycouple(request,id):
     context = {
             'mydata':mydata,
             'profile_pic':profile_pic,
+            'happy_couples_all_data':happy_couples_all_data,
                }
     return render(request,'happycouples.html',context)
 def success_Story(request,id):
@@ -1985,6 +1988,26 @@ def happy_couples_upload(request,id):
     my = requests.get(f"http://127.0.0.1:3000/alldata/{id}").json()
     profile_pic = [my][0]['profile_picture']
     mydata = [my]
+    if request.method == "POST":
+        # print(request.POST)
+        images = request.FILES.getlist('image_videous')
+        files = {}
+        for i, file_data in enumerate(images):
+            files[f'file_{i}'] = file_data
+        data = {
+            'groom_name':request.POST['groom_name'],
+            'groom_id':request.POST['groom_id'],
+            'bride_name':request.POST['bride_name'],
+            'bride_id':request.POST['bride_id'],
+            'date_of_marriage':request.POST['date_of_marriage'],
+            'worde_about_marriyo':request.POST['worde_about_marriyo'],
+            
+        }
+        print(data)
+        print(files)
+        happy = requests.post(f"http://127.0.0.1:3000/happy_couples/{id}",data = data,files=files)
+
+        
     context ={
         'mydata':mydata,
         'profile_pic':profile_pic,
@@ -1992,41 +2015,41 @@ def happy_couples_upload(request,id):
     return render(request,'happy_couples_upload.html',context)
 
 
-def uploadyours(request):
-    #get signin user email
-    profile_finder_email = request.session['email']
-    print(profile_finder_email)
-    #get user details
-    main = (profile_finder.objects.filter(email=profile_finder_email).all())
-    a = upload.objects.filter(useremail=profile_finder_email)
-    # for i in 
-    # for x in main:
-    #     print(x)
-    #     ee=x["name"]
-    name = serializers.serialize("json",main)
-    context={'name':name}
-    if "a" in "0":
-        a.delete()
-        return HttpResponse("deleted")
-    else:
-     if request.method=='POST':
-        fullname = request.POST['fullname']
-        date_of_marriage = request.POST['date_of_marriage']
-        words_about_marrio = request.POST['words_about_marrio']
-        marriage_photos = request.FILES.getlist('marriage_photos')
+# def uploadyours(request):
+#     #get signin user email
+#     profile_finder_email = request.session['email']
+#     print(profile_finder_email)
+#     #get user details
+#     main = (profile_finder.objects.filter(email=profile_finder_email).all())
+#     a = upload.objects.filter(useremail=profile_finder_email)
+#     # for i in 
+#     # for x in main:
+#     #     print(x)
+#     #     ee=x["name"]
+#     name = serializers.serialize("json",main)
+#     context={'name':name}
+#     if "a" in "0":
+#         a.delete()
+#         return HttpResponse("deleted")
+#     else:
+#      if request.method=='POST':
+#         fullname = request.POST['fullname']
+#         date_of_marriage = request.POST['date_of_marriage']
+#         words_about_marrio = request.POST['words_about_marrio']
+#         marriage_photos = request.FILES.getlist('marriage_photos')
 
-        for image in marriage_photos:
-            form = upload.objects.create(
-                useremail = profile_finder_email,
-                fullname=fullname,
-                date_of_marriage=date_of_marriage,
-                words_about_marrio=words_about_marrio,
-                marriage_photos=image,
-              )
-            form.save()
-            return redirect('/sucess_story')
+#         for image in marriage_photos:
+#             form = upload.objects.create(
+#                 useremail = profile_finder_email,
+#                 fullname=fullname,
+#                 date_of_marriage=date_of_marriage,
+#                 words_about_marrio=words_about_marrio,
+#                 marriage_photos=image,
+#               )
+#             form.save()
+#             return redirect('/sucess_story')
 
-    return render(request,'uploadyours.html',context)
+#     return render(request,'uploadyours.html',context)
 
 def happy_couples(request):
     new=[]
@@ -2175,3 +2198,41 @@ def settings_about(request,id):
             'profile_pic':profile_pic,
                }
     return render(request,'settings_about.html',context)
+
+def wallet_add(request,id):
+    my = requests.get(f"http://127.0.0.1:3000/alldata/{id}").json()
+    profile_pic = [my][0]['profile_picture']
+    gender = [my][0]['gender']
+    mydata=[my]
+    
+
+    context = {
+            'mydata':mydata,
+            'profile_pic':profile_pic,
+               }
+    return render(request,'wallet_add.html',context)
+
+def muted_acc(request,id):
+    my = requests.get(f"http://127.0.0.1:3000/alldata/{id}").json()
+    profile_pic = [my][0]['profile_picture']
+    gender = [my][0]['gender']
+    mydata=[my]
+    
+
+    context = {
+            'mydata':mydata,
+            'profile_pic':profile_pic,
+               }
+    return render(request,'muted_acc.html',context)
+
+def blocked_acc(request,id):
+    my = requests.get(f"http://127.0.0.1:3000/alldata/{id}").json()
+    profile_pic = [my][0]['profile_picture']
+    gender = [my][0]['gender']
+    mydata=[my]
+
+    context = {
+            'mydata':mydata,
+            'profile_pic':profile_pic,
+               }
+    return render(request,'blocked_acc.html',context)
