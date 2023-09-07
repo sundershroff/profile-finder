@@ -1914,10 +1914,27 @@ def happycouple(request,id):
     profile_pic = [my][0]['profile_picture']
     mydata = [my]
     happy_couples_all_data = requests.get("http://127.0.0.1:3000/happy_couples_all/").json()
-
+    # print(happy_couples_all_data)
+    all_happy_couple=[]
+    for x in happy_couples_all_data:
+        allimage = x['image_videous'][1:-2].replace("'","").replace(" ","").split(",")
+        x['file1'] =allimage[0]
+        all_happy_couple.append(x)
+    
+    
     if request.method=="POST":
-        print(request.POST)
-        return redirect(f"/package_amount/{id}")
+        if "groom_id" in request.POST:
+           print(request.POST)
+           global groom_id
+           groom_id = request.POST['groom_id']  
+        #    print(groom_id)    
+           return redirect(f"/success_story/{id}")
+        #    uid = request.POST['groom_id']
+        #    requests.post(f"http://127.0.0.1:3000/happy_couples_one/{uid}",data = request.POST)
+        
+       
+
+        # return redirect(f"/package_amount/{id}")
     # a = upload.objects.all().values()
     # for x in a:
     #     z=dict(x)
@@ -1942,21 +1959,36 @@ def happycouple(request,id):
     #     'key':sel
     # }
     # return render(request,'happy_couples.html',context)
+    
     context = {
             'mydata':mydata,
             'profile_pic':profile_pic,
-            'happy_couples_all_data':happy_couples_all_data,
+            'happy_couples_all_data':all_happy_couple,
                }
     return render(request,'happycouples.html',context)
+
 def success_Story(request,id):
     my = requests.get(f"http://127.0.0.1:3000/alldata/{id}").json()
     profile_pic = [my][0]['profile_picture']
     mydata = [my]
-    if request.method=="POST":
-        print(request.POST)
-        return redirect(f"/package_amount/{id}")
+    print("success")
+    happycouple(request,id)
+    print(groom_id)
+    uidd = groom_id
+
+    onedata = requests.get("http://127.0.0.1:3000/happy_couples_all/").json()
+    all_happy_couple=[]
+    for x in onedata:
+        allimage = x['image_videous'][1:-2].replace("'","").replace(" ","").split(",")
+        x['file1'] =allimage[0]
+        x['allimage'] =allimage[1:]
+        all_happy_couple.append(x)
+    print(all_happy_couple)
+        # return redirect(f"/package_amount/{id}")
     context ={
-        'mydata':mydata
+        'mydata':mydata,
+        'onedata':onedata,
+        'uidd':uidd,
     }
     return render(request,'success_story.html',context)
 

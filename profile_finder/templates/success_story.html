@@ -34,12 +34,14 @@
      	  	  </div>
      	  	  <!-- over -->
                  <!-- img -->
-     	  	  <div class="row">
+				 {% for i in onedata %}
+				 {% if uidd == i.groom_id %}
+     	  	  <div class="row" >
 
      	  	  	<div class="col-lg-7 col-md-12 col-sm-12">
 
      	  	  		<div class="sucstry_sty1">
-     	  	  			<img src="/media/img/cop2.png">
+     	  	  			<img src="{{i.file1}}">
      	  	  		</div>
      	  	  		
      	  	  	</div>
@@ -48,42 +50,48 @@
 
                     	<div class="sucstry_sty2">
                     		<h3>Success Story of AbIne</h3>
-                    		<h3>P Dejose & Aneesha Biju</h3>
+                    		<h3>{{i.groom_name}} & {{i.bride_name}}</h3>
                     	
                          <div class="sucstry_sty4">
                     	<div class="sucstry_sty3">
-                    		<h6>Groom: <span>AbIne P Dejose (CCLT457820 )</span></h6>
+                    		<h6>Groom: <span>{{i.groom_name}} ({{i.groom_id}} )</span></h6>
                     	</div>
                     	<div class="sucstry_sty3">
-                    		<h6>Bride:  <span> Aneesha Biju (CTCR461235 )</span></h6>
+                    		<h6>Bride:  <span> {{i.bride_name}} ({{i.bride_id}} )</span></h6>
                     	</div>
                          
                          <div class="sucstry_sty3">
-                    		<h6>Wedding date:   <span>31 Jan 2022</span></h6>
+                    		<h6>Wedding date:   <span>{{i.date_of_marriage}}</span></h6>
                     	</div>
                     	</div>
 
 
-                    	<h6 style="font-size:1.2em;">AbIne P Dejose & Aneesha Biju wrote:</h6>
+                    	<h6 style="font-size:1.2em;">{{i.groom_name}} & {{i.bride_name}} wrote:</h6>
 
-                    	<p>Thank you MarrIyo Matrimony for uniting us together and helping us mutually find the best life partners within each other.</p>
+                    	<p> {{i.worde_about_marriyo}}</p>
      	  	  		
      	  	  	</div>
                   
                   </div>
  
      	  	  </div>
+				 {% endif %}
+				 {% endfor %}
                 <!-- over -->
      	  
      	</div>
      </div>
+	
      <div class="container my-5">
      	<div class="row">
 
      		<div class="col-lg-12">
      			<div class="sucstry_sty5">
-
-     				<img src="img/cop2.png">
+					{% for i in onedata %}
+					{% if uidd == i.groom_id %}
+     				<img src="{{i.allimage}}">
+					 {% endif %}
+				 {% endfor %}
 
      				<img src="img/cop2.png">
 

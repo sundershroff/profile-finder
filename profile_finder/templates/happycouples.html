@@ -21,6 +21,7 @@
 
 	{% include 'menu_header.html' %}
 	{% include 'package.html' %}
+
 <div class="container">
 
 
@@ -35,54 +36,39 @@
 
 
 <div class="hap_cop_sec2 my-5">
+	
+
+	{% for my in mydata %}
 {% for i in happy_couples_all_data %}
 	<div class="hap_cop_sec3">
 
-		<a href="/success_story/{{i.uid}}"><img src="/media/img/cop2.png" ></a>
+		<a href=""><img src="{{i.file1}}" ></button></a>
 
 		<div class="hap_cop_sec4">
 
-			<a href="/success_story/{{i.uid}}"><div class="hap_cop_sec5">
+			<a href=""><div class="hap_cop_sec5">
 				<h4>{{i.groom_name}} & {{i.bride_name}} </h4>
 
 			<p>{{i.worde_about_marriyo}}</p>
-
-			<a href="#">More</a>
-			</div></a>
-			
-		</div>
-		
-	</div>
-	{% endfor %}
-	<div class="hap_cop_sec3">
-
-		<img src="/media/img/cop3.png">
-
-			<div class="hap_cop_sec4">
-
-			<div class="hap_cop_sec5">
-				<h4>AbIne P Dejose & Aneesha Biju</h4>
-
-			<p>Thank you Chavara MatrImony for uniting us together and helping us mutually find the best life partners within each other....</p>
-
-			<a href="#">More</a>
+		</a>
+		<form method="POST" style="
+		display: contents;
+	">
+	{% csrf_token %}
+			<button type="submit" name="groom_id" value="{{i.groom_id}}">More</button> 
+		</form>
+			{% comment %} /success_story/{{my.uid}} {% endcomment %}
 			</div>
+		
 			
 		</div>
 		
 	</div>
 
-	<div class="hap_cop_sec3">
+	{% endfor %}
+	{% endfor %}
 
-		<img src="img/cop2.png">
-		
-	</div>
 
-	<div class="hap_cop_sec3">
-
-		<img src="img/cop3.png">
-		
-	</div>
 	
 </div>
 
