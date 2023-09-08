@@ -1978,17 +1978,21 @@ def success_Story(request,id):
 
     onedata = requests.get("http://127.0.0.1:3000/happy_couples_all/").json()
     all_happy_couple=[]
+    allimg={}
     for x in onedata:
-        allimage = x['image_videous'][1:-2].replace("'","").replace(" ","").split(",")
-        x['file1'] =allimage[0]
-        x['allimage'] =allimage[1:]
-        all_happy_couple.append(x)
+        if uidd == x['groom_id']:
+           allimage = x['image_videous'][1:-2].replace("'","").replace(" ","").split(",")
+           x['file1'] =allimage[0]
+           allimg['allimage'] =allimage[1:]
+           all_happy_couple.append(x)
     print(all_happy_couple)
+    print(allimage)
         # return redirect(f"/package_amount/{id}")
     context ={
         'mydata':mydata,
         'onedata':onedata,
         'uidd':uidd,
+        'allimage':allimage[1:]
     }
     return render(request,'success_story.html',context)
 
@@ -2262,9 +2266,14 @@ def blocked_acc(request,id):
     profile_pic = [my][0]['profile_picture']
     gender = [my][0]['gender']
     mydata=[my]
-
+    my_block = requests.get(f"http://127.0.0.1:3000/block/{id}").json()
+    # print(my_block)
+    if request.method=="POST":
+        print(request.POST)
+        requests.post(f"http://127.0.0.1:3000/block/{id}",data=request.POST)
     context = {
             'mydata':mydata,
             'profile_pic':profile_pic,
+            'my_block':my_block[id],
                }
     return render(request,'blocked_acc.html',context)

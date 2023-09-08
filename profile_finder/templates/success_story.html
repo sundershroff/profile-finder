@@ -89,13 +89,13 @@
      			<div class="sucstry_sty5">
 					{% for i in onedata %}
 					{% if uidd == i.groom_id %}
-     				<img src="{{i.allimage}}">
+					{% for j in allimage %}
+     				<img src="{{j}}">
+					 {% endfor %}
 					 {% endif %}
 				 {% endfor %}
 
-     				<img src="img/cop2.png">
-
-     				<img src="img/cop2.png">
+     				
 
      				
      			</div>

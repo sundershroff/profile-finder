@@ -189,77 +189,37 @@
 
           <div class="set_aco_block">
            
-
+{% for i in my_block %}
            <div class="row my-2 set_aco_unblock">
 
             <div class="col-4 set_blc_acou1">
-              <img src="girl1.png ">
+              <img src="{{i.profile_picture}} ">
             </div>
 
              <div class="col-6">
-              <h6>Brooklyn Simmons</h6>
-              <p>Algerian</p>
+              <h6>{{i.name}}</h6>
+              <p>{{i.address}}</p>
             </div>
-
+<form method="POST" style="
+display: contents;
+">
+  {% csrf_token %}
              <div class="col-2">
-                <a href="#">Unblock</a>
+              <button type="submit" name="unblock" value="{{i.uid}}" style="
+                display: contents;text-decoration: none;
+                color: #7B61FF;
+                font-weight: 500;
+            ">Unblock</button>
             </div>
-             
+          </form>
            </div> 
+           {% endfor %}
+            
+ 
 
-            <div class="row my-2 set_aco_unblock">
 
-            <div class="col-4 set_blc_acou1">
-              <img src="girl3.png ">
-            </div>
 
-             <div class="col-6">
-              <h6>Wade Warren</h6>
-              <p>American</p>
-            </div>
-
-             <div class="col-2">
-                <a href="#">Unblock</a>
-            </div>
              
-           </div> 
-
-
- <div class="row my-2 set_aco_unblock">
-
-            <div class="col-4 set_blc_acou1">
-              <img src="girl5.png ">
-            </div>
-
-             <div class="col-6">
-              <h6>Floyd Miles</h6>
-              <p>Algerian</p>
-            </div>
-
-             <div class="col-2">
-                <a href="#">Unblock</a>
-            </div>
-             
-           </div> 
-
-
-
-            <div class="row my-2 set_aco_unblock">
-
-            <div class="col-4 set_blc_acou1">
-              <img src="girl3.png ">
-            </div>
-
-             <div class="col-6">
-              <h6>Wade Warren</h6>
-              <p>American</p>
-            </div>
-
-             <div class="col-2">
-                <a href="#">Unblock</a>
-            </div>
-             
-           </div>    
           </div>
 
        
