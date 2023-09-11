@@ -1536,7 +1536,11 @@ def matching_list(request,id):
         total = inte+ninte+comp+food+diet
         x['percentage'] = int(total/5)
         alluserdata.append(x)
-    # print(alldata)
+    lenofid=[]
+    for le in alluserdata:
+        if le['percentage'] > 50:
+            lenofid.append(le)
+    print(len(lenofid))
         
     profile_pic = [my][0]['profile_picture']
     #for target
@@ -1545,7 +1549,10 @@ def matching_list(request,id):
         x['target']=res
         alluserdata.append(x)
     # print(alluserdata)
-        
+    
+    #my favorite list
+    sent = requests.get(f"http://127.0.0.1:3000/favorites/{id}").json()
+
     mydata = [my]
     my_preference=["1"]
     
@@ -1573,7 +1580,7 @@ def matching_list(request,id):
             response = requests.post(f'http://127.0.0.1:3000/favorites/{id}',data=request.POST)
 
         elif 'marital_status' in request.POST:
-            # print(request.POST)
+            print(request.POST)
             matc={
                 'a':request.POST['marital_status'],
                 'b':request.POST['physical_mental_status'],
@@ -1636,11 +1643,12 @@ def matching_list(request,id):
                 else:
                     h = "no"
                 pref = {a,b,c,d,e,f,g,h}
+                print(pref)
                 if "no" not in pref:
                     pref.remove("")
                     for con in pref:
                        p.append(con)
-                    #    print(p)
+                       print(p)
                 # else:
                 #     pref.remove("")
                 #     print(pref)
@@ -1658,7 +1666,7 @@ def matching_list(request,id):
                 # print(numb)
                 get_Selected = alluserdata[numb]
                 my_preference.append(get_Selected)
-    # print(my_preference)
+            print(my_preference)
             
     # print(alldata[::-1])                           
     context = {'mydata':mydata,
@@ -1667,6 +1675,8 @@ def matching_list(request,id):
                'profile_pic':profile_pic,
                'my_preference':my_preference,
                'your_intrest_value':your_intrest_value,
+               'lenofid':lenofid,
+               'sent':sent[id],
                }
     return render(request,'matching_list.html',context)
 def match_list_person(request):
@@ -1684,10 +1694,18 @@ def match_list_person(request):
     return render(request,"match_list_person.html",context)
 def viewallmatch(request,id):
     alluserdata_two =[]
-    alldata = requests.get("http://127.0.0.1:3000/alluserdata/").json()
     my = requests.get(f"http://127.0.0.1:3000/alldata/{id}").json()
     profile_pic = [my][0]['profile_picture']
     mydata=[my]
+    #find gender
+    if [my][0]['gender'] == "female":
+       male = requests.get(f"http://127.0.0.1:3000/all_male_user_data/{id}").json()
+       alldata = male[id]
+       
+    elif [my][0]['gender'] == "male":
+        female = requests.get(f"http://127.0.0.1:3000/all_female_user_data/{id}").json()
+        alldata = female[id]
+        # print(alldata)
     for x in alldata:
         res = ''.join([j for j in x['uid'] if not j.isdigit()])
         print(res)

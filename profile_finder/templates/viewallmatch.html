@@ -65,7 +65,9 @@
   {% for key in alldata %} 
 	<div class="view_all_img" data-bs-toggle="modal" data-bs-target="#{{key.target}}">
 
-		<img src="{{key.profile_picture}}">
+		<img src="{{key.profile_picture}}" style="
+    object-fit: cover;
+">
 
 		<button  class="view_all_btn1" data-bs-toggle="modal" data-bs-target="#exampleModal">
           <i class="far fa-ellipsis-v view_all_icon1"></i>
