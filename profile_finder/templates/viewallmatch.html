@@ -33,7 +33,7 @@
 
   {% include 'your_pref_modal.html' %}
 
- {% include 'match_list_person.html' %}  
+ {% include 'match_list_person.html' %} 
 <section >
 
 <div class="container">
@@ -44,7 +44,7 @@
 
           <div>
             <h3>New RegIstration</h3>
-            <h6><span>75</span> Matching profiles are available for you</h6>
+            <h6><span>{{alldata|length}}</span> Matching profiles are available for you</h6>
           </div>
 
           <div>
@@ -69,7 +69,7 @@
     object-fit: cover;
 ">
 
-		<button  class="view_all_btn1" data-bs-toggle="modal" data-bs-target="#exampleModal">
+		<button  class="view_all_btn1" data-bs-toggle="modal" data-bs-target="#r{{key.target}}">
           <i class="far fa-ellipsis-v view_all_icon1"></i>
    </button>
 
@@ -78,7 +78,9 @@
    </button>
 
 
-   <button class="view_all_btn3">
+   <button class="view_all_btn3" style="
+   display: contents;
+">
    	<i class="far fa-hand-paper fa-xs match_list_icon3" style="font-size:1.8em;"></i>
    </button>
 
@@ -97,26 +99,300 @@
   {% endfor %}
 
 	
-</div>
- <!-- modal 1 -->
- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
+  {% for key in alldata %}  
 
-      <div class="modal-body p-4">
-        <div class="match_list_modal1">
-          <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal2">Block this profile</a>
-          <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal1">Hi</a>
-          <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal4">Request</a>
-          <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal3">ComplaInt</a>
-          <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal6">Share to</a>
-          <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal5">Report</a>
+  <div>
+      <!-- modal 1 -->
+      <div class="modal fade" id="r{{key.target}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+  
+            <div class="modal-body p-4">
+              <div class="match_list_modal1">
+                <a href="#" data-bs-toggle="modal" data-bs-target="#block{{key.target}}">Block this profile</a>
+                <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal1">Hi</a>
+                <a href="#" data-bs-toggle="modal" data-bs-target="#request{{key.target}}">Request</a>
+                {% comment %} <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal333">ComplaInt</a> {% endcomment %}
+                <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal6">Share to</a>
+                {% comment %} <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal5">Report</a> {% endcomment %}
+              </div>
+            </div>
+  
+          </div>
         </div>
       </div>
-
+      <!-- over -->
+      <!-- modal2-->
+      <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+  
+            <div class="modal-body p-4">
+              <div class="match_list_modal2 p-5">
+  
+                <i class="fas fa-check-circle py-2"></i>
+                <h4 class="py-2">Done!</h4>
+                <h6 class="py-1">Profile move to “Hi” later</h6>
+              </div>
+            </div>
+  
+          </div>
+        </div>
+      </div>
+      <!-- over -->
+      <!-- modal3-->
+      <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+  
+            <div class="modal-body p-4">
+              <div class="match_list_modal2 p-5">
+  
+                <i class="fas fa-check-circle py-2"></i>
+                <h4 class="py-2">Done!</h4>
+                <h6 class="py-1">The above account successfully blocked</h6>
+              </div>
+            </div>
+  
+          </div>
+        </div>
+      </div>
+      <!-- over -->
+      <!-- modal4-->
+      <div class="modal fade" id="block{{key.target}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+  
+            <div class="modal-body p-4">
+              <div class="match_list_modal3 ">
+                <form method="POST">
+                  {% csrf_token %}
+                  <h4>Block</h4>
+                  <h6 class="my-3">Write your Reason here.</h6>
+  
+                  <textarea name="reason" class="form-control my-4" rows="7"></textarea>
+  
+                  <input type="text" name="blocked_id" value="{{key.uid}}" style="display:none">
+  
+                  <div class="match_list_modbtn prof_page_btn1 mt-4">
+                    <div>
+                      <button type="button" class="btn prof_btns" data-bs-dismiss="modal">Cancel</button>
+                      <button type="submit" class="btn prof_btns" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal8" >Submit</button>
+                    </div>
+                  </div>
+  
+                </form>
+  
+              </div>
+            </div>
+  
+          </div>
+        </div>
+      </div>
+      <!-- over -->
+      <!-- modal5-->
+      <div class="modal fade" id="request{{key.target}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+  
+            <div class="modal-body p-4">
+              <div class="match_list_modal4">
+                <form method="post">
+                  {% csrf_token %}
+                  <h4 class="mb-3 mt-2">Request</h4>
+  
+                  <div class="match_list_modal5 my-4">
+                    <label class="matchlist-checkbox">
+                      <input type="checkbox" name="request_phone_number" checked>
+                      <span class="matchcheckmark"></span>
+                      Phone Number
+                      <input name="request_phone_number" value = "" type="text" style = "display:none">
+  
+                    </label>
+  
+                    <label class="matchlist-checkbox">
+                      <input name="request_whatsapp_number" type="checkbox">
+                      <span class="matchcheckmark"></span>
+                      Whatsapp Number
+                      <input name="request_whatsapp_number" value = "" type="text" style = "display:none">
+                    </label>
+                    <label class="matchlist-checkbox">
+                      <input name="request_address" type="checkbox">
+                      <span class="matchcheckmark"></span>
+                      Home or offIce Physical Address with the house name
+                      <input name="request_address" value = "" type="text" style = "display:none">
+                    </label>
+  
+                    <label class="matchlist-checkbox">
+                      <input name="request_horoscope" type="checkbox">
+                      <span class="matchcheckmark"></span>
+                      Horoscope
+                      <input name="request_horoscope" value = "" type="text" style = "display:none">
+  
+                    </label>
+  
+                    <label class="matchlist-checkbox">
+                      <input name="request_social_media_link" type="checkbox">
+                      <span class="matchcheckmark"></span>
+                      Social Media links
+                      <input name="request_social_media_link" value = "" type="text" style = "display:none">
+  
+                    </label>
+  
+                    <label class="matchlist-checkbox" style="display:none">
+                      <input name="received_uid" value="{{key.uid}}" type="text">
+                      <span class="matchcheckmark"></span>
+                      received_uid
+                    </label>
+  
+                  </div>
+  
+                  <div class="match_list_modbtn prof_page_btn1 mt-4">
+                    <div>
+                      <button type="button" class="btn prof_btns" data-bs-dismiss="modal">Cancel</button>
+                      <button type="submit" class="btn prof_btns" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal7">Submit</button>
+                    </div>
+                  </div>
+  
+                </form>
+  
+              </div>
+            </div>
+  
+          </div>
+        </div>
+      </div>
+      <!-- over -->
+      <!-- modal6-->
+      <div class="modal fade" id="exampleModal5" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+  
+            <div class="modal-body p-4">
+              <div class="match_list_modal4">
+                <form action="#" method="post">
+                  {% csrf_token %}
+                  <h4 class="mb-3 mt-2">Report</h4>
+  
+                  <h6>Why are you Reporting this post?</h6>
+  
+                  <div class="match_list_modal5 my-4">
+                    <label class="matchlist-checkbox">
+                      <input type="checkbox" checked>
+                      <span class="matchcheckmark"></span>
+                      It’s spam
+                    </label>
+  
+                    <label class="matchlist-checkbox">
+                      <input type="checkbox">
+                      <span class="matchcheckmark"></span>
+                      Nudity or sexual activity
+                    </label>
+                    <label class="matchlist-checkbox">
+                      <input type="checkbox">
+                      <span class="matchcheckmark"></span>
+                      Hate speech or symbols
+                    </label>
+  
+                    <label class="matchlist-checkbox">
+                      <input type="checkbox">
+                      <span class="matchcheckmark"></span>
+                      I just don’t Like it
+                    </label>
+  
+                    <label class="matchlist-checkbox">
+                      <input type="checkbox">
+                      <span class="matchcheckmark"></span>
+                      Bullying or harassment
+                    </label>
+  
+                  </div>
+  
+                  <div class="match_list_modbtn prof_page_btn1 mt-4">
+                    <div>
+                      <button type="button" class="btn prof_btns" data-bs-dismiss="modal">Cancel</button>
+                      <button type="submit" class="btn prof_btns">Submit</button>
+                    </div>
+                  </div>
+  
+                </form>
+  
+              </div>
+            </div>
+  
+          </div>
+        </div>
+      </div>
+      <!-- over -->
+      <!-- modal7-->
+      <div class="modal fade" id="exampleModal6" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+  
+            <div class="modal-body p-4">
+  
+              <div class="match_list_modal6 p-5">
+  
+                <h4>Share To</h4>
+  
+                <div class="match_list_icon4 mt-5">
+                  <a href=""><i class="fab fa-facebook-square"></i></a>
+                  <a href=""><i class="fab fa-linkedin"></i></a>
+                  <a href=""><i class="fab fa-twitter"></i></a>
+                  <a href=""><i class="fab fa-instagram"></i></a>
+                  <a href=""><i class="fab fa-youtube"></i></a>
+                </div>
+  
+              </div>
+  
+            </div>
+  
+          </div>
+  
+        </div>
+      </div>
+    {% comment %} </div> {% endcomment %}
+    <!-- over -->
+    <!-- modal8-->
+    <div class="modal fade" id="exampleModal7" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+  
+          <div class="modal-body p-4">
+            <div class="match_list_modal2 p-5">
+  
+              <i class="fas fa-check-circle py-2"></i>
+              <h4 class="py-2">Success!</h4>
+              <h6 class="py-1">Successful sent the request.</h6>
+            </div>
+          </div>
+  
+        </div>
+      </div>
+    </div>
+    <!-- over -->
+    <!-- modal8-->
+    <div class="modal fade" id="exampleModal8" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+  
+          <div class="modal-body p-4">
+            <div class="match_list_modal2 p-5">
+  
+              <i class="fas fa-check-circle py-2"></i>
+              <h4 class="py-2">Done!</h4>
+              <h6 class="py-1">Blocked This Profile Successfully</h6>
+            </div>
+          </div>
+  
+        </div>
+      </div>
     </div>
   </div>
-</div>
+  {% endfor %}
+  <!-- over -->
 <!-- over -->
 <!-- modal2-->
 <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

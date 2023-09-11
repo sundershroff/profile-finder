@@ -88,6 +88,17 @@
     background: linear-gradient(rgba(0, 0, 0, 0.3),rgba(0, 0, 0, 0.3));
    
 }
+button.view_all_btn10 {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    padding: 10px 20px;
+    height: 48px;
+    border-radius: 10px;
+    color: white;
+    border: none;
+    background: linear-gradient(rgba(0, 0, 0, 0.3),rgba(0, 0, 0, 0.3));
+}
 
 .view_all_btn2{
     position:absolute;

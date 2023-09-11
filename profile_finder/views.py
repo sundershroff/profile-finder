@@ -1375,6 +1375,7 @@ def matching_list(request,id):
         female = requests.get(f"http://127.0.0.1:3000/all_female_user_data/{id}").json()
         alldata = female[id]
         # print(alldata)
+    global neww
     neww = []
     your_intrest_value=x=[]
     for x in alldata:
@@ -1712,9 +1713,11 @@ def viewallmatch(request,id):
         x['target']=res
         alluserdata_two.append(x)
     print(alluserdata_two)
+    matching_list(request,id)
     context = {'alldata':alluserdata_two,
                'mydata':mydata,
                'profile_pic':profile_pic,
+               'neww':neww,
            }
     return render(request,"viewallmatch.html",context)
 
