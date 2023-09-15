@@ -1542,6 +1542,7 @@ def matching_list(request,id):
         if le['percentage'] > 50:
             lenofid.append(le)
     print(len(lenofid))
+    # print(lenofid)
         
     profile_pic = [my][0]['profile_picture']
     #for target
@@ -1553,6 +1554,7 @@ def matching_list(request,id):
     
     #my favorite list
     sent = requests.get(f"http://127.0.0.1:3000/favorites/{id}").json()
+    
 
     mydata = [my]
     my_preference=["1"]
@@ -1746,7 +1748,7 @@ def package_matching(request,id):
 def requested_list(request,id):
     my = requests.get(f"http://127.0.0.1:3000/alldata/{id}").json()
     sent = requests.get(f"http://127.0.0.1:3000/requested_list/{id}").json()
-    # print(sent[id])
+    print(sent)
     profile_pic = [my][0]['profile_picture']
     gender = [my][0]['gender']
     mydata=[my]
@@ -1814,11 +1816,45 @@ def saved_search(request,id):
     profile_pic = [my][0]['profile_picture']
     gender = [my][0]['gender']
     mydata=[my]
-    
+    my_sav = requests.get(f"http://127.0.0.1:3000/saved_search/{id}").json()
+    # print(my_sav)
+    if request.method=="POST":
+        
+        if 'tag' in request.POST:
+            print(request.POST)
+            mat={
+                    'tag':request.POST['tag'],
+                    'country':request.POST['country'],
+                    'city':request.POST['city'],
+                    'age':request.POST['age'],
+                    'complexion':request.POST.getlist('complexion'),
+                    'gender':request.POST['gender'],
+                    'denomination':request.POST['denomination']
+                  
+                }
+        elif 'tag_edit' in request.POST: 
+            print(request.POST)
+            mat={
+                    'tag_edit':request.POST['tag_edit'],
+                    'country':request.POST['country'],
+                    'city':request.POST['city'],
+                    'age':request.POST['age'],
+                    'complexion':request.POST.getlist('complexion'),
+                    'gender':request.POST['gender'],
+                    'denomination':request.POST['denomination'],
+                    'id':request.POST['id']
+                  
+                }
+        elif 'remove' in request.POST: 
+            print(request.POST)
+            mat={'remove':request.POST['remove']}
+            
+        received = requests.post(f"http://127.0.0.1:3000/saved_search/{id}",data = mat)
 
     context = {
             'mydata':mydata,
             'profile_pic':profile_pic,
+            'my_sav':my_sav[id],
                }
     return render(request,'saved_search.html',context)
 
