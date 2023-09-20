@@ -37,6 +37,7 @@ urlpatterns = [
     path('requested_list/<id>',views.requested_list),
     path('received/<id>',views.received),
     path('saved_Search/<id>',views.saved_search),
+    path('saved_search_view_profile/<uid>/<id>',views.saved_search_view_profile),
     path('request_received',views.follow_request1),
     path('sucess_story',views.happy_couples),
     path('hai',views.test2),

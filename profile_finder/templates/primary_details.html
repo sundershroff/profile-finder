@@ -244,7 +244,7 @@
                           <span>No</span>
                         </label>
       
-                        
+                        <label id="are_you_working_now-error" class="error" for="are_you_working_now" style="display: flex;align-self: baseline;position: relative;right: 30px;"></label>
       
                       </div>
       
@@ -406,11 +406,15 @@
       
                           <input type="checkbox" id="speaking1" value="Speaking"  name="your_intrest">
                           <label for="speaking1">Speaking</label>
+                          
                 
                 {% comment %} <input type="checkbox" id="watchmovie1" value="Watch Movie<"  name="your_intrest">
                           <label for="watchmovie1">Watch Movie</label> {% endcomment %}
       
               </div>
+              <label id="your_intrest-error" class="error" for="your_intrest" style="
+              visibility: visible;
+          "></label>
       
           </div>
       
@@ -473,8 +477,12 @@
                 
                 {% comment %} <input type="checkbox" id="watchmovie2" value="Watch Movie"  name="non_intrest">
                           <label for="watchmovie2">Watch Movie</label> {% endcomment %}
+                          
       
               </div>
+              <label id="non_intrest-error" class="error" for="non_intrest" style="
+              visibility: visible;
+          "></label>
       
           </div>
       
@@ -514,6 +522,9 @@
       
       
               </div>
+              <label id="complexion-error" class="error" for="complexion" style="
+              visibility: visible;
+          "></label>
       
           </div>
       
@@ -542,6 +553,7 @@
                            Both
                            </label>
                  </div>
+               
                 
               </div>
               
@@ -557,7 +569,7 @@
                 <input type="checkbox" id="sweet"  value="Sweezt" name="food_taste">
                           <label for="sweet">Sweezt</label>
       
-                          <input type="checkbox" id="bitter"  value="Bitter" name="food_taste">
+                          <input type="checkbox" id="bitter"  value="Bitter"  name="food_taste">
                           <label for="bitter">Bitter</label>
       
                           <input type="checkbox" id="umamI"  value="UmamI" name="food_taste">
@@ -573,9 +585,12 @@
                           <label for="spicy">Spicy</label>
       
               </div>
-      
+             
       
           </div>
+          <label id="food_taste-error" class="error" for="food_taste" style="
+          visibility: visible;
+      "></label>
       
           <div class="row my-5">
       
@@ -612,8 +627,12 @@
                           
                   
               </div>
+              
       
           </div>
+          <label id="daily_diet_plan-error" class="error" for="daily_diet_plan" style="
+              visibility: visible;
+          "></label>
       
           <div class="row my-5">
       
@@ -639,6 +658,10 @@
                           <input type="radio" id="No1" value="No" name="carriying_after_marriage">
                           <label for="No1">Non</label>
               </div>
+              <label id="carriying_after_marriage-error" class="error" for="carriying_after_marriage" style="
+              visibility: visible;
+          "></label>
+      
       
           </div>
       
@@ -666,6 +689,9 @@
                           <input type="radio" id="No2" value="No"  name="tobacco">
                           <label for="No2">Non</label>
               </div>
+              <label id="tobacco-error" class="error" for="tobacco" style="
+              visibility: visible;
+          "></label>
       
           </div>
       
@@ -693,6 +719,9 @@
                           <input type="radio" id="No3" value="No"  name="alcohol">
                           <label for="No3">Non</label>
               </div>
+              <label id="alcohol-error" class="error" for="alcohol" style="
+              visibility: visible;
+          "></label>
       
           </div>
               
@@ -720,6 +749,9 @@
                           <input type="radio" id="No4" value="No"  name="drugs">
                           <label for="No4">Non</label>
               </div>
+              <label id="drugs-error" class="error" for="drugs" style="
+              visibility: visible;
+          "></label>
       
           </div>
       
@@ -747,6 +779,9 @@
                           <input type="radio" id="No5" value="No"  name="criminal_offence">
                           <label for="No5">Non</label>
               </div>
+              <label id="criminal_offence-error" class="error" for="criminal_offence" style="
+              visibility: visible;
+          "></label>
       
               <div class="col-lg-4">
                 <label class="py-3" style="color:#38437C;font-weight:500;">Country<span>*</span></label>
@@ -869,7 +904,8 @@
              
                 <p class="file-message my-3">Drag Or Click Here To Upload Your ID</p>
 
-                <input class="file-input" type="file" name="horoscope" accept=".png,.jpg,.jpeg,.pdf,.doc,.docx">
+                <input class="file-input" type="file" value="empty" name="horoscope" >
+                <!-- accept=".png,.jpg,.jpeg,.pdf,.doc,.docx" -->
             </div>
                
             </div>
@@ -923,7 +959,8 @@
                            <label class="form-check-label" for="orphan">
                            Non
                            </label>
-      
+                           <label id="orphan-error" class="error" for="orphan" ></label>
+
                        </div>
                 
               </div>
@@ -946,7 +983,7 @@
                            <label class="form-check-label" for="flexRadioDefault1">
                            Non
                            </label>
-      
+                           <label id="disable-error" class="error" for="disable" ></label>
                            </div>
       
                            <div class="row Prim_det_form1">
@@ -968,7 +1005,7 @@
       
             <div class="col-lg-12">
               <div class="Prim_det_btns">
-                <button type="submit">Go Next</button>
+                <button type="submit" onclick="fun1()">Go Next</button>
               </div>
             </div>
             
@@ -998,9 +1035,10 @@
                   valueNotEquals: "default"
                 },
                 physical_mental_status: {
-                  required: true
+                  // required: true
+                  valueNotEquals: "default"
                 },
-                primary_phone: {
+                primary_phone_number: {
                   required: true,
                   number: true,
                   minlength : 10,
@@ -1010,43 +1048,60 @@
                   required: true,
                 
                 },
-                primary_dob:{
+                dob:{
                   required : true,
                 },
-                Why_marry:{
+                why_marry:{
                   required:true,
                 },
-                behind_the_decision:{
+                behind_decision:{
                   required : true,
                 },
-                school:{
+                education_school:{
                   required:true,
                 },
-                school_year:{
+                education_year:{
                   required:true,
-                  minlength:4,
-                  maxlength:4,
-                  number :true
+                  // minlength:4,
+                  // maxlength:4,
+                  // number :true
                 },
-                Course:{
+                education_course:{
                   required:true,
                 },
-                major:{
+                education_major:{
                   required:true,
                 },
                 your_interest_choose:{
                   required:true,
                 },
-                'your_interest[]':{
+                are_you_working_now:{
+                  required:true,
+                },
+                company_name:{
+                  required:true,
+                },
+                position:{
+                  required:true,
+                },
+                profession:{
+                  required:true,
+                },
+                salary_range:{
+                  // required:true,
+                  valueNotEquals: "default"
+                },
+                your_intrest:{
                   required: true,
-			            minlength: 1
+			            // minlength: 1
                 },
                 not_interest_choose:{
                   required:true,
                 },
-                'not_interest[]':{
+                
+                non_intrest:{
                   required: true,
-			            minlength: 1
+			            // minlength: 1
                 },
                 complexion:{
                   required:true,
@@ -1054,26 +1109,26 @@
                 food_taste:{
                   required:true,
                 },
-                'opinion_diet[]':{
+                daily_diet_plan:{
                   required: true,
-			            minlength: 1
+			            // minlength: 1
                 },
-                carrying_marriage:{
+                carriying_after_marriage:{
                   required:true,
                 },
-                tobacco_product:{
+                tobacco:{
                   required:true,
                 },
-                consume_alcohol:{
+                alcohol:{
                   required:true,
                 },
-                illegal_drugs:{
+                drugs:{
                   required:true,
                 },
-                criminal_offences:{
+                criminal_offence:{
                   required:true,
                 },
-                primary_options_country:{
+                primary_country:{
                   valueNotEquals: "default"
                 },
                 selfie:{
@@ -1084,9 +1139,9 @@
                   required: true, 
                   accept: "image/*",
                 },
-                horoscope:{
-                  accept: "image/*",
-                },
+                // horoscope:{
+                //   accept: "image/*",
+                // },
                 family_image:{
                   required: true, 
                   accept: "image/*",
@@ -1107,16 +1162,16 @@
                 orphan:{
                   required:true,
                 },
-                are_you_disable:{
+                disable:{
                   required:true,
                 },
-                // which_organ:{
-                //   required:true,
-                // },
-                'food_taste_option[]':{
-                  required: true,
-			            minlength: 1
-                }
+                whichorgan:{
+                  required:true,
+                },
+                // food_taste:{
+                //   required: true,
+			          //   // minlength: 1
+                // }
 
               },
               submitHandler: function (form) {
@@ -1184,6 +1239,11 @@
         document.getElementById("res2").innerHTML=tt;
   }
   
+  </script>
+  <script>
+    function fun1(){
+      document.getElementById('your_intrest_error').innerHTML=" Choose any one";
+    }
   </script>
     </body>
 </html>

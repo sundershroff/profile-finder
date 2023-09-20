@@ -82,7 +82,7 @@
               <div class="col-lg-4">
                 <label class="py-3">Gender<span>*</span></label>
                 <select class="form-select" name="gender">
-                  <option value="default">Select</option>
+                  <option value="">Select</option>
                   <option value="male">Male</option>
                   <option value="female">Female</option>
                 </select>
@@ -91,7 +91,7 @@
                 <label class="py-3">Marital Status<span>*</span></label>
                 
               <select class="form-select" name="marital">
-                <option value="default">Select</option>
+                <option value="">Select</option>
                 <option value="Single">Single</option>
                 <option value="Married">Married</option>
               </select>
@@ -104,7 +104,7 @@
               <div class="col-lg-4">
                 <label class="py-3">Physical Status<span>*</span></label>
                 <select class="form-select" name="physical">
-                  <option value="default">Select</option>
+                  <option value="">Select</option>
                   <option value="Good">Good</option>
                   <option value="Physically Challenge">Physically Challenge</option>
               </select>
@@ -117,7 +117,7 @@
               <div class="col-lg-4">
                 <label class="py-3">Birth Country<span>*</span></label>
                 <select id="" class="form-select" name="birth_country">
-                  <option value="default">Select</option>
+                  <option value="">Select</option>
                   {% for j in all %}
                   <option value="{{j.name}}">{{j.name}}</option>
                   {% endfor %} 
@@ -140,7 +140,7 @@
               <div class="col-lg-4">
                 <label class="py-3">Country of Origin<span>*</span></label>
                 <select id="" class="form-select" name="origin">
-                  <option value="default">Select</option>
+                  <option value="">Select</option>
                   {% for j in all %}
                   <option value="{{j.name}}">{{j.name}}</option>
                   {% endfor %} 
@@ -153,7 +153,7 @@
               <div class="col-lg-4">
                 <label class="py-3">ResIding Country<span>*</span></label>
                 <select id="countryone" class="form-select" name="r_country" onchange="fun1.call(this,event)">
-                  <option value="default">Select</option>
+                  <option value="">Select</option>
                   {% for j in all %}
                   <option value="{{j.name}}">{{j.name}}</option>
                   {% endfor %} 
@@ -163,7 +163,7 @@
               <div class="col-lg-4">
                 <label class="py-3">ResIding State<span>*</span></label>
                 <select id="res2" class="form-select" name="r_state">
-                  <option value="default">Select</option>
+                  <option value="">Select</option>
                   <script>
                     stat = {{ states|safe }};
                 ttt = stat[0].states;
@@ -185,7 +185,7 @@
               <div class="col-lg-4">
                 <label class="py-3">Religion<span>*</span></label>
                 <select class="form-select" name="religion">
-                  <option value="default">Select</option>
+                  <option value="">Select</option>
                   <option value="Hindu">Hindu</option>
                   <option value="Christian">Christian</option>
                   <option value="Muslim">Muslim</option>
@@ -217,7 +217,8 @@
                
                   <p class="file-message my-3">Drag Or Click Here To Upload Your ID</p>
 
-                  <input class="file-input" type="file" name="id_card_2" accept=".png,.jpg,.jpeg,.pdf,.doc,.docx">
+                  <input class="file-input" type="file" name="id_card_2" >
+                  <!-- accept=".png,.jpg,.jpeg,.pdf,.doc,.docx" -->
               </div>
     
     
@@ -254,7 +255,7 @@
                   <div class="col-lg-4">
                 <label class="py-3">Country<span>*</span></label>
                 <select class="form-select" name="temple_country">
-                  <option value="default">Select</option>
+                  <option value="">Select</option>
                   {% for j in all %}
                   <option value="{{j.name}}">{{j.name}}</option>
                   {% endfor %} 
@@ -324,7 +325,7 @@
               <div class="col-lg-4">
                 <label class="py-3">Marital Status<span>*</span></label>
                 <select class="form-select" name="emergency_marital_status">
-                  <option value="default">Select</option>
+                  <option value="">Select</option>
                   <option value="Single">Single</option>
                   <option value="Married">Married</option>
               </select>
@@ -346,7 +347,7 @@
     
               <div class="col-lg-4">
                 <label class="py-3">Type Of Relation<span>*</span></label>
-                <input type="t" class="form-select" name="emergency_relation">
+                <input type="text" class="form-select" name="emergency_relation">
                   
               </div>
     
@@ -366,7 +367,7 @@
               <div class="col-lg-4">
                 <label class="py-3">Marital Status<span>*</span></label>
                 <select class="form-select" name="emergency_marital_status">
-                  <option value="default">Select</option>
+                  <option value="">Select</option>
                   <option value="Single">Single</option>
                   <option value="Married">Married</option>
               </select>
@@ -424,234 +425,243 @@
     
           {% include 'footer.html' %}
           <script>
-            $(document).ready(function() {
-              url = window.location.href;
-              var url = url .split( '?' );
-              if(url[1] == "myself"){
-                $("#upid").hide();
-                a = 
-                {% for key in da %}
-                  //console.log({{key.dob}});
-                  $("#dob").val("{{key.dob}}");
-                {% endfor %}
+            // $(document).ready(function() {
+            //   url = window.location.href;
+            //   var url = url .split( '?' );
+            //   if(url[1] == "myself"){
+            //     $("#upid").hide();
+            //     a = 
+            //     {% for key in da %}
+            //       //console.log({{key.dob}});
+            //       $("#dob").val("{{key.dob}}");
+            //     {% endfor %}
                 
-              }
-                $('#birth_country').select2();
-                $("#birth_place").select2();
-                $("#birth_city").select2();
-                $("#orgin").select2();
-                $("#r_country").select2();
-                $("#r_state").select2();
-                $("#country").select2();
-                $("#city").select2();
-            });
-            $("#birth_country").change(function(){
-              country = $("#birth_country").val();
-              //alert(country);
-              $.ajax({
-                type: "GET",
-                url: "statelist/"+country,
-              }).done(function (data_json) {
-                var data = JSON.parse(data_json);
-                state = "";
-                for (let i = 0; i < data.length; i++) {
-                  //console.log(data[i].name);
-                  state+="<option value='"+data[i].id+"'>"+data[i].name+"</option>";
-                }
-                $("#birth_place").append(state);
-              });
-            });
+            //   }
+            //     $('#birth_country').select2();
+            //     $("#birth_place").select2();
+            //     $("#birth_city").select2();
+            //     $("#orgin").select2();
+            //     $("#r_country").select2();
+            //     $("#r_state").select2();
+            //     $("#country").select2();
+            //     $("#city").select2();
+            // });
+            // $("#birth_country").change(function(){
+            //   country = $("#birth_country").val();
+            //   //alert(country);
+            //   $.ajax({
+            //     type: "GET",
+            //     url: "statelist/"+country,
+            //   }).done(function (data_json) {
+            //     var data = JSON.parse(data_json);
+            //     state = "";
+            //     for (let i = 0; i < data.length; i++) {
+            //       //console.log(data[i].name);
+            //       state+="<option value='"+data[i].id+"'>"+data[i].name+"</option>";
+            //     }
+            //     $("#birth_place").append(state);
+            //   });
+            // });
 
 
-            $("#orgin").change(function(){
-              country = $("#orgin").val();
-              //alert(country);
-              $.ajax({
-                type: "GET",
-                url: "rstatelist/"+country,
-              }).done(function (data_json) {
-                var data = JSON.parse(data_json);
-                state = "";
-                for (let i = 0; i < data.length; i++) {
-                  //console.log(data[i].name);
-                  state+="<option value='"+data[i].id+"'>"+data[i].name+"</option>";
-                }
-                $("#r_country").append(state);
-              });
-            });
+            // $("#orgin").change(function(){
+            //   country = $("#orgin").val();
+            //   //alert(country);
+            //   $.ajax({
+            //     type: "GET",
+            //     url: "rstatelist/"+country,
+            //   }).done(function (data_json) {
+            //     var data = JSON.parse(data_json);
+            //     state = "";
+            //     for (let i = 0; i < data.length; i++) {
+            //       //console.log(data[i].name);
+            //       state+="<option value='"+data[i].id+"'>"+data[i].name+"</option>";
+            //     }
+            //     $("#r_country").append(state);
+            //   });
+            // });
 
-            $("#birth_place").change(function(){
-              country = $("#birth_place").val();
-              //alert(country);
-              $.ajax({
-                type: "GET",
-                url: "citylist/"+country,
-              }).done(function (data_json) {
-                var data = JSON.parse(data_json);
-                state = "";
-                for (let i = 0; i < data.length; i++) {
-                  //console.log(data[i].name);
-                  state+="<option value='"+data[i].city+"'>"+data[i].city+"</option>";
-                }
-                $("#birth_city").append(state);
-              });
-            });
+            // $("#birth_place").change(function(){
+            //   country = $("#birth_place").val();
+            //   //alert(country);
+            //   $.ajax({
+            //     type: "GET",
+            //     url: "citylist/"+country,
+            //   }).done(function (data_json) {
+            //     var data = JSON.parse(data_json);
+            //     state = "";
+            //     for (let i = 0; i < data.length; i++) {
+            //       //console.log(data[i].name);
+            //       state+="<option value='"+data[i].city+"'>"+data[i].city+"</option>";
+            //     }
+            //     $("#birth_city").append(state);
+            //   });
+            // });
 
 
-            $("#r_country").change(function(){
-              country = $("#r_country").val();
-              //alert(country);
-              $.ajax({
-                type: "GET",
-                url: "rcitylist/"+country,
-              }).done(function (data_json) {
-                var data = JSON.parse(data_json);
-                state = "";
-                for (let i = 0; i < data.length; i++) {
-                  //console.log(data[i].name);
-                  state+="<option value='"+data[i].city+"'>"+data[i].city+"</option>";
-                }
-                $("#r_state").append(state);
-              });
-            });
+            // $("#r_country").change(function(){
+            //   country = $("#r_country").val();
+            //   //alert(country);
+            //   $.ajax({
+            //     type: "GET",
+            //     url: "rcitylist/"+country,
+            //   }).done(function (data_json) {
+            //     var data = JSON.parse(data_json);
+            //     state = "";
+            //     for (let i = 0; i < data.length; i++) {
+            //       //console.log(data[i].name);
+            //       state+="<option value='"+data[i].city+"'>"+data[i].city+"</option>";
+            //     }
+            //     $("#r_state").append(state);
+            //   });
+            // });
 
-            $("#country").change(function(){
-              country = $("#country").val();
-              alert(country);
-              $.ajax({
-                type: "GET",
-                url: "citylistp/"+country,
-              }).done(function (data_json) {
-                var data = JSON.parse(data_json);
-                state = "";
-                for (let i = 0; i < data.length; i++) {
-                  console.log(data[i].name);
-                  state+="<option value='"+data[i].name+"'>"+data[i].name+"</option>";
-                }
-                $("#city").append(state);
-              });
-            });
+            // $("#country").change(function(){
+            //   country = $("#country").val();
+            //   alert(country);
+            //   $.ajax({
+            //     type: "GET",
+            //     url: "citylistp/"+country,
+            //   }).done(function (data_json) {
+            //     var data = JSON.parse(data_json);
+            //     state = "";
+            //     for (let i = 0; i < data.length; i++) {
+            //       console.log(data[i].name);
+            //       state+="<option value='"+data[i].name+"'>"+data[i].name+"</option>";
+            //     }
+            //     $("#city").append(state);
+            //   });
+            // });
             // just for the demos, avoids form submit
-            jQuery.validator.setDefaults({
-              debug: true,
-              success: "valid"
-            });
-            {% comment %} $.validator.addMethod("valueNotEquals", function(value, element, arg){
-              return arg !== value;
-            }, "Select Any One"); {% endcomment %}
-            $( "#myform" ).validate({
-              rules: {
-                field: {
-                  required: true
-                },
-                height: {
-                  required: true
-                },
-                weight: {
-                  required: true
-                },
-                martial:{
-                  valueNotEquals: "default"
-                },
-                physical:{
-                  valueNotEquals: "default"
-                },
-                dob:{
-                  required : true,
-                  // date: true,
-                  // dateFormat: true
-                },
-                birth_time:{
-                  required : true,
-                },
-                birth_country:{
-                  valueNotEquals: "default"
-                },
-                birth_place:{
-                  valueNotEquals: "default"
-                },
-                birth_city:{
-                  valueNotEquals: "default"
-                },
-                orgin:{
-                  valueNotEquals: "default"
-                },
-                r_country:{
-                  valueNotEquals: "default"
-                },
-                r_state :{
-                  valueNotEquals: "default"
-                },
-                denomination : {
-                  required : true,
-                },
-                blood_group:{
-                  required : true,
-                },
-                r_status:{
-                  required : true,
-                },
-                upload_idcard:{
-                  /*required: true, */
-                  accept: "pdf",
-                },
-                temple_name:{
-                  required:true,
-                },
-                street:{
-                  required : true,
-                },
-                post_code:{
-                  required:true,
-                  minlength:6,
-                  maxlength:6,
-                },
-                country:{
-                  valueNotEquals: "default"
-                },
-                city:{
-                  valueNotEquals: "default"
-                },
-                address_phone:{
-                  required:true,
-                  minlength:10,
-                  maxlength:12,
-                },
-                diocese:{
-                  required:true,
-                },
-                local_admin:{
-                  required : true,
-                },
-                emergency_name:{
-                  required : true,
-                },
-                relation:{
-                  required:true,
-                },
-                emergency_number:{
-                  required:true,
-                  minlength:10,
-                  maxlength:12
-                },
-                emergency_email:{
-                  required : true,
-                },
-                emergency_martial:{
-                  required : true,
-                },
-                emergency_occupation:{
-                  required : true,
-                }
+            // jQuery.validator.setDefaults({
+            //   debug: true,
+            //   success: "valid"
+            // });
+            // {% comment %} $.validator.addMethod("valueNotEquals", function(value, element, arg){
+            //   return arg !== value;
+            // }, "Select Any One"); {% endcomment %}
+            // $( "#myform" ).validate({
+            //   rules: {
+            //     name: {
+            //       required: true
+            //     }
+                // address: {
+                //   required: true
+                // },
+                // age: {
+                //   required: true
+                // },
+                // height: {
+                //   required: true
+                // },
+                // weight: {
+                //   required: true
+                // },
+                // gender: {
+                //   required: true
+                // },
+                // martial:{
+                //   valueNotEquals: "default"
+                // },
+                // physical:{
+                //   valueNotEquals: "default"
+                // },
+                // // dob:{
+                // //   required : true,
+                // //   // date: true,
+                // //   // dateFormat: true
+                // // },
+                // birth_time:{
+                //   required : true,
+                // },
+                // birth_country:{
+                //   valueNotEquals: "default"
+                // },
+                // birth_place:{
+                //   valueNotEquals: "default"
+                // },
+                // birth_city:{
+                //   valueNotEquals: "default"
+                // },
+                // orgin:{
+                //   valueNotEquals: "default"
+                // },
+                // r_country:{
+                //   valueNotEquals: "default"
+                // },
+                // r_state :{
+                //   valueNotEquals: "default"
+                // },
+                // denomination : {
+                //   required : true,
+                // },
+                // blood_group:{
+                //   required : true,
+                // },
+                // r_status:{
+                //   required : true,
+                // },
+                // id_card_2:{
+                //   required: true, 
+                //   // accept: "pdf",
+                // },
+                // temple_name:{
+                //   required:true,
+                // },
+                // temple_street:{
+                //   required : true,
+                // },
+                // temple_country:{
+                //   required:true,
+                //   minlength:6,
+                //   maxlength:6,
+                // },
+                // temple_country:{
+                //   valueNotEquals: "default"
+                // },
+                // temple_city:{
+                //   valueNotEquals: "default"
+                // },
+                // temple_phone_number:{
+                //   required:true,
+                //   minlength:10,
+                //   maxlength:12,
+                // },
+                // temple_diocese:{
+                //   required:true,
+                // },
+                // temple_local_admin:{
+                //   required : true,
+                // },
+                // emergency_name:{
+                //   required : true,
+                // },
+                // emergency_relation:{
+                //   required:true,
+                // },
+                // emergency_phone_number:{
+                //   required:true,
+                //   minlength:10,
+                //   maxlength:12
+                // },
+                // emergency_email:{
+                //   required : true,
+                // },
+                // emergency_marital_status:{
+                //   required : true,
+                // },
+                // emergency_occupations:{
+                //   required : true,
+                // }
 
                 
 
-              },
-              submitHandler: function (form) {
-                    console.log('test');
-                    form.submit();
-                }
-            });
+            //   },
+            //   submitHandler: function (form) {
+            //         console.log('test');
+            //         form.submit();
+            //     }
+            // });
             </script>
           <style>
             .bg-image-vertical {
@@ -697,6 +707,7 @@
                   textbox.text(filesCount + ' files selected');
                   }
               });
+
               $('#idform').validate({
                   rules : {
                       idcard: {
@@ -727,6 +738,149 @@
             }
             
             </script>
+           <script>
+              jQuery.validator.setDefaults({
+  debug: true,
+  success: "valid"
+});
+$( "#myform" ).validate({
+  rules: {
+    name: {
+      required: true
+    },
+     address: {
+      required: true
+    },
+    age: {
+      required: true
+    },
+    height: {
+      required: true
+    },
+    weight: {
+      required: true
+    },
+    gender: {
+      required: true
+    },
+    marital:{
+      // valueNotEquals: "default"
+      required: true
+    },
+    physical:{
+      // valueNotEquals: "default"
+      required: true
+    },
+    dob:{
+      required : true
+      // date: true,
+      // dateFormat: true
+    },
+    birth_time:{
+      required : true
+    },
+    birth_place:{
+      // valueNotEquals: "default"
+      required : true
+    },
+    birth_country:{
+      // valueNotEquals: "default"
+      required : true
+    },
+    birth_city:{
+      // valueNotEquals: "default"
+      required : true
+    },
+    origin:{
+      // valueNotEquals: "default"
+      required : true
+    },
+    r_country:{
+      // valueNotEquals: "default"
+      required : true
+    },
+    r_state :{
+      // valueNotEquals: "default"
+      required : true
+    },
+    
+    denomination : {
+      required : true
+    },
+    blood_group:{
+      required : true
+    },
+    r_status:{
+      required : true
+    },
+    id_card_2:{
+      required: true
+      // accept: "pdf",
+    },
+    temple_name:{
+      required:true
+    },
+    temple_street:{
+      required : true
+    },
+    temple_post_code:{
+      required : true
+    },
+    temple_country:{
+      required:true,
+      minlength:6,
+      maxlength:6,
+    },
+    religion:{
+      required:true
+    },
+    temple_country:{
+      // valueNotEquals: "default"
+      required:true
+    },
+    temple_city:{
+      // valueNotEquals: "default"
+      required:true
+    },
+    temple_phone_number:{
+      required:true,
+      minlength:10,
+      maxlength:12,
+    },
+    temple_diocese:{
+      required:true
+    },
+    temple_local_admin:{
+      required : true
+    },
+    emergency_name:{
+      required : true
+    },
+    emergency_relation:{
+      required:true
+    },
+    emergency_phone_number:{
+      required:true,
+      minlength:10,
+      maxlength:12
+    },
+    emergency_email:{
+      required : true
+    },
+    emergency_marital_status:{
+      required : true
+    },
+    emergency_occupations:{
+      required : true
+  }
+
+  },
+  submitHandler: function (form) {
+                    console.log('test');
+                    form.submit();
+                }
+});
+            </script> 
           
     </body>
 </html>

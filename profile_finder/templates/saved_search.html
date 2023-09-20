@@ -118,9 +118,9 @@
 					column-gap: 4%;">
 					  <label class="py-3">Denomination<span>*</span></label>
 					  <select class="form-select" name="denomination">
-						<option value="default">Select</option>
+						<option value="">Select</option>
 						<option value="Hindu">Hindu</option>
-						<option value="christian">Christian</option>
+						<option value="christian">christian</option>
 						<option value="Muslim">Muslim</option>
 					  </select>
 				   </div>
@@ -181,9 +181,11 @@
 						<div class="col-md-8" style="
 						display: contents;
 					">
-	    				<a href="#" class="save_search_VP" style="
+					{% for id in mydata %}
+	    				<a href="/saved_search_view_profile/{{id.uid}}/{{i.id}}" class="save_search_VP" style="
 						text-align: center;
 					">View Profile</a>
+					{% endfor %}
 						</div>
 	    				</div>
 	    			</div>
@@ -268,6 +270,7 @@
 					<label class="py-3">Gender<span>*</span></label>
 					<select class="form-select"  name="gender">
 					  <option value="{{i.gender}}">{{i.gender}}</option>
+					  <option value="">select</option>
 					  <option value="male">Male</option>
 					  <option value="female">Female</option>
 					</select>
@@ -279,8 +282,9 @@
 					  <label class="py-3">Denomination<span>*</span></label>
 					  <select class="form-select"  name="denomination">
 						<option value="{{i.denomination}}">{{i.denomination}}</option>
+						<option value="">select</option>
 						<option value="Hindu">Hindu</option>
-						<option value="christian">Christian</option>
+						<option value="christian">christian</option>
 						<option value="Muslim">Muslim</option>
 					  </select>
 				   </div>

@@ -155,14 +155,24 @@
         <div class="match_list_content">
 
           <p>ID: #{{key.uid}}</p>
+          <h4>{{key.name}}</h4>
           <h6>{{key.address}}</h6>
           <h6><em>{{key.profile_tag}}</em></h6>
           <p><i class="fas fa-circle fa-xs "></i> Online</p>
         </div>
 <form method="POST">
   {% csrf_token %}
- <button class="far fa-hand-paper fa-xs match_list_icon3" style="font-size:1.8em;border: 0px;" type="submit" name="myfavorite_id" value="{{key.uid}}" >
+  {% for keyy in sent %}
+  {% if "{{keyy.uid}}" %}   
+ <button class="fa fa-heart fa-xs match_list_icon3" style="font-size:1.8em;border: 0px;" type="submit" name="myfavorite_id" value="{{key.uid}}" >
         </button>
+        {% else %}
+        <p>{{key.uid}}</p>
+        <p>{{keyy.uid}}</p>
+        <button class="far fa-heart fa-xs match_list_icon3" style="font-size:1.8em;border: 0px;" type="submit" name="myfavorite_id" value="{{key.uid}}" >
+        </button>
+        {% endif %}
+        {% endfor %}
       </div>
     </form>
       {% endfor %}
@@ -233,6 +243,7 @@
       <div class="match_list_content">
 
         <p>ID: #{{key.uid}}</p>
+        <h4>{{key.name}}</h4>
         <h6>{{key.address}}</h6>
         <h6><em>{{key.profile_tag}}</em></h6>
         <p><i class="fas fa-circle fa-xs "></i> Online</p>
@@ -240,7 +251,7 @@
 
        <form method="POST">
         {% csrf_token %}
-       <button class="far fa-hand-paper fa-xs match_list_icon3" style="font-size:1.8em;border: 0px;" type="submit" name="myfavorite_id" value="{{key.uid}}" >
+       <button class="far fa-heart fa-xs match_list_icon3" style="font-size:1.8em;border: 0px;" type="submit" name="myfavorite_id" value="{{key.uid}}" >
               </button>
             </div>
           </form>
@@ -269,6 +280,7 @@
       <div class="match_list_content">
 
         <p>ID: #{{key.uid}}</p>
+        <h4>{{key.name}}</h4>
         <h6>{{key.address}}</h6>
         <h6><em>{{key.profile_tag}}</em></h6>
         <p><i class="fas fa-circle fa-xs "></i> Online</p>
@@ -276,7 +288,7 @@
 
       <form method="POST">
         {% csrf_token %}
-       <button class="far fa-hand-paper fa-xs match_list_icon3" style="font-size:1.8em;border: 0px;" type="submit" name="myfavorite_id" value="{{key.uid}}" >
+       <button class="far fa-heart fa-xs match_list_icon3" style="font-size:1.8em;border: 0px;" type="submit" name="myfavorite_id" value="{{key.uid}}" >
               </button>
             </div>
           </form>
@@ -618,8 +630,10 @@
 
   <div class="match_list_carsel owl-carousel owl-theme container my-1">
 
-    {% for key in sent %}     
-    <div class="item" data-bs-toggle="modal" data-bs-target="#{{key.target}}" >
+    {% for key in sent %}   
+    {% for keyy in alldata %}  
+    <div class="item"  data-bs-toggle="modal" data-bs-target="#{{keyy.target}}" >
+      {% endfor %}
       {% comment %} <img src="/media/images/girl1.png"> {% endcomment %}
       <img class="matchingimage" src="{{key.profile_picture}}">
 
@@ -633,12 +647,13 @@
       <div class="match_list_content">
 
         <p>ID: #{{key.uid}}</p>
+        <h4>{{key.name}}</h4>
         <h6>{{key.address}}</h6>
         <h6><em>{{key.profile_tag}}</em></h6>
         <p><i class="fas fa-circle fa-xs "></i> Online</p>
       </div>
 
-      <i class="far fa-hand-paper fa-xs match_list_icon3" style="font-size:1.8em;"></i>
+      <i class="far fa-heart fa-xs match_list_icon3" style="font-size:1.8em;"></i>
 
     </div>
 
@@ -705,7 +720,7 @@
 
         <form method="POST">
           {% csrf_token %}
-         <button class="far fa-hand-paper fa-xs match_list_icon3" style="font-size:1.8em;border: 0px;" type="submit" name="myfavorite_id" value="{{key.uid}}" >
+         <button class="far fa-heart fa-xs match_list_icon3" style="font-size:1.8em;border: 0px;" type="submit" name="myfavorite_id" value="{{key.uid}}" >
                 </button>
               </div>
             </form>

@@ -27,6 +27,9 @@
                   <input class="m-2 me-0 text-center form-control rounded" name="otp3" placeholder="--" type="text" id="user_otp" maxlength="1" /> 
                   <input class="m-2 me-0 text-center form-control rounded" name="otp4" placeholder="--" type="text" id="user_otp" maxlength="1" /> 
                 </div>
+        
+             
+                <p id="invalid" style="color: red;"></p>
                 <div class="mt-4"> 
                   <button type="submit" class="btn btn-danger px-4 validate w-20 m-auto" style="width:150px">Validate</button> 
                 </div>
@@ -97,6 +100,15 @@
             form.submit();
         }
     });
+    </script>
+    <script>
+      c = "{{ invalid|safe }}";
+      // d = String(c); 
+      // document.write(c);
+      
+      if(c == "Invalid OTP"){
+        document.getElementById("invalid").innerHTML=c;
+      }
     </script>
 </body>
 </html>

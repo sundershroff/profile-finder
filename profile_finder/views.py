@@ -158,7 +158,7 @@ def opt_check(request,id):
     # get = requests.get(f" http://127.0.0.1:3000/otp/{id}").json()
     # print(get['otp'])
     # print(get['uid'])
-
+    context = {'invalid':"invalid"}
     new=[]
     if request.method == "POST":
         new.append(request.POST["otp1"])
@@ -179,12 +179,16 @@ def opt_check(request,id):
         print(data['user_otp'])
         print(response.text)
         uidd = (response.text[1:-1])
+        
         if response.status_code == 200:
         # if get["otp"] == data['user_otp']:
             # return redirect(f"/profileidcard/{uidd}")
             return redirect(f"/dashboard/{uidd}")
         else:
-            return HttpResponse("INVALID OTP")
+            invalid = "Invalid OTP"
+            context = {'invalid':invalid}
+    
+    
         # else:
         #                 return redirect("/profile_page")
         #form = ProfileFinderForm()
@@ -207,7 +211,7 @@ def opt_check(request,id):
         #     else:
         #         return render(request,'otpcheck.html',{'form':form1})
 
-    return render(request,'otpcheck.html')
+    return render(request,'otpcheck.html',context)
 
 
 def profile_dashboard(request,id):
@@ -716,8 +720,8 @@ def selfie_upload(request,id):
         if response.status_code == 200:
         # if get["otp"] == data['user_otp']:
             return redirect(f"/primary_details/{uidd}")
-        else:
-            return HttpResponse("INVALID data")
+        # else:
+            # return HttpResponse("INVALID data")
     return render(request,"profilepicture.html")
 
 #primary details options 
@@ -746,6 +750,8 @@ def primary_details(request,id):
                                            'country': countryname,'states': states,'profile_pic':profile_pic}
                                            
     if request.method == "POST":
+        print(request.POST)
+        print(request.FILES)
         # new=[]
         # a=  request.FILES.getlist('gallery')
         # # print(data["your_intrest"])
@@ -791,15 +797,19 @@ def primary_details(request,id):
         }
         # print(type(data['behind_decision']))
         # print(type(data['education_school']))
-    
+        if "horoscope" not in request.FILES:
+            horoscope = "empty"
+        else:
+            horoscope = request.FILES['horoscope']
         # image_paths = request.FILES.getlist('gallery')
         aa = request.FILES.getlist('gallery')
         files = {
             'selfie':request.FILES['selfie'],
             'full_size_image':request.FILES['full_size_image'],
             'family_image':request.FILES['family_image'],
-            'horoscope':request.FILES['horoscope'],
+            'horoscope':horoscope,
         }
+        print(files)
         for i, file_data in enumerate(aa):
             files[f'file_{i}'] = file_data
         print(data)
@@ -815,7 +825,8 @@ def primary_details(request,id):
         # if get["otp"] == data['user_otp']:
             return redirect(f"/family_details/{uidd}")
         else:
-            return HttpResponse("INVALID data")
+            # return HttpResponse("INVALID data")
+            pass
     return render(request,"primary_details.html",context)
 
 def family_details(request,id):
@@ -1554,7 +1565,7 @@ def matching_list(request,id):
     
     #my favorite list
     sent = requests.get(f"http://127.0.0.1:3000/favorites/{id}").json()
-    
+    print(sent)
 
     mydata = [my]
     my_preference=["1"]
@@ -1829,7 +1840,7 @@ def saved_search(request,id):
                     'age':request.POST['age'],
                     'complexion':request.POST.getlist('complexion'),
                     'gender':request.POST['gender'],
-                    'denomination':request.POST['denomination']
+                    'denomination':request.POST['denomination'] 
                   
                 }
         elif 'tag_edit' in request.POST: 
@@ -1857,6 +1868,30 @@ def saved_search(request,id):
             'my_sav':my_sav[id],
                }
     return render(request,'saved_search.html',context)
+
+def saved_search_view_profile(request,uid,id):
+    print(id)
+    my = requests.get(f"http://127.0.0.1:3000/alldata/{uid}").json()
+    profile_pic = [my][0]['profile_picture']
+    gender = [my][0]['gender']
+    mydata=[my]
+    my_sav = requests.get(f"http://127.0.0.1:3000/saved_search/{uid}").json()
+    separated_list=[]
+    for x in my_sav[uid]:
+        if x['id'] == int(id):
+            filter = x['filterd_data'][1:-2].replace("'","").replace(" ","").split(",")
+            for y in filter:
+                all_filter_data = requests.get(f"http://127.0.0.1:3000/alldata/{y}").json()
+                print(all_filter_data)
+                separated_list.append(all_filter_data)
+        else:
+            print("no")
+    context = {
+            'mydata':mydata,
+            'profile_pic':profile_pic,
+            'my_sav':separated_list,
+               }
+    return render(request,'saved_search_view_profile.html',context)
 
 
 def follow_request1(request):

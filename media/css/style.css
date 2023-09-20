@@ -388,9 +388,9 @@ label#your_interest_choose-error , label#your_interest\[\]-error , label#not_int
 label#carrying_marriage-error , label#tobacco_product-error , label#consume_alcohol-error, 
 label#illegal_drugs-error , label#criminal_offences-error , label#primary_options_country-error,
 label#food_taste_option\[\]-error{
-    position: absolute;
+    /* position: absolute;
     top: 100%;
-    left: 17px;
+    left: 17px; */
 }
 label#not_interest\[\]-error {
     position: absolute;
@@ -423,9 +423,9 @@ label#are_you_disable-error {
     left: 17px;
 }
 label#complexion-error , label#food_taste-error {
-    position: absolute;
+    /* position: absolute;
     top: 80px;
-    left: 17px;
+    left: 17px; */
 }
 label#opinion_diet\[\]-error {
     position: absolute;
@@ -2086,11 +2086,14 @@ ul.nav.nav-tabs li a.nav-link.active.h6 {
 /* prime details */
 /*checkbox*/
 .Prim_det_sec7 input[type="checkbox"] {
-    display: none;
+    display:grid ;
+    margin-right: -19px;
+
   }
   
   .Prim_det_sec7 input[type="radio"] {
-    display: none;
+    display: grid;
+    margin-right: -18px;
   }
   
   .Prim_det_sec7{

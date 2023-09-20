@@ -99,9 +99,14 @@
         
                         <div class="col-lg-4">
                         <label class="py-3">Father’s Birth City<span>*</span></label>
-                              
-                            <input type="text" class="form-select" id="" name="father_city">
-                               
+
+                        <select class="form-select" id="family_fatherbirthcity"  name="father_city">
+                            <option value="default">Select</option>
+                            {% for j in all %}
+                            <option value="{{j.name}}">{{j.name}}</option>
+                            {% endfor %} 
+                        </select>
+                                    
                     </div>
                     
                 </div>
@@ -159,8 +164,13 @@
         
                         <div class="col-lg-4">
                         <label class="py-3">Mother’s Birth City<span>*</span></label>
-                              
-                            <input type="text" class="form-select" name="mother_city">
+                        <select class="form-select" id="family_motherbirthcountry" name="mother_city">
+                            <option value="default">Select</option>
+                            {% for j in all %}
+                            <option value="{{j.name}}">{{j.name}}</option>
+                            {% endfor %} 
+                        </select>
+                            <!-- <input type="text" class="form-select" name="mother_city"> -->
                              
                     </div>
                     
@@ -432,15 +442,15 @@
     $( "#myform" ).validate({
         rules: {
         family_status:{
-            required : true,
-        },
-        family_fathername:{
-            required: true,
-        },
-        family_fatherbirthcountry:{
             valueNotEquals: "default",
         },
-        family_fatherbirthcity: {
+        father_name:{
+            required: true,
+        },
+        father_country:{
+            valueNotEquals: "default",
+        },
+        father_city: {
             valueNotEquals: "default"
         },
         family_fatherjob:{
