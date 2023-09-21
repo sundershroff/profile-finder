@@ -926,11 +926,11 @@ def contact_details(request,id):
         print(request.POST)
         # response = requests.post(f"http://54.159.186.219:8000/contactdetails/{id}",data = request.POST)
         response = requests.post(f"http://127.0.0.1:3000/contactdetails/{id}",data = request.POST)
-        print(response)
-        print(response.status_code)
-        print(response.text)
+        # print(response)
+        # print(response.status_code)
+        # print(response.text)
         uidd = (response.text[1:-1])
-        print(uidd)
+        # print(uidd)
         if response.status_code == 200:
         # if get["otp"] == data['user_otp']:
             return redirect(f"/profile_page/{uidd}")

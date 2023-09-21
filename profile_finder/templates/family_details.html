@@ -89,7 +89,7 @@
                     <div class="col-lg-4">
                         <label class="py-3">Father’s Birth Country<span>*</span></label>
                               
-                            <select class="form-select" id="family_fatherbirthcountry"  name="father_country">
+                            <select class="form-select" id="countryone"  name="father_country" onchange="fun1.call(this,event)">
                                 <option value="default">Select</option>
                                 {% for j in all %}
                                 <option value="{{j.name}}">{{j.name}}</option>
@@ -100,11 +100,27 @@
                         <div class="col-lg-4">
                         <label class="py-3">Father’s Birth City<span>*</span></label>
 
-                        <select class="form-select" id="family_fatherbirthcity"  name="father_city">
+                        <select class="form-select" id="res2"  name="father_city">
                             <option value="default">Select</option>
-                            {% for j in all %}
-                            <option value="{{j.name}}">{{j.name}}</option>
-                            {% endfor %} 
+                            <script>
+                              stat = {{ states|safe }};
+                          ttt = stat[0].states;
+                          for (i=0;i<ttt.length;i++){
+                             tt = ttt[i].name;
+                             document.write("<option value="tt">"+tt+"</option>");
+                          }
+                        </script>
+                        </select>
+                        <!-- <select id="res2" class="form-select" name="r_state">
+                            <option value="">Select</option>
+                            <script>
+                              stat = {{ states|safe }};
+                          ttt = stat[0].states;
+                          for (i=0;i<ttt.length;i++){
+                             tt = ttt[i].name;
+                             document.write("<option value="tt">"+tt+"</option>");
+                          }
+                        </script> -->
                         </select>
                                     
                     </div>
@@ -154,7 +170,7 @@
                     <div class="col-lg-4">
                         <label class="py-3">Mother’s Birth Country<span>*</span></label>
                               
-                            <select class="form-select" id="family_motherbirthcountry" name="mother_country">
+                            <select class="form-select" id="countrytwo" name="mother_country"  onchange="fun2.call(this,event)">
                                 <option value="default">Select</option>
                                 {% for j in all %}
                                 <option value="{{j.name}}">{{j.name}}</option>
@@ -164,11 +180,16 @@
         
                         <div class="col-lg-4">
                         <label class="py-3">Mother’s Birth City<span>*</span></label>
-                        <select class="form-select" id="family_motherbirthcountry" name="mother_city">
+                        <select class="form-select" id="res3" name="mother_city">
                             <option value="default">Select</option>
-                            {% for j in all %}
-                            <option value="{{j.name}}">{{j.name}}</option>
-                            {% endfor %} 
+                            <script>
+                              stat = {{ states|safe }};
+                          ttt = stat[0].states;
+                          for (i=0;i<ttt.length;i++){
+                             tt = ttt[i].name;
+                             document.write("<option value="tt">"+tt+"</option>");
+                          }
+                        </script>
                         </select>
                             <!-- <input type="text" class="form-select" name="mother_city"> -->
                              
@@ -313,7 +334,7 @@
                         <label class="py-3"></label>
                         <div class="fam_det_radio my-4">
                             <div>
-                                <input class="form-check-input" type="radio" name="sibling_young_or_old" id="flexRadioDefault1" checked>
+                                <input class="form-check-input" type="radio" name="sibling_young_or_old" id="flexRadioDefault1">
                              <label class="form-check-label" for="flexRadioDefault1">
                              Younger
                              </label>
@@ -327,6 +348,7 @@
                             </div>
                              
                         </div>
+                        <label id="sibling_young_or_old-error" class="error" for="sibling_young_or_old"></label>
                     </div>
         
                 </div>
@@ -453,46 +475,52 @@
         father_city: {
             valueNotEquals: "default"
         },
-        family_fatherjob:{
+        father_job:{
             required:true,
         },
-        family_mothername:{
+        father_family_name:{
             required:true,
         },
-        family_motherbirthcountry:{
+        mother_name:{
+            required:true,
+        },
+        mother_country:{
             valueNotEquals: "default"
         },
-        family_motherbirthcity:{
+        mother_city:{
             valueNotEquals: "default"
         },
-        family_motherjob:{
+        mother_job:{
             required:true,
         },
-        family_sib1name:{
+        mother_family_name:{
             required:true,
         },
-        family_sib1relation:{
+        sibling_name:{
+            required:true,
+        },
+        sibling_relation:{
             valueNotEquals: "default"
         },
-        family_sib1young:{
+        sibling_young_or_old:{
             required:true,
         },
-        family_sib1occupations:{
+        sibling_occupation:{
             required:true,
         },
-        family_sib1martial:{
+        sibling_marital:{
             valueNotEquals: "default"
         },
-        family_sib1email:{
+        sibling_email:{
             required:true,
         },
-        family_sib1dob:{
+        sibling_dob:{
             required:true,
         },
-        family_about_candidate:{
+        about_candidate:{
             required:true,
         },
-        family_current_status:{
+        current_status:{
             required:true
         }
 
@@ -590,5 +618,24 @@
     }
     
     </script>
+    <script type="text/javascript">
+        function fun2(event){
+        a = document.getElementById("countrytwo").value;
+        <!--document.getElementById("res").innerHTML=a;-->
+        c = {{ country|safe }};
+        position =c.indexOf(a);
+        <!--document.getElementById("res1").innerHTML=position;-->
+        stat = {{ states|safe }};
+        ttt = stat[position].states;
+        tt = "<select>";
+        for (i=0;i<ttt.length;i++){
+           tt += "<option>"+ttt[i].name+"</option>";
+        }
+             tt+="</select>";
+              document.getElementById("res3").innerHTML=tt;
+        }
+        
+        </script>
+    
 </body>
 </html>

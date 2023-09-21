@@ -82,7 +82,7 @@
                <div class="col-lg-4">
                    <label class="py-3">Country</label>
                          
-                       <select class="form-select" name="contact_father_country">
+                       <select class="form-select" id="countryone" name="contact_father_country" onchange="fun1.call(this,event)">
                            <option value = "default">Select</option>
                            {% for j in all %}
                            <option value="{{j.name}}">{{j.name}}</option>
@@ -92,7 +92,18 @@
                <div class="col-lg-4">
                    <label class="py-3">City</label>
                          
-                       <input type="text" class="form-select" name="contact_father_city">
+                       <!-- <input type="text" class="form-select" name="contact_father_city"> -->
+                       <select class="form-select" id="res2" name="contact_father_city">
+                        <option value="default">Select</option>
+                        <script>
+                          stat = {{ states|safe }};
+                      ttt = stat[0].states;
+                      for (i=0;i<ttt.length;i++){
+                         tt = ttt[i].name;
+                         document.write("<option value="tt">"+tt+"</option>");
+                      }
+                    </script>
+                    </select>
                      
                </div>
            </div>
@@ -163,7 +174,7 @@
                       
                       <div class="contact_det_cont2">
                           <i class="fab fa-facebook-square"></i>
-                          <input type="text" name="facebook" placeholder="URL" class="form-control">
+                          <input type="text" name="facebook" value="" placeholder="URL" class="form-control">
                       </div>
    
               </div>
@@ -242,40 +253,40 @@
     }, "Select Any One");
     $( "#myform" ).validate({
         rules: {
-            contact_fathername:{
+            contact_father_name:{
                 required : true,
             },
-            contact_street:{
+            contact_father_street:{
                 required:true,
             },
-            contact_zipcode:{
+            contact_father_zipcode:{
                 required:true,
                 number:true,
                 minlength:6,
                 maxlength:6
             },
-            contact_country:{
+            contact_father_country:{
                 valueNotEquals: "default"
             },
-            contact_city:{
+            contact_father_city:{
                 valueNotEquals: "default"
             },
-            contact_fatherhousename:{
+            contact_father_housename:{
                 required:true,
             },
-            contact_motherhousename:{
+            contact_mother_housename:{
                 required:true,
             },
-            contact_mailid:{
+            contact_email:{
                 required:true,
             },
-            contact_phonenum:{
+            contact_phone:{
                 required:true,
                 number:true,
                 minlength:10,
                 maxlength:12
             },
-            contact_whatsappnum:{
+            whatsapp:{
                 required:true,
                 number:true,
                 minlength:10,
