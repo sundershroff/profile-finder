@@ -713,9 +713,10 @@ button.btn.btn-primary.w-50.goback {
     row-gap:10px;
     column-gap:10px;
 }
-.prof_page_gall{
-   width:211px;
-   height:189px;
+.prof_page_gall {
+    width: 211px;
+    height: 189px;
+    object-fit: cover;
 }
 
 .prof_page_galpos{

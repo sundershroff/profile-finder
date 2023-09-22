@@ -162,17 +162,21 @@
         </div>
 <form method="POST">
   {% csrf_token %}
-  {% for keyy in sent %}
-  {% if "{{keyy.uid}}" %}   
+
+  
+ 
+  <p>{{favoritemy}}</p> 
+  {% if "key.uid" in "{{favoritemy}}" %}
+  <p>yes</p>
+  {%  endif %}
+  <p>no</p>
  <button class="fa fa-heart fa-xs match_list_icon3" style="font-size:1.8em;border: 0px;" type="submit" name="myfavorite_id" value="{{key.uid}}" >
         </button>
-        {% else %}
-        <p>{{key.uid}}</p>
-        <p>{{keyy.uid}}</p>
+      
+        
         <button class="far fa-heart fa-xs match_list_icon3" style="font-size:1.8em;border: 0px;" type="submit" name="myfavorite_id" value="{{key.uid}}" >
         </button>
-        {% endif %}
-        {% endfor %}
+   
       </div>
     </form>
       {% endfor %}

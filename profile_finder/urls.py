@@ -4,8 +4,9 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
+     path('', views.mainpage),
+     path('dashboard', views.profile_dashboard),
     path('signin', views.signin),
-    path('', views.mainpage),
     path('signup', views.signup),
     path('statelist/<int:pk>/',views.statelist),
     path('rstatelist/<int:pk>/',views.rstatelist),
@@ -16,7 +17,7 @@ urlpatterns = [
     path('rcitylist/<int:pk>/',views.rcitylist),
     path('citylistp/<int:pk>/',views.citylistp),
     path('otp/<id>', views.opt_check),
-    path('dashboard/<id>', views.profile_dashboard),
+    # path('dashboard/<id>', views.profile_dashboard),
     path('profileidcard/<id>', views.profileidcard),
     path('profileforwhom/<id>', views.profileforwhom),
     path('profileform/<id>', views.profileform),

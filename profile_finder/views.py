@@ -183,7 +183,7 @@ def opt_check(request,id):
         if response.status_code == 200:
         # if get["otp"] == data['user_otp']:
             # return redirect(f"/profileidcard/{uidd}")
-            return redirect(f"/dashboard/{uidd}")
+            return redirect(f"/profileforwhom/{uidd}")
         else:
             invalid = "Invalid OTP"
             context = {'invalid':invalid}
@@ -214,10 +214,14 @@ def opt_check(request,id):
     return render(request,'otpcheck.html',context)
 
 
-def profile_dashboard(request,id):
-    my = requests.get(f"http://127.0.0.1:3000/alldata/{id}").json()
-    context={'key':my}
-    return render(request,'dashboard.html',context)
+# def profile_dashboard(request,id):
+#     my = requests.get(f"http://127.0.0.1:3000/alldata/{id}").json()
+#     context={'key':my}
+#     return render(request,'dashboard.html',context)
+def profile_dashboard(request):
+    # my = requests.get(f"http://127.0.0.1:3000/alldata/{id}").json()
+    # context={'key':my}
+    return render(request,'dashboard.html')
 
 def profileidcard(request,id):
     # saved = False
@@ -310,7 +314,7 @@ def profileidcard(request,id):
         uidd = (response.text[1:-1])
         if response.status_code == 200:
         # if get["otp"] == data['user_otp']:
-            return redirect(f"/profileforwhom/{uidd}")
+            return redirect(f"/profileform/{uidd}")
         else:
             return HttpResponse("INVALId")
     return render(request,'profileidcard.html')
@@ -924,8 +928,68 @@ def contact_details(request,id):
     'country': countryname,'states': states,'profile_pic':profile_pic}
     if request.method == "POST":
         print(request.POST)
+        if "contact_father_city" not in request.FILES:
+            contact_father_city = "empty"
+        else:
+            contact_father_city = request.FILES['contact_father_city']
+        #facebook
+        if request.POST['facebook'] == "":
+            facebook = "empty"
+        else:
+            facebook = request.FILES['facebook']
+        print(facebook)
+        #linkedin
+        if request.POST['linkedin'] == "":
+            linkedin = "empty"
+        else:
+            linkedin = request.FILES['linkedin']
+        print(linkedin)
+        #instagram
+        if request.POST['instagram'] == "":
+            instagram = "empty"
+        else:
+            instagram = request.FILES['instagram']
+        print(instagram)
+        #youtube
+        if request.POST['youtube'] == "":
+            youtube = "empty"
+        else:
+            youtube = request.FILES['youtube']
+        print(youtube)
+        #twitter
+        if request.POST['twitter'] == "":
+            twitter = "empty"
+        else:
+            twitter = request.FILES['twitter']
+        print(twitter)
+        #website
+        if request.POST['website'] == "":
+            website = "empty"
+        else:
+            website = request.FILES['website']
+        print(website)
+        data={
+     'contact_father_name': request.POST['contact_father_name'],
+            'contact_father_street': request.POST['contact_father_street'],
+            'contact_father_zipcode': request.POST['contact_father_zipcode'],
+            'contact_father_country': request.POST['contact_father_country'],
+            'contact_father_city': contact_father_city,
+            'contact_father_housename': request.POST['contact_father_housename'],
+            'contact_mother_housename': request.POST['contact_mother_housename'],
+            'contact_email': request.POST['contact_email'],
+            'contact_phone': request.POST['contact_phone'],
+
+            'whatsapp': request.POST['whatsapp'],
+            'facebook': facebook,
+            'linkedin': linkedin,
+            'instagram': instagram,
+            'youtube': youtube,
+            'twitter': twitter,
+            'website': website
+        }
+        print(data)
         # response = requests.post(f"http://54.159.186.219:8000/contactdetails/{id}",data = request.POST)
-        response = requests.post(f"http://127.0.0.1:3000/contactdetails/{id}",data = request.POST)
+        response = requests.post(f"http://127.0.0.1:3000/contactdetails/{id}",data = data)
         # print(response)
         # print(response.status_code)
         # print(response.text)
@@ -1566,6 +1630,9 @@ def matching_list(request,id):
     #my favorite list
     sent = requests.get(f"http://127.0.0.1:3000/favorites/{id}").json()
     print(sent)
+    favoritemy=[]
+    for f in sent[id]:
+       favoritemy.append(f['uid'])
 
     mydata = [my]
     my_preference=["1"]
@@ -1691,6 +1758,7 @@ def matching_list(request,id):
                'your_intrest_value':your_intrest_value,
                'lenofid':lenofid,
                'sent':sent[id],
+               'favoritemy':favoritemy,
                }
     return render(request,'matching_list.html',context)
 def match_list_person(request):
