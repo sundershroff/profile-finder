@@ -48,14 +48,14 @@ def signin(request):
 
          form = ProfileSigninForm(request.POST)
         #print("hello")
-         if form.is_valid():
-            email = request.POST['email']
-            password = request.POST['password']
-            mydata = profile_finder.objects.filter(email=email).filter(password=password).values() 
-            mydatalen = len(mydata)
-            if mydatalen == 1:
-                request.session['email'] = email
-                return redirect('/profile_page') 
+        #  if form.is_valid():
+        #     email = request.POST['email']
+        #     password = request.POST['password']
+        #     mydata = profile_finder.objects.filter(email=email).filter(password=password).values() 
+        #     mydatalen = len(mydata)
+        #     if mydatalen == 1:
+        #         request.session['email'] = email
+        #         return redirect('/profile_page') 
         
     return render(request,"signin.html")
 
