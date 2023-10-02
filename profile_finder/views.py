@@ -33,6 +33,7 @@ def signin(request):
     current_path =  request.get_full_path()
     print(current_path)
     form1 = ProfileSigninForm()
+    error = ""
     if request.method == "POST":
         print(request.POST)
         # response = requests.post("http://54.159.186.219:8000/signin/",data=request.POST)
@@ -45,8 +46,8 @@ def signin(request):
         # if get["otp"] == data['user_otp']:
             return redirect(f"/profile_page/{uidd}")
         else:
-
-         form = ProfileSigninForm(request.POST)
+            error = "YOUR EMAILID OR PASSWORD IS INCORRECT"
+            form = ProfileSigninForm(request.POST)
         #print("hello")
         #  if form.is_valid():
         #     email = request.POST['email']
@@ -56,12 +57,13 @@ def signin(request):
         #     if mydatalen == 1:
         #         request.session['email'] = email
         #         return redirect('/profile_page') 
-        
-    return render(request,"signin.html")
+    context = {'error':error}
+    return render(request,"signin.html",context)
 
 
 def signup(request):
     # form1 = ProfileFinderForm()
+    error = ""
     if request.method == "POST":
         
         if request.POST['password'] == request.POST['confirm_password']:
@@ -90,7 +92,9 @@ def signup(request):
                 print(uidd)
                 return redirect(f"/otp/{uidd}")
         else:
-            print("password doesn't match")
+            error = "User Already Exist"
+    context = {'error':error}
+
         # code = ""
         # if str(request.POST['referal_code']).strip() == " ":
         #     code = "empty"
@@ -150,7 +154,7 @@ def signup(request):
         #         return render(request,'signup.html',{'form':form1})
         #     #form.save()
         
-    return render(request,'signup.html',)#{'form':form1})
+    return render(request,'signup.html',context)#{'form':form1})
 
 
 def opt_check(request,id):
