@@ -1,5 +1,6 @@
 from django.urls import path
 from profile_finder import views
+from private_investigator import pi_views
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -67,6 +68,18 @@ urlpatterns = [
     path('wallet_add/<id>', views.wallet_add),
     path('muted_acc/<id>', views.muted_acc),
     path('blocked_acc/<id>', views.blocked_acc),
+
+
+#///////////////////private investagator////////////////////
+    path('pi_signin', pi_views.signin),
+    path('pi_signup', pi_views.signup),
+    path('pi_otpcheck/<id>', pi_views.opt_check),
+    path('pi_profilepicture/<id>', pi_views.profile_picture),
+    path('pi_admin_dashboard/<id>', pi_views.admin_dashboard),
+    path('pi_profile/<id>', pi_views.profile),
+
+
+
 
 
 

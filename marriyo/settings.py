@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'chat',
     'channels',
     'profile_finder.templatetags',
+    'private_investigator',
     # 'allauth',
     # 'allauth.account',
     # 'allauth.socialaccount',

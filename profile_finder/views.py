@@ -84,15 +84,14 @@ def signup(request):
                
                
             else:
-                # response = requests.post('http://54.159.186.219:8000/signup/',data=request.POST)
-                response = requests.post(all_url+'signup/',data=request.POST)
-                print(response.status_code)
-                print(response.text)
-                uidd = (response.text[1:-1])
-                print(uidd)
-                return redirect(f"/otp/{uidd}")
-        else:
-            error = "User Already Exist"
+                # # response = requests.post('http://54.159.186.219:8000/signup/',data=request.POST)
+                # response = requests.post(all_url+'signup/',data=request.POST)
+                # print(response.status_code)
+                # print(response.text)
+                # uidd = (response.text[1:-1])
+                # print(uidd)
+                # return redirect(f"/otp/{uidd}")
+                error = "User Already Exist"
     context = {'error':error}
 
         # code = ""
