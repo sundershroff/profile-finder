@@ -144,5 +144,33 @@ def admin_dashboard(request,id):
 def profile(request,id):
         return render(request,"profile.html")
 
+def edit_profile(request,id):
+        return render(request,"edit_profile.html")
 
+def payment(request,id):
+        return render(request,"pi_payment1.html")
+
+def client_list(request,id):
+        return render(request,"client_list.html")
+
+def client_details(request,id):
+        return render(request,"client_details.html")
+
+
+def subscription(request,id):
+        return render(request,"pi_subscription.html")
+
+def payment_table(request,id):
+        return render(request,"pi_payment_table.html")
+
+
+def add_client(request,id):
+        return render(request,"pi_add_new_client.html")
+
+
+def client_feedback(request,id):
+        return render(request,"pi_client_feedback.html")
+
+def setting(request,id):
+        return render(request,"pi_Account_Settings.html")
 

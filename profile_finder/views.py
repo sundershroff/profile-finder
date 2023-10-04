@@ -1948,15 +1948,20 @@ def saved_search_view_profile(request,uid,id):
     mydata=[my]
     my_sav = requests.get(f"http://127.0.0.1:3000/saved_search/{uid}").json()
     separated_list=[]
+    print(my_sav)
     for x in my_sav[uid]:
-        if x['id'] == int(id):
-            filter = x['filterd_data'][1:-2].replace("'","").replace(" ","").split(",")
-            for y in filter:
-                all_filter_data = requests.get(f"http://127.0.0.1:3000/alldata/{y}").json()
-                print(all_filter_data)
-                separated_list.append(all_filter_data)
+        print(len(x['filterd_data']))
+        if len(x['filterd_data']) != 2:
+            if x['id'] == int(id):
+                filter = x['filterd_data'][1:-2].replace("'","").replace(" ","").split(",")
+                for y in filter:
+                    all_filter_data = requests.get(f"http://127.0.0.1:3000/alldata/{y}").json()
+                    print(all_filter_data)
+                    separated_list.append(all_filter_data)
+            else:
+                print("no")
         else:
-            print("no")
+            separated_list.append("NO MATCHING LIST")
     context = {
             'mydata':mydata,
             'profile_pic':profile_pic,
