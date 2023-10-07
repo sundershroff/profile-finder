@@ -80,18 +80,24 @@ def signup(request):
                 print(response.text)
                 uidd = (response.text[1:-1])
                 print(uidd)
-                return redirect(f"/otp/{uidd}")
+                if response.status_code == 302:
+                   error = "User Already Exist"
+                else:
+                   return redirect(f"/otp/{uidd}")
                
                
             else:
-                # # response = requests.post('http://54.159.186.219:8000/signup/',data=request.POST)
-                # response = requests.post(all_url+'signup/',data=request.POST)
-                # print(response.status_code)
-                # print(response.text)
-                # uidd = (response.text[1:-1])
-                # print(uidd)
-                # return redirect(f"/otp/{uidd}")
-                error = "User Already Exist"
+                # response = requests.post('http://54.159.186.219:8000/signup/',data=request.POST)
+                response = requests.post(all_url+'signup/',data=request.POST)
+                print(response.status_code)
+                print(response.text)
+                uidd = (response.text[1:-1])
+                print(uidd)
+                if response.status_code == 302:
+                   error = "User Already Exist"
+                else:
+                   return redirect(f"/otp/{uidd}")
+                
     context = {'error':error}
 
         # code = ""
@@ -1662,6 +1668,7 @@ def matching_list(request,id):
         elif 'myfavorite_id' in request.POST:
             print(request.POST)
             response = requests.post(f'http://127.0.0.1:3000/favorites/{id}',data=request.POST)
+            return redirect(f"/matching_list/{id}")
 
         elif 'marital_status' in request.POST:
             print(request.POST)
@@ -1763,6 +1770,7 @@ def matching_list(request,id):
                'sent':sent[id],
                'favoritemy':favoritemy,
                }
+    # print(context)
     return render(request,'matching_list.html',context)
 def match_list_person(request):
     # alluserdata_one =[]
@@ -2445,3 +2453,51 @@ def blocked_acc(request,id):
             'my_block':my_block[id],
                }
     return render(request,'blocked_acc.html',context)
+
+def all_investigator(request,id):
+    my = requests.get(f"http://127.0.0.1:3000/alldata/{id}").json()
+    profile_pic = [my][0]['profile_picture']
+    mydata=[my]
+    context = {
+            'mydata':mydata,
+            'profile_pic':profile_pic,
+           
+               }
+
+    return render(request,'all_investigator.html',context)
+
+def hire_investigator(request,id):
+    my = requests.get(f"http://127.0.0.1:3000/alldata/{id}").json()
+    profile_pic = [my][0]['profile_picture']
+    mydata=[my]
+    context = {
+            'mydata':mydata,
+            'profile_pic':profile_pic,
+           
+               }
+
+    return render(request,'hire_investigator.html',context)
+
+def my_investigator(request,id):
+    my = requests.get(f"http://127.0.0.1:3000/alldata/{id}").json()
+    profile_pic = [my][0]['profile_picture']
+    mydata=[my]
+    context = {
+            'mydata':mydata,
+            'profile_pic':profile_pic,
+           
+               }
+
+    return render(request,'my_investigator.html',context)
+
+def my_investigator_question(request,id):
+    my = requests.get(f"http://127.0.0.1:3000/alldata/{id}").json()
+    profile_pic = [my][0]['profile_picture']
+    mydata=[my]
+    context = {
+            'mydata':mydata,
+            'profile_pic':profile_pic,
+           
+               }
+
+    return render(request,'my_investigator_question.html',context)

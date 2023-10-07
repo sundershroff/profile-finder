@@ -39,7 +39,7 @@ def signin(request):
         print(uidd)
         if response.status_code == 200:
         # if get["otp"] == data['user_otp']:
-            return redirect(f"/profile_page/{uidd}")
+            return redirect(f"/pi_admin_dashboard/{uidd}")
         else:
             error = "YOUR EMAILID OR PASSWORD IS INCORRECT"
         
@@ -52,31 +52,16 @@ def signup(request):
     if request.method == "POST":
         
         if request.POST['password'] == request.POST['confirm_password']:
-            if len(request.POST['referral_code']) == "0":
-                data = {
-            "email":request.POST["email"],
-            "mobile" : request.POST["mobile"],
-            "password":request.POST["password"],
-            "referal_code" : "no referal code",
-        }
-                # response = requests.post('http://54.159.186.219:8000/signup/',data=data)
-                response = requests.post(all_url+'pi_signup/',data=data)
+                # response = requests.post('http://54.159.186.219:8000/signup/',data=request.POST)
+                response = requests.post(all_url+'pi_signup/',data=request.POST)
                 print(response.status_code)
                 print(response.text)
                 uidd = (response.text[1:-1])
                 print(uidd)
-                return redirect(f"/otp/{uidd}")
-               
-               
-            else:
-                # # response = requests.post('http://54.159.186.219:8000/signup/',data=request.POST)
-                # response = requests.post(all_url+'pi_signup/',data=request.POST)
-                # print(response.status_code)
-                # print(response.text)
-                # uidd = (response.text[1:-1])
-                # print(uidd)
-                # return redirect(f"/otp/{uidd}")
-                error = "User Already Exist"            
+                if response.status_code == 302:
+                   error = "User Already Exist"
+                else:
+                   return redirect(f"/pi_otpcheck/{uidd}")      
     context = {'error':error}
         
     return render(request,'pi_signup.html',context)
@@ -122,7 +107,7 @@ def profile_picture(request,id):
     if request.method == "POST":
         print(request.POST)
         # response = requests.post(f"http://54.159.186.219:8000/profilepicture/{id}",files=request.FILES)
-        response = requests.post(f"http://127.0.0.1:3000/pi_profilepicture/{id}",files=request.FILES)
+        response = requests.post(f"http://127.0.0.1:3000/pi_profilePicture/{id}",files=request.FILES)
         print(response)
         print(response.status_code)
         print(response.text)
@@ -130,13 +115,27 @@ def profile_picture(request,id):
         print(uidd)
         if response.status_code == 200:
         # if get["otp"] == data['user_otp']:
-            return redirect(f"/primary_details/{uidd}")
+            return redirect(f"/pi_complete_profile/{uidd}")
         # else:
             # return HttpResponse("INVALID data")
     return render(request,"pi_profilepicture.html")
 
 def complete_profile(request,id):
-    pass
+    if request.method == "POST":
+        print(request.POST)
+        # response = requests.post(f"http://54.159.186.219:8000/profilepicture/{id}",files=request.FILES)
+        response = requests.post(f"http://127.0.0.1:3000/pi_complete_account/{id}",data = request.POST,files=request.FILES)
+        print(response)
+        print(response.status_code)
+        print(response.text)
+        uidd = (response.text[1:-1])
+        print(uidd)
+        if response.status_code == 200:
+        # if get["otp"] == data['user_otp']:
+            return redirect(f"/pi_admin_dashboard/{uidd}")
+        # else:
+            # return HttpResponse("INVALID data")
+    return render(request,"uploadprofile.html")
 
 def admin_dashboard(request,id):
         return render(request,"admin_dashboard.html")

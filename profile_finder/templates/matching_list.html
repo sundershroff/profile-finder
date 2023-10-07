@@ -141,7 +141,13 @@
     <!-- new reg -->
     <div class="match_list_carsel owl-carousel owl-theme container my-5">
       {% for key in alldata %}
-      <div class="item" data-bs-toggle="modal" data-bs-target="#{{key.target}}" >
+      <div class="item"  >
+        <div data-bs-toggle="modal" data-bs-target="#{{key.target}}" style="
+        border: 1px solid transparent;
+        position: absolute;
+        height: 70%;
+        width: 100%;
+    "></div>
         {% comment %} <img src="/media/images/girl1.png"> {% endcomment %}
         <img class="matchingimage" src="{{key.profile_picture}}">
 
@@ -165,17 +171,23 @@
 
   
  
-  <p>{{favoritemy}}</p> 
-  {% if "key.uid" in "{{favoritemy}}" %}
-  <p>yes</p>
-  {%  endif %}
-  <p>no</p>
- <button class="fa fa-heart fa-xs match_list_icon3" style="font-size:1.8em;border: 0px;" type="submit" name="myfavorite_id" value="{{key.uid}}" >
-        </button>
+  <!-- <p>{{favoritemy}}</p>
+  <p>{{key.uid}}</p>  -->
+{% if key.uid in favoritemy %}
+<button class="fa fa-heart fa-xs match_list_icon3" style="font-size:1.8em;border: 0px;" type="submit" name="myfavorite_id" value="{{key.uid}}" >
+</button>
+
+{% else %}
+<button class="far fa-heart fa-xs match_list_icon3" style="font-size:1.8em;border: 0px;" type="submit" name="myfavorite_id" value="{{key.uid}}" >
+</button>
+
+
+{% endif %}
+ 
+
       
         
-        <button class="far fa-heart fa-xs match_list_icon3" style="font-size:1.8em;border: 0px;" type="submit" name="myfavorite_id" value="{{key.uid}}" >
-        </button>
+      
    
       </div>
     </form>
@@ -255,8 +267,14 @@
 
        <form method="POST">
         {% csrf_token %}
-       <button class="far fa-heart fa-xs match_list_icon3" style="font-size:1.8em;border: 0px;" type="submit" name="myfavorite_id" value="{{key.uid}}" >
-              </button>
+        {% if key.uid in favoritemy %}
+        <button class="fa fa-heart fa-xs match_list_icon3" style="font-size:1.8em;border: 0px;" type="submit" name="myfavorite_id" value="{{key.uid}}" >
+        </button>
+        
+        {% else %}
+        <button class="far fa-heart fa-xs match_list_icon3" style="font-size:1.8em;border: 0px;" type="submit" name="myfavorite_id" value="{{key.uid}}" >
+        </button>
+        {% endif %}
             </div>
           </form>
           {% endfor %}
@@ -292,8 +310,14 @@
 
       <form method="POST">
         {% csrf_token %}
-       <button class="far fa-heart fa-xs match_list_icon3" style="font-size:1.8em;border: 0px;" type="submit" name="myfavorite_id" value="{{key.uid}}" >
-              </button>
+        {% if key.uid in favoritemy %}
+        <button class="fa fa-heart fa-xs match_list_icon3" style="font-size:1.8em;border: 0px;" type="submit" name="myfavorite_id" value="{{key.uid}}" >
+        </button>
+        
+        {% else %}
+        <button class="far fa-heart fa-xs match_list_icon3" style="font-size:1.8em;border: 0px;" type="submit" name="myfavorite_id" value="{{key.uid}}" >
+        </button>
+        {% endif %}
             </div>
           </form>
       {% endfor %}
@@ -657,10 +681,19 @@
         <p><i class="fas fa-circle fa-xs "></i> Online</p>
       </div>
 
-      <i class="far fa-heart fa-xs match_list_icon3" style="font-size:1.8em;"></i>
-
-    </div>
-
+      <form method="POST">
+        {% csrf_token %}
+        {% if key.uid in favoritemy %}
+        <button class="fa fa-heart fa-xs match_list_icon3" style="font-size:1.8em;border: 0px;" type="submit" name="myfavorite_id" value="{{key.uid}}" >
+        </button>
+        
+        {% else %}
+        <button class="far fa-heart fa-xs match_list_icon3" style="font-size:1.8em;border: 0px;" type="submit" name="myfavorite_id" value="{{key.uid}}" >
+        </button>
+        {% endif %}
+            </div>
+          </form>
+  </div>
     {% endfor %}
      
 
@@ -668,6 +701,9 @@
       <img class="matchingimage" src="/media/images/burger.png">
     </div>
     
+ 
+  </div>
+ 
 
   </div>
 
@@ -724,13 +760,17 @@
 
         <form method="POST">
           {% csrf_token %}
-         <button class="far fa-heart fa-xs match_list_icon3" style="font-size:1.8em;border: 0px;" type="submit" name="myfavorite_id" value="{{key.uid}}" >
-                </button>
+          {% if key.uid in favoritemy %}
+          <button class="fa fa-heart fa-xs match_list_icon3" style="font-size:1.8em;border: 0px;" type="submit" name="myfavorite_id" value="{{key.uid}}" >
+          </button>
+          
+          {% else %}
+          <button class="far fa-heart fa-xs match_list_icon3" style="font-size:1.8em;border: 0px;" type="submit" name="myfavorite_id" value="{{key.uid}}" >
+          </button>
+          {% endif %}
               </div>
             </form>
-            <div class="item">
-              <img class="matchingimage" src="/media/images/burger.png">
-            </div>
+           
 
       </div>
       {% endif %}
@@ -738,7 +778,9 @@
       {% endfor %}
        
 
-     
+      <div class="item">
+        <img class="matchingimage" src="/media/images/burger.png">
+      </div>
       
   </div>
 

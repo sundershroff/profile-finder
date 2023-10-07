@@ -68,6 +68,17 @@ urlpatterns = [
     path('wallet_add/<id>', views.wallet_add),
     path('muted_acc/<id>', views.muted_acc),
     path('blocked_acc/<id>', views.blocked_acc),
+
+    #private investigator
+    path('all_investigator/<id>', views.all_investigator),
+    path('hire_investigator/<id>', views.hire_investigator),
+    path('my_investigator/<id>', views.my_investigator),
+    path('my_investigator_question/<id>', views.my_investigator_question),
+
+
+
+
+
     
 
 
@@ -76,6 +87,7 @@ urlpatterns = [
     path('pi_signup', pi_views.signup),
     path('pi_otpcheck/<id>', pi_views.opt_check),
     path('pi_profilepicture/<id>', pi_views.profile_picture),
+    path('pi_complete_profile/<id>', pi_views.complete_profile),
     path('pi_admin_dashboard/<id>', pi_views.admin_dashboard),
     path('pi_profile/<id>', pi_views.profile),
     path('edit_profile/<id>', pi_views.edit_profile),
