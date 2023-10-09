@@ -222,7 +222,6 @@ def opt_check(request,id):
 
     return render(request,'otpcheck.html',context)
 
-
 # def profile_dashboard(request,id):
 #     my = requests.get(f"http://127.0.0.1:3000/alldata/{id}").json()
 #     context={'key':my}
@@ -313,6 +312,9 @@ def profileidcard(request,id):
     # return render(request,'profileidcard.html',locals())
     # a= requests.get(f"http://127.0.0.1:3000/alldata/{id}").json()
     # print(a)
+    context={
+        'key':id
+    }
     if request.method == "POST":
         print(request.POST)
         # response = requests.post(f"http://54.159.186.219:8000/profileidcard/{id}",   files=request.FILES)
@@ -326,15 +328,33 @@ def profileidcard(request,id):
             return redirect(f"/profileform/{uidd}")
         else:
             return HttpResponse("INVALId")
-    return render(request,'profileidcard.html')
+    return render(request,'profileidcard.html',context)
     
 
 
 
 def profileforwhom(request,id):
     my = requests.get(f"http://127.0.0.1:3000/alldata/{id}").json()
-    context={'key':my}
+    mydata=[my]
+    context = {
+            'key':id,
+           
+               }
     return render(request,'profileforwho.html',context)
+
+def profile_manager_list(request,id):
+    context = {
+            'key':id,
+           
+               }
+    return render(request,'profile-man-list.html',context)
+
+def private_investigator_list(request,id):
+    context = {
+            'key':id,
+           
+               }
+    return render(request,'private_investigator_list.html',context)
 
 
 
@@ -721,6 +741,10 @@ def selfie_upload(request,id):
     #             profile_picture=imgname
     #         )
     #         return redirect('/primary_details')
+    context = {
+    'key':id,
+           }
+
     if request.method == "POST":
         print(request.POST)
         # response = requests.post(f"http://54.159.186.219:8000/profilepicture/{id}",files=request.FILES)
@@ -735,7 +759,7 @@ def selfie_upload(request,id):
             return redirect(f"/primary_details/{uidd}")
         # else:
             # return HttpResponse("INVALID data")
-    return render(request,"profilepicture.html")
+    return render(request,"profilepicture.html",context)
 
 #primary details options 
 

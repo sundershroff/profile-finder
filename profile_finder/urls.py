@@ -9,6 +9,8 @@ urlpatterns = [
      path('dashboard', views.profile_dashboard),
     path('signin', views.signin),
     path('signup', views.signup),
+    path('profile_manager_list/<id>', views.profile_manager_list),
+    path('private_investigator_list/<id>', views.private_investigator_list),
     path('statelist/<int:pk>/',views.statelist),
     path('rstatelist/<int:pk>/',views.rstatelist),
     path('fstatelist/<int:pk>/',views.fstatelist),
