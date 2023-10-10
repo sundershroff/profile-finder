@@ -350,8 +350,21 @@ def profile_manager_list(request,id):
     return render(request,'profile-man-list.html',context)
 
 def private_investigator_list(request,id):
+    pi_data = requests.get(f"http://127.0.0.1:3000/all_private_investigator_data").json()
+
+    if request.method == "POST":
+        print(request.POST)
+        data={
+            'pf_id':id,
+            'pi_id':request.POST['hire']
+        }
+        response = requests.post(f"http://127.0.0.1:3000/pi_my_clients/{id}",   data=data)
+        # print(response)
+        # print(response.status_code)
+        # print(response.text)
     context = {
             'key':id,
+            'pi_data':pi_data,
            
                }
     return render(request,'private_investigator_list.html',context)
@@ -1650,7 +1663,7 @@ def matching_list(request,id):
         if le['percentage'] > 50:
             lenofid.append(le)
     print(len(lenofid))
-    # print(lenofid)
+    print(lenofid)
         
     profile_pic = [my][0]['profile_picture']
     #for target
@@ -1662,13 +1675,13 @@ def matching_list(request,id):
     
     #my favorite list
     sent = requests.get(f"http://127.0.0.1:3000/favorites/{id}").json()
-    print(sent)
+    # print(sent)
     favoritemy=[]
     for f in sent[id]:
        favoritemy.append(f['uid'])
 
     mydata = [my]
-    my_preference=["1"]
+    my_preference="1"
     
     #request sent
     if request.method == "POST":

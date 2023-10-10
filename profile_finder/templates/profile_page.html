@@ -478,6 +478,7 @@
               </div>
               <div id="collapseTwo" class="collapse show" data-bs-parent="#accordion">
                 <div class="card-body prof_page_text">
+                  
                   {% for key in mydata %}
                   <p class="keep">{{ key.current_status }}</p>
                   {% endfor %}
@@ -2262,6 +2263,12 @@
                   {% endfor %} -->
 
                   <div class="mx-2">
+                    <img src="{{profile_pic}}" class="img-fluid img-rounded profile_im my-3" data-bs-toggle="modal" style="
+                    width: 211px;
+                    height: 189px;
+                    object-fit: cover;
+                ">
+
                     {% for key in lengthgallery %}
                     <img src="{{key}}" class="prof_page_gall my-3 mx-2" alt="pic1">
                     {% endfor %}
@@ -2335,6 +2342,8 @@
                               {% endfor %} -->
 
                               <div class="prof_page_galpos1 my-4"> 
+
+
                                 {% for key in lengthgallery %}
                                 <div class="prof_page_galpos">
                                   <img src="{{key}}" alt="pic1">

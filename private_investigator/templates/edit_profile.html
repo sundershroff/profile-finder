@@ -83,11 +83,11 @@
            
            <div class="col-md-4 mt-4">
              <label class="form-label" for="typeText">Office Name</label><span class="textstar">*</span>
-                 <input type="text" id="typeText" class="form-control" placeholder="Office Name"> 
+                 <input type="text" name="office_name" id="typeText" class="form-control" placeholder="Office Name"> 
          </div>
          <div class="col-md-4 mt-4">
            <label class="form-label" for="typeText">Country</label><span class="textstar">*</span>
-           <select class="form-select text-muted" aria-label="Default select example" >
+           <select name="office_country" class="form-select text-muted" aria-label="Default select example" >
                <option selected >Select Country</option>
                <option value="1">One</option>
                <option value="2">Two</option>
@@ -96,7 +96,7 @@
        </div>
        <div class="col-md-4 mt-4">
          <label class="form-label" for="typeText">City</label><span class="textstar">*</span>
-         <select class="form-select text-muted" aria-label="Default select example" >
+         <select name="office_city" class="form-select text-muted" aria-label="Default select example" >
              <option selected >Select City</option>
              <option value="1">One</option>
              <option value="2">Two</option>
@@ -108,7 +108,7 @@
            <div class="col-md-12">
              <div class="mb-3">
                <label for="" class="form-label">Address*</label>
-               <textarea class="form-control" name="Address" id="Address" rows="1" placeholder="Address"></textarea>
+               <textarea class="form-control" name="office_address" id="Address" rows="1" placeholder="Address"></textarea>
              </div>
            </div>
          </div>
@@ -122,18 +122,18 @@
              <div class="row">
              <div class="col-md-6 mt-4">
                <label class="form-label" for="typeText">Office Name</label><span class="textstar">*</span>
-                   <input type="text" id="typeText" class="form-control" placeholder="Office Name"> 
+                   <input name="first_name" type="text" id="typeText" class="form-control" placeholder="Office Name"> 
            </div>
            <div class="col-md-6 mt-4">
              <label class="form-label" for="typeText">Office Name</label><span class="textstar">*</span>
-                 <input type="text" id="typeText" class="form-control" placeholder="Office Name"> 
+                 <input name="last_name" type="text" id="typeText" class="form-control" placeholder="Office Name"> 
          </div> 
            </div>
            <div class="row">
 
              <div class="col-md-6 mt-4">
                <label class="form-label" for="typeText">Country</label><span class="textstar">*</span>
-               <select class="form-select text-muted" aria-label="Default select example" >
+               <select name="personal_country" class="form-select text-muted" aria-label="Default select example" >
                    <option selected >Select Country</option>
                    <option value="1">One</option>
                    <option value="2">Two</option>
@@ -142,7 +142,7 @@
            </div>
            <div class="col-md-6 mt-4">
              <label class="form-label" for="typeText">City</label><span class="textstar">*</span>
-             <select class="form-select text-muted" aria-label="Default select example" >
+             <select name="personal_city" class="form-select text-muted" aria-label="Default select example" >
                  <option selected >Select City</option>
                  <option value="1">One</option>
                  <option value="2">Two</option>
@@ -152,12 +152,12 @@
          <div class="col-md-12">
            <div class="mb-3 mt-3">
              <label for="" class="form-label">Address*</label>
-             <textarea class="form-control" name="Address" id="Address" rows="1" placeholder="Address"></textarea>
+             <textarea class="form-control" name="personal_address" id="Address" rows="1" placeholder="Address"></textarea>
            </div>
          </div>
          <div class="col-md-6 ">
            <label class="form-label" for="typeText">Hiring Manager</label><span class="textstar">*</span>
-           <select class="form-select text-muted" aria-label="Default select example" >
+           <select name="hiring_manager" class="form-select text-muted" aria-label="Default select example" >
                <option >Select</option>
                <option value="1">One</option>
                <option value="2">Two</option>
@@ -167,7 +167,7 @@
 
        <div class="col-md-12 mt-2">
          <label for="exampleFormControlTextarea3" class="form-label">Tagline</label><span class="textstar">*</span>
-         <textarea class="form-control" id="Textarea3" rows="3" ></textarea>
+         <textarea name="tagline" class="form-control" id="Textarea3" rows="3" ></textarea>
      </div>
          
            </div>
@@ -187,7 +187,7 @@
                " alt="">
                    <i class="bi bi-file-earmark-text mmm pt-3 pb-3 pe-3 ps-3"></i>
                    <p class="file-message ">Drag Or Click Here To Upload Your ID</p>
-                   <input class="file-input" type="file" name="id_card_1" >
+                   <input class="file-input" type="file" name="id_card" >
                </div>
            </div>
       </div><br><br>
@@ -202,7 +202,7 @@
             " alt="">
                 <i class="bi bi-file-earmark-text mmm pt-3 pb-3 pe-3 ps-3"></i>
                 <p class="file-message ">Drag Or Click Here To Upload Your ID</p>
-                <input class="file-input" type="file" name="id_card_1" >
+                <input class="file-input" type="file" name="profile_picture" >
             </div>
         </div>
    </div>

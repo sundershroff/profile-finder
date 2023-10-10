@@ -72,25 +72,26 @@
                <div class="row">
                 <center><span><i style="color:#2B3674" class="fa fa-crosshairs" aria-hidden="true"></i>Current Location</span></center>
                </div><br>
+               {% for i in pi_data %}
                <div class="row pro_row my-3">
               <div class="col-lg-1">
-                <center><img src="/media/images/Ellipse 10 (1).png"></center>
+                <center><img src="{{i.profile_picture}}"></center>
               </div>
               <div class="col-lg-2">
-                <center><p class="pro_name"><b>Oliver</b></p>
-                <p style="font-size:10px">UID7345DY25</p></center>
+                <center><p class="pro_name"><b>{{i.first_name}}{{i.last_name}}</b></p>
+                <p style="font-size:10px">{{i.uid}}</p></center>
               </div>
               <div class="col-lg-2 pro_text">
-                <p>TURKEY</p>
+                <p>{{i.office_country}}</p>
               </div>
               <div class="col-lg-2 pro_text">
-                <p>DENIZLI</p>
+                <p>{{i.office_city}}</p>
               </div>
               <div class="col-lg-2 pro_text">
-                <p>AEGEAN</p>
+                <p>{{i.office_address}}</p>
               </div>
               <div class="col-lg-2">
-                <div class="rate">
+                <div class="rate" style="width: max-content;">
                   <input type="radio" id="star5" name="rate" value="5" />
                   <label for="star5" title="text">5 stars</label>
                   <input type="radio" id="star4" name="rate" value="4" />
@@ -103,290 +104,15 @@
                   <label for="star1" title="text">1 star</label>
                 </div>
               </div>
+              <form method="POST" style="display: contents;">
+                {% csrf_token %}
               <div class="col-lg-1" style="padding:10px;">
-                <button class="hire_btn">Hire</button>
+                <button type="submit" name="hire" value="{{i.uid}}" class="hire_btn">Hire</button>
               </div>
+            </form>
                </div>
-               <div class="row pro_row my-3">
-                <div class="col-lg-1">
-                  <center><img src="/media/images/Ellipse 10 (1).png"></center>
-                </div>
-                <div class="col-lg-2">
-                  <center><p class="pro_name"><b>Oliver</b></p>
-                  <p style="font-size:10px">UID7345DY25</p></center>
-                </div>
-                <div class="col-lg-2 pro_text">
-                  <p>TURKEY</p>
-                </div>
-                <div class="col-lg-2 pro_text">
-                  <p>DENIZLI</p>
-                </div>
-                <div class="col-lg-2 pro_text">
-                  <p>AEGEAN</p>
-                </div>
-                <div class="col-lg-2">
-                  <div class="rate">
-                    <input type="radio" id="star5" name="rate" value="5" />
-                    <label for="star5" title="text">5 stars</label>
-                    <input type="radio" id="star4" name="rate" value="4" />
-                    <label for="star4" title="text">4 stars</label>
-                    <input type="radio" id="star3" name="rate" value="3" />
-                    <label for="star3" title="text">3 stars</label>
-                    <input type="radio" id="star2" name="rate" value="2" />
-                    <label for="star2" title="text">2 stars</label>
-                    <input type="radio" id="star1" name="rate" value="1" />
-                    <label for="star1" title="text">1 star</label>
-                  </div>
-                </div>
-                <div class="col-lg-1" style="padding:10px;">
-                  <button class="hire_btn">Hire</button>
-                </div>
-                 </div>
-                 <div class="row pro_row my-3">
-                  <div class="col-lg-1">
-                    <center><img src="/media/images/Ellipse 10 (1).png"></center>
-                  </div>
-                  <div class="col-lg-2">
-                    <center><p class="pro_name"><b>Oliver</b></p>
-                    <p style="font-size:10px">UID7345DY25</p></center>
-                  </div>
-                  <div class="col-lg-2 pro_text">
-                    <p>TURKEY</p>
-                  </div>
-                  <div class="col-lg-2 pro_text">
-                    <p>DENIZLI</p>
-                  </div>
-                  <div class="col-lg-2 pro_text">
-                    <p>AEGEAN</p>
-                  </div>
-                  <div class="col-lg-2">
-                    <div class="rate">
-                      <input type="radio" id="star5" name="rate" value="5" />
-                      <label for="star5" title="text">5 stars</label>
-                      <input type="radio" id="star4" name="rate" value="4" />
-                      <label for="star4" title="text">4 stars</label>
-                      <input type="radio" id="star3" name="rate" value="3" />
-                      <label for="star3" title="text">3 stars</label>
-                      <input type="radio" id="star2" name="rate" value="2" />
-                      <label for="star2" title="text">2 stars</label>
-                      <input type="radio" id="star1" name="rate" value="1" />
-                      <label for="star1" title="text">1 star</label>
-                    </div>
-                  </div>
-                  <div class="col-lg-1" style="padding:10px;">
-                    <button class="hire_btn">Hire</button>
-                  </div>
-                   </div>
-                   <div class="row pro_row my-3">
-                    <div class="col-lg-1">
-                      <center><img src="/media/images/Ellipse 10 (1).png"></center>
-                    </div>
-                    <div class="col-lg-2">
-                      <center><p class="pro_name"><b>Oliver</b></p>
-                      <p style="font-size:10px">UID7345DY25</p></center>
-                    </div>
-                    <div class="col-lg-2 pro_text">
-                      <p>TURKEY</p>
-                    </div>
-                    <div class="col-lg-2 pro_text">
-                      <p>DENIZLI</p>
-                    </div>
-                    <div class="col-lg-2 pro_text">
-                      <p>AEGEAN</p>
-                    </div>
-                    <div class="col-lg-2">
-                      <div class="rate">
-                        <input type="radio" id="star5" name="rate" value="5" />
-                        <label for="star5" title="text">5 stars</label>
-                        <input type="radio" id="star4" name="rate" value="4" />
-                        <label for="star4" title="text">4 stars</label>
-                        <input type="radio" id="star3" name="rate" value="3" />
-                        <label for="star3" title="text">3 stars</label>
-                        <input type="radio" id="star2" name="rate" value="2" />
-                        <label for="star2" title="text">2 stars</label>
-                        <input type="radio" id="star1" name="rate" value="1" />
-                        <label for="star1" title="text">1 star</label>
-                      </div>
-                    </div>
-                    <div class="col-lg-1" style="padding:10px;">
-                      <button class="hire_btn">Hire</button>
-                    </div>
-                     </div>
-                     <div class="row pro_row my-3">
-                      <div class="col-lg-1">
-                        <center><img src="/media/images/Ellipse 10 (1).png"></center>
-                      </div>
-                      <div class="col-lg-2">
-                        <center><p class="pro_name"><b>Oliver</b></p>
-                        <p style="font-size:10px">UID7345DY25</p></center>
-                      </div>
-                      <div class="col-lg-2 pro_text">
-                        <p>TURKEY</p>
-                      </div>
-                      <div class="col-lg-2 pro_text">
-                        <p>DENIZLI</p>
-                      </div>
-                      <div class="col-lg-2 pro_text">
-                        <p>AEGEAN</p>
-                      </div>
-                      <div class="col-lg-2">
-                        <div class="rate">
-                          <input type="radio" id="star5" name="rate" value="5" />
-                          <label for="star5" title="text">5 stars</label>
-                          <input type="radio" id="star4" name="rate" value="4" />
-                          <label for="star4" title="text">4 stars</label>
-                          <input type="radio" id="star3" name="rate" value="3" />
-                          <label for="star3" title="text">3 stars</label>
-                          <input type="radio" id="star2" name="rate" value="2" />
-                          <label for="star2" title="text">2 stars</label>
-                          <input type="radio" id="star1" name="rate" value="1" />
-                          <label for="star1" title="text">1 star</label>
-                        </div>
-                      </div>
-                      <div class="col-lg-1" style="padding:10px;">
-                        <button class="hire_btn">Hire</button>
-                      </div>
-                       </div>
-                       <div class="row pro_row my-3">
-                        <div class="col-lg-1">
-                          <center><img src="/media/images/Ellipse 10 (1).png"></center>
-                        </div>
-                        <div class="col-lg-2">
-                          <center><p class="pro_name"><b>Oliver</b></p>
-                          <p style="font-size:10px">UID7345DY25</p></center>
-                        </div>
-                        <div class="col-lg-2 pro_text">
-                          <p>TURKEY</p>
-                        </div>
-                        <div class="col-lg-2 pro_text">
-                          <p>DENIZLI</p>
-                        </div>
-                        <div class="col-lg-2 pro_text">
-                          <p>AEGEAN</p>
-                        </div>
-                        <div class="col-lg-2">
-                          <div class="rate">
-                            <input type="radio" id="star5" name="rate" value="5" />
-                            <label for="star5" title="text">5 stars</label>
-                            <input type="radio" id="star4" name="rate" value="4" />
-                            <label for="star4" title="text">4 stars</label>
-                            <input type="radio" id="star3" name="rate" value="3" />
-                            <label for="star3" title="text">3 stars</label>
-                            <input type="radio" id="star2" name="rate" value="2" />
-                            <label for="star2" title="text">2 stars</label>
-                            <input type="radio" id="star1" name="rate" value="1" />
-                            <label for="star1" title="text">1 star</label>
-                          </div>
-                        </div>
-                        <div class="col-lg-1" style="padding:10px;">
-                          <button class="hire_btn">Hire</button>
-                        </div>
-                         </div>
-                         <div class="row pro_row my-3">
-                          <div class="col-lg-1">
-                            <center><img src="/media/images/Ellipse 10 (1).png"></center>
-                          </div>
-                          <div class="col-lg-2">
-                            <center><p class="pro_name"><b>Oliver</b></p>
-                            <p style="font-size:10px">UID7345DY25</p></center>
-                          </div>
-                          <div class="col-lg-2 pro_text">
-                            <p>TURKEY</p>
-                          </div>
-                          <div class="col-lg-2 pro_text">
-                            <p>DENIZLI</p>
-                          </div>
-                          <div class="col-lg-2 pro_text">
-                            <p>AEGEAN</p>
-                          </div>
-                          <div class="col-lg-2">
-                            <div class="rate">
-                              <input type="radio" id="star5" name="rate" value="5" />
-                              <label for="star5" title="text">5 stars</label>
-                              <input type="radio" id="star4" name="rate" value="4" />
-                              <label for="star4" title="text">4 stars</label>
-                              <input type="radio" id="star3" name="rate" value="3" />
-                              <label for="star3" title="text">3 stars</label>
-                              <input type="radio" id="star2" name="rate" value="2" />
-                              <label for="star2" title="text">2 stars</label>
-                              <input type="radio" id="star1" name="rate" value="1" />
-                              <label for="star1" title="text">1 star</label>
-                            </div>
-                          </div>
-                          <div class="col-lg-1" style="padding:10px;">
-                            <button class="hire_btn">Hire</button>
-                          </div>
-                           </div>
-                           <div class="row pro_row my-3">
-                            <div class="col-lg-1">
-                              <center><img src="/media/images/Ellipse 10 (1).png"></center>
-                            </div>
-                            <div class="col-lg-2">
-                              <center><p class="pro_name"><b>Oliver</b></p>
-                              <p style="font-size:10px">UID7345DY25</p></center>
-                            </div>
-                            <div class="col-lg-2 pro_text">
-                              <p>TURKEY</p>
-                            </div>
-                            <div class="col-lg-2 pro_text">
-                              <p>DENIZLI</p>
-                            </div>
-                            <div class="col-lg-2 pro_text">
-                              <p>AEGEAN</p>
-                            </div>
-                            <div class="col-lg-2">
-                              <div class="rate">
-                                <input type="radio" id="star5" name="rate" value="5" />
-                                <label for="star5" title="text">5 stars</label>
-                                <input type="radio" id="star4" name="rate" value="4" />
-                                <label for="star4" title="text">4 stars</label>
-                                <input type="radio" id="star3" name="rate" value="3" />
-                                <label for="star3" title="text">3 stars</label>
-                                <input type="radio" id="star2" name="rate" value="2" />
-                                <label for="star2" title="text">2 stars</label>
-                                <input type="radio" id="star1" name="rate" value="1" />
-                                <label for="star1" title="text">1 star</label>
-                              </div>
-                            </div>
-                            <div class="col-lg-1" style="padding:10px;">
-                              <button class="hire_btn">Hire</button>
-                            </div>
-                             </div>
-                             <div class="row pro_row my-3">
-                              <div class="col-lg-1">
-                                <center><img src="/media/images/Ellipse 10 (1).png"></center>
-                              </div>
-                              <div class="col-lg-2">
-                                <center><p class="pro_name"><b>Oliver</b></p>
-                                <p style="font-size:10px">UID7345DY25</p></center>
-                              </div>
-                              <div class="col-lg-2 pro_text">
-                                <p>TURKEY</p>
-                              </div>
-                              <div class="col-lg-2 pro_text">
-                                <p>DENIZLI</p>
-                              </div>
-                              <div class="col-lg-2 pro_text">
-                                <p>AEGEAN</p>
-                              </div>
-                              <div class="col-lg-2">
-                                <div class="rate">
-                                  <input type="radio" id="star5" name="rate" value="5" />
-                                  <label for="star5" title="text">5 stars</label>
-                                  <input type="radio" id="star4" name="rate" value="4" />
-                                  <label for="star4" title="text">4 stars</label>
-                                  <input type="radio" id="star3" name="rate" value="3" />
-                                  <label for="star3" title="text">3 stars</label>
-                                  <input type="radio" id="star2" name="rate" value="2" />
-                                  <label for="star2" title="text">2 stars</label>
-                                  <input type="radio" id="star1" name="rate" value="1" />
-                                  <label for="star1" title="text">1 star</label>
-                                </div>
-                              </div>
-                              <div class="col-lg-1" style="padding:10px;">
-                                <button class="hire_btn">Hire</button>
-                              </div>
-                               </div>
+               {% endfor %}
+         
  </div>
 
   

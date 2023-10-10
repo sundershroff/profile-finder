@@ -159,11 +159,12 @@
     background-color:#fff;
     padding:12px;
  }
- .pro_row img{
-    height:50px;
-    width:50px;
-    border-radius:50px;
- }
+ .pro_row img {
+    height: 100px;
+    width: 100px;
+    border-radius: 50px;
+    object-fit: cover;
+}
  .pro_name{
     font-size:26px;
     height:20px
