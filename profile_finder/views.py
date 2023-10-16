@@ -359,9 +359,10 @@ def private_investigator_list(request,id):
             'pi_id':request.POST['hire']
         }
         response = requests.post(f"http://127.0.0.1:3000/pi_my_clients/{id}",   data=data)
-        # print(response)
-        # print(response.status_code)
-        # print(response.text)
+        response = requests.post(f"http://127.0.0.1:3000/my_investigator/{id}",   data=data)
+        print(response)
+        print(response.status_code)
+        print(response.text)
     context = {
             'key':id,
             'pi_data':pi_data,
@@ -2493,11 +2494,15 @@ def blocked_acc(request,id):
 
 def all_investigator(request,id):
     my = requests.get(f"http://127.0.0.1:3000/alldata/{id}").json()
+
+    all_investigator = requests.get(f"http://127.0.0.1:3000/all_private_investigator_data").json()
+
     profile_pic = [my][0]['profile_picture']
     mydata=[my]
     context = {
             'mydata':mydata,
             'profile_pic':profile_pic,
+            'all_investigator':all_investigator,
            
                }
 

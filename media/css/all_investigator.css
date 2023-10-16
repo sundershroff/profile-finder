@@ -60,6 +60,7 @@ button.btn.btn-primary.ms-1.rounded {
     border-radius: 50%;
     /* border: 5px solid white; */
     margin-top: -46px;
+    object-fit: cover;
 }
 .main{
     color: #8f93ae;
