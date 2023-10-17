@@ -31,7 +31,7 @@
                   {% for i in mydata %}
                   <h4 class="head1 mt-3"><a href="/all_investigator/{{i.uid}}" style="text-decoration: none;color: gray;">All investigator</a> 
                     <span class="spy ms-3"><a href="/my_investigator/{{i.uid}}" style="text-decoration: none;color: #2B3674;"> My investigator</a></span></h4>
-                  <h6 class="head2">20 investigator</h6>
+                  <h6 class="head2">{{my_investigators|length}} investigator</h6>
                   {% endfor %}                </div>
             </div>
         </div>
@@ -39,17 +39,18 @@
            <!-- cards -->
        <div class="container">
             <div class="row mt-5">
+              {% for i in my_investigators %}
                 <div class="col-md-3 col-sm-6">
                     <div class="cards border 1">
                         <div class="img1">
                           <img src="/media/images/w4.jpg" alt="">
                         </div>
                         <div class="img2">
-                          <img src="/media/images/testimonials-1.jpg" alt="">
+                          <img src="{{i.profile_picture}}" alt="">
                         </div>
                         <div class="main">
-                          <h5 class="head text-center">Albert Flores</h5>
-                          <p class="text-center font ">Dubai United Arab Emirators</p>
+                          <h5 class="head text-center">{{i.first_name}} {{i.last_name}}</h5>
+                          <p class="text-center font ">{{i.office_country}} {{i.office_city}}</p>
                         </div>
                        <center>
                         <div class="progress align-middle mb-3 " style="width:50%" >
@@ -65,47 +66,11 @@
                           <div class="text-center pro"><p class="text-muted">Task completed:<span class="text-dark">70%</span></p></div>
                     </div>
                   </div>
+                  {% endfor %}
 
-                    <div class="col-md-3 col-sm-6">
-                    <div class="cards border 1">
-                        <div class="img1">
-                          <img src="/media/images/w4.jpg" alt="">
-                        </div>
-                        <div class="img2">
-                          <img src="/media/images/testimonials-1.jpg" alt="">
-                        </div>
-                        <div class="main">
-                          <h5 class="head text-center">Albert Flores</h5>
-                          <p class="text-center font ">Dubai United Arab Emirators</p>
-                        </div>
-                       <center>
-                        <div class="progress align-middle mb-3 " style="width:50%" >
-                            <div class="progress-bar bg-success" style="width:50%"></div>
-                          </div></center>
-                          <div class="text-center pro"><p class="text-muted">Task completed:<span class="text-dark">50%</span></p></div>
-                    </div>
-                  </div>
-                    <div class="col-md-3 col-sm-6">
-                    <div class="cards border 1">
-                        <div class="img1">
-                          <img src="/media/images/w4.jpg" alt="">
-                        </div>
-                        <div class="img2">
-                          <img src="/media/images/testimonials-1.jpg" alt="">
-                        </div>
-                        <div class="main">
-                          <h5 class="head text-center">Albert Flores</h5>
-                          <p class="text-center font ">Dubai United Arab Emirators</p>
-                        </div>
-                       <center>
-                        <div class="progress align-middle mb-3 " style="width:50%" >
-                            <div class="progress-bar bg-success" style="width:10%"></div>
-                          </div></center>
-                          <div class="text-center pro"><p class="text-muted">Task completed:<span class="text-dark">10%</span></p></div>
-                    </div>
-                  </div>
             </div>
        </div>    
+       <br>
        {% include 'footer.html' %}
 
 </body>

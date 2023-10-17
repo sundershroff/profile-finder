@@ -37,7 +37,7 @@
                   {% for i in mydata %}
                     <h4 class="head1 mt-3"><a href="/all_investigator/{{i.uid}}" style="text-decoration: none;color: #2B3674;">All investigator</a> 
                       <span class="spy ms-3"><a href="/my_investigator/{{i.uid}}" style="text-decoration: none;color: gray;"> My investigator</a></span></h4>
-                    <h6 class="head2">20 investigator</h6>
+                    <h6 class="head2">{{ all_investigator|length }} investigator</h6>
                     {% endfor %}
                 </div>
                 <div class="col-md-4 ms-auto mt-3">
@@ -80,7 +80,7 @@
                 </div>
                 <div class="main">
                   <h5 class="head text-center">{{i.first_name}} {{i.last_name}}</h5>
-                  <p class="text-center">{{i.office_address}}</p>
+                  <p class="text-center">{{i.office_country}} {{i.office_city}}</p>
                 </div>
                   <!-- rating start -->
                 <div class="small-ratings text-center">
@@ -90,12 +90,12 @@
                   <i class="fa fa-star rating-color"></i>
                   <i class="fa fa-star"></i>
                </div>
-               {% for i in mydata %}
-
+<form method="POST">
+  {% csrf_token %}
                 <div class="but text-center p-3">
-                 <a href="/hire_investigator/{{i.uid}}"><button class="btn text-white" type="button">Hire Investigator</button></a> 
+                 <a href="/hire_investigator/{{i.uid}}"><button type="submit" name="hire" value="{{i.uid}}"  class="btn text-white" type="button">Hire Investigator</button></a> 
                 </div>
-    {% endfor %}
+              </form>
             </div>
           </div>
           {% endfor %}

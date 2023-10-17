@@ -77,6 +77,9 @@ urlpatterns = [
     path('my_investigator/<id>', views.my_investigator),
     path('my_investigator_question/<id>', views.my_investigator_question),
 
+    path('pi_payment/<id>', views.pi_payment),
+
+
 
 
 

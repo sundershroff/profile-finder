@@ -2496,7 +2496,13 @@ def all_investigator(request,id):
     my = requests.get(f"http://127.0.0.1:3000/alldata/{id}").json()
 
     all_investigator = requests.get(f"http://127.0.0.1:3000/all_private_investigator_data").json()
-
+    if request.method=="POST":
+        print(request.POST)
+        if "hire" in request.POST:
+           print(request.POST)
+           global hire_id
+           hire_id = request.POST['hire']  
+           return redirect(f"/hire_investigator/{id}")
     profile_pic = [my][0]['profile_picture']
     mydata=[my]
     context = {
@@ -2512,22 +2518,32 @@ def hire_investigator(request,id):
     my = requests.get(f"http://127.0.0.1:3000/alldata/{id}").json()
     profile_pic = [my][0]['profile_picture']
     mydata=[my]
+    #redirect specific user
+    all_investigator(request,id)
+    print(hire_id)
+    #all investigator data
+    all_investigator_values = requests.get(f"http://127.0.0.1:3000/all_private_investigator_data").json()
+    for  x in all_investigator_values:
+        if x['uid'] == hire_id:
+            specific_user = x
+            print(specific_user)
     context = {
             'mydata':mydata,
             'profile_pic':profile_pic,
-           
+            'specific_user':[specific_user],
                }
 
     return render(request,'hire_investigator.html',context)
 
 def my_investigator(request,id):
     my = requests.get(f"http://127.0.0.1:3000/alldata/{id}").json()
+    my_investigators = requests.get(f"http://127.0.0.1:3000/my_investigator/{id}").json()[id]
     profile_pic = [my][0]['profile_picture']
     mydata=[my]
     context = {
             'mydata':mydata,
             'profile_pic':profile_pic,
-           
+           'my_investigators':my_investigators,
                }
 
     return render(request,'my_investigator.html',context)
@@ -2543,3 +2559,15 @@ def my_investigator_question(request,id):
                }
 
     return render(request,'my_investigator_question.html',context)
+
+def pi_payment(request,id):
+    my = requests.get(f"http://127.0.0.1:3000/alldata/{id}").json()
+    profile_pic = [my][0]['profile_picture']
+    mydata=[my]
+    context = {
+            'mydata':mydata,
+            'profile_pic':profile_pic,
+           
+               }
+
+    return render(request,'pi_payment.html',context)
