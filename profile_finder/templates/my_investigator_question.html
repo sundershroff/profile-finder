@@ -36,6 +36,7 @@
             </div>
         </div>
     </section>
+    {% for i in specific_user%}
     <div class="row">
       <div class="col-md-3">
         
@@ -44,11 +45,11 @@
             <img src="/media/images/w4.jpg" alt="">
           </div>
           <div class="img2 mb-3">
-            <img src="/media/images/testimonials-1.jpg" alt="">
+            <img src="{{i.profile_picture}}" alt="">
           </div>
           <div class="main text-center">
-            <h5 class="head text-center">Albert Flores</h5>
-            <p class="text-center mb-4">Dubai United Arab Emirators</p>
+            <h5 class="head text-center">{{i.first_name}} {{i.last_name}}</h5>
+            <p class="text-center mb-4">{{i.office_country}} {{i.office_city}}</p>
             <div class="ratings mt-3 mb-3">
                             <i class="fa fa-star rating-color"></i>
                             <i class="fa fa-star rating-color"></i>
@@ -209,7 +210,7 @@
       </div>
     </div>
     </div>
-    
+    {% endfor %}
        <!-- Modals -->
 
        <div class="modal" id="myModal00">

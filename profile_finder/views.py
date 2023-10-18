@@ -2540,6 +2540,11 @@ def my_investigator(request,id):
     my_investigators = requests.get(f"http://127.0.0.1:3000/my_investigator/{id}").json()[id]
     profile_pic = [my][0]['profile_picture']
     mydata=[my]
+    if "my_investigator" in request.POST:
+           print(request.POST)
+           global hire_id
+           hire_id = request.POST['my_investigator']  
+           return redirect(f"/my_investigator_question/{id}")
     context = {
             'mydata':mydata,
             'profile_pic':profile_pic,
@@ -2552,10 +2557,18 @@ def my_investigator_question(request,id):
     my = requests.get(f"http://127.0.0.1:3000/alldata/{id}").json()
     profile_pic = [my][0]['profile_picture']
     mydata=[my]
+    my_investigator(request,id)
+    print(hire_id)
+    all_investigator_values = requests.get(f"http://127.0.0.1:3000/all_private_investigator_data").json()
+    for  x in all_investigator_values:
+        if x['uid'] == hire_id:
+            specific_user = x
+            print(specific_user)
+
     context = {
             'mydata':mydata,
             'profile_pic':profile_pic,
-           
+            'specific_user':[specific_user],
                }
 
     return render(request,'my_investigator_question.html',context)

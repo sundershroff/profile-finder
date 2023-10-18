@@ -63,7 +63,21 @@
                           "></a></div>
                            {% endfor %}
                           </div></center>
-                          <div class="text-center pro"><p class="text-muted">Task completed:<span class="text-dark">70%</span></p></div>
+                          <form method="POST">
+                            {% csrf_token %}
+                          <div class="text-center pro">
+                            <p class="text-muted">
+                             <button type="submit" name="my_investigator" value="{{i.uid}}" style="
+                             border-radius: 7px;
+                             padding: 6px;
+                             font-size: 15px;
+                             font-weight: 600;
+                             background-color: #2B3674;
+                             color: white;
+                         "> Task completed:
+                              <span class="" style="color:white">70%</span></button>
+                            </p></div>
+                          </form>
                     </div>
                   </div>
                   {% endfor %}
