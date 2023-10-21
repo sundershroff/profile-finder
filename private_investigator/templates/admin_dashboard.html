@@ -41,16 +41,7 @@
   <div class="dash_bor_main1">
     <!-- start1-->
 
-    <div class="dash_par1" style="background:white;">
-
-          <i class="fa-regular fa-bell"></i>
-
-        <div class="dash_brd_img1">
-         <img src="/media/images//girl1.png">
-         <i class="fa-solid fa-caret-down"></i>
-         </div>
-
-    </div>
+   {% include 'pi_header.html'%}
     <i class="bi bi-list fa-solid mobile-nav-toggle fa-bars" id="dashnavclick"></i>
     <!-- over -->
 
@@ -75,8 +66,8 @@
            </div>
 
           <div>
-            <h4>1,800</h4>
-            <h5>Profile Finders</h5>
+            <h4>16</h4>
+            <h5>Total Investigations</h5>
           </div>
 
         </div>
@@ -89,10 +80,23 @@
 
             <div>
             <h4>300</h4>
-            <h5>Total Complaints</h5>
+            <h5>Closed Investigations</h5>
           </div>
           
         </div>
+
+        <div class="dash_bor_box">
+
+          <div>
+           <i class="fas fa-map-marker-alt dash_dot" style="color:green"></i>
+          </div>
+
+          <div>
+          <h4>300</h4>
+          <h5>Pending Investigations</h5>
+        </div>
+        
+      </div>
 
     
 
@@ -107,7 +111,7 @@
             <div class="dash_strpos">
                <h4>2,500</h4>
             </div>
-            <h5>Total Profile Approved</h5>
+            <h5>Current Ratings</h5>
           </div> 
 
 
@@ -121,7 +125,7 @@
 
            <div>
              <h4>₹ 2,500</h4>
-            <h5>Total commission</h5>
+            <h5>Total Earnings</h5>
            </div>
 
 
@@ -134,7 +138,7 @@
     <div class="dash_bor_rsp my-4 px-3">
 
       <div>
-        <h4>Recently joined profiles</h4>
+        <h4>Recently Started profiles</h4>
       </div>
 
 
@@ -157,16 +161,18 @@
       <table class=" table table-borderless " >
 
       <tr>
-        
-        <th class="py-4">User Name</th>
-        <th class="py-4">Date of created</th>
-        <th class="py-4">Location</th>
+        <th class="py-4">#No</th>
+        <th class="py-4">User Id</th>
+        <th class="py-4">Name</th>
+        <th class="py-4">Email Id</th>
       </tr>
 
       <tr>
         <td class="dash_bor_table_img"><img src="/media/images//girl2.png" class="mx-2"> EnvIronmental Specialist</td>
         <td class="py-4">18/09/2016</td>
         <td class="py-4">Kochi</td>
+        <td class="py-4">sunder@gmail.com</td>
+
       </tr>
 
        <tr>
@@ -208,7 +214,7 @@
       <div class="dash_bor_table1">
 
         <div class="dash_bor_split px-4">
-          <h5>Recent Complaints</h5>
+          <h5>Closed Investigation List</h5>
           <i class="fa-solid fa-ellipsis-vertical"></i>
         </div>
 
@@ -216,40 +222,47 @@
           <table class="table table-borderless">
 
             <tr>
-              <th class="py-4">#No</th>
               <th class="py-4">User Name</th>
-              <th class="py-4">Date of Posted</th>
-              <th class="py-4">Complaints</th>
+              <th class="py-4">Local Admin</th>
+              <th class="py-4">Date Of Approved</th>
             </tr>
 
             <tr>
-              <td class="py-4">1</td>
-              <td class="py-4">Albert Flores</td>
+              
+            
+              <td class="py-4"><span class="dash_bor_table_img1"><img src="/media/images//girl1.png"> Albert Flores</span></td>
+              <td  class="py-4">Environmental Specialist</td>
               <td class="py-4">18/09/2016</td>
-              <td class="py-4">Not responding last 3 weeks...</td>
+         
             </tr>
 
           
             <tr>
-              <td class="py-4">1</td>
-              <td class="py-4">Albert Flores</td>
+              
+            
+              <td class="py-4"><span class="dash_bor_table_img1"><img src="/media/images//girl1.png"> Albert Flores</span></td>
+              <td  class="py-4">Environmental Specialist</td>
               <td class="py-4">18/09/2016</td>
-              <td class="py-4">Not responding last 3 weeks...</td>
+         
             </tr>
 
             <tr>
-              <td class="py-4">1</td>
-              <td class="py-4">Albert Flores</td>
+              
+            
+              <td class="py-4"><span class="dash_bor_table_img1"><img src="/media/images//girl1.png"> Albert Flores</span></td>
+              <td  class="py-4">Environmental Specialist</td>
               <td class="py-4">18/09/2016</td>
-              <td class="py-4">Not responding last 3 weeks...</td>
+         
             </tr>
 
            
             <tr>
-              <td class="py-4">1</td>
-              <td class="py-4">Albert Flores</td>
+              
+            
+              <td class="py-4"><span class="dash_bor_table_img1"><img src="/media/images//girl1.png"> Albert Flores</span></td>
+              <td  class="py-4">Environmental Specialist</td>
               <td class="py-4">18/09/2016</td>
-              <td class="py-4">Not responding last 3 weeks...</td>
+         
             </tr>
 
           </table>
@@ -264,7 +277,7 @@
           
           
         <div class="dash_bor_split px-4">
-          <h5>Recently Approved Profiles</h5>
+          <h5>Review From Clients</h5>
           <i class="fa-solid fa-ellipsis-vertical"></i>
         </div>
 
@@ -272,34 +285,45 @@
           <table class="table table-borderless " >
 
             <tr>
-              <th class="py-4">User Name</th>
-              <th class="py-4">Local Admin</th>
-              <th class="py-4">Approved</th>
+              <th class="py-4"> No</th>
+
+              <th class="py-4">User Id</th>
+              <th class="py-4">Name </th>
+              <th class="py-4">Ratings</th>
             </tr>
 
             <tr>
               
-            
-              <td class="py-4"><span class="dash_bor_table_img1"><img src="/media/images//girl1.png"> Albert Flores</span></td>
+              <td  class="py-4">1</td>
               <td  class="py-4">Environmental Specialist</td>
-              <td class="py-4">18/09/2016</td>
+              <td class="py-4"><span class="dash_bor_table_img1"><img src="/media/images//girl1.png"> Albert Flores</span></td>
+
+              <td class="py-4"><div class="small-ratings text-center">
+                <i class="fa fa-star rating-color"></i>
+                <i class="fa fa-star rating-color"></i>
+                <i class="fa fa-star rating-color"></i>
+                <i class="fa fa-star rating-color"></i>
+                <i class="fa fa-star"></i>
+             </div></td>
          
             </tr>
 
         <tr>
               
-            
-              <td class="py-4"><span class="dash_bor_table_img1"><img src="/media/images//girl1.png"> Albert Flores</span></td>
+          <td  class="py-4">1</td>
               <td  class="py-4">Environmental Specialist</td>
+              <td class="py-4"><span class="dash_bor_table_img1"><img src="/media/images//girl1.png"> Albert Flores</span></td>
+
               <td class="py-4">18/09/2016</td>
          
             </tr>
 
  <tr>
               
-            
-              <td class="py-4"><span class="dash_bor_table_img1"><img src="/media/images//girl1.png"> Albert Flores</span></td>
+  <td  class="py-4">1</td>
               <td  class="py-4">Environmental Specialist</td>
+              <td class="py-4"><span class="dash_bor_table_img1"><img src="/media/images//girl1.png"> Albert Flores</span></td>
+
               <td class="py-4">18/09/2016</td>
          
             </tr>
@@ -307,9 +331,10 @@
 
              <tr>
               
-            
-              <td class="py-4"><span class="dash_bor_table_img1"><img src="/media/images//girl1.png"> Albert Flores</span></td>
+              <td  class="py-4">1</td>
               <td  class="py-4">Environmental Specialist</td>
+              <td class="py-4"><span class="dash_bor_table_img1"><img src="/media/images//girl1.png"> Albert Flores</span></td>
+
               <td class="py-4">18/09/2016</td>
          
             </tr>

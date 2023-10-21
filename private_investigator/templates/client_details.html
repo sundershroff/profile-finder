@@ -52,21 +52,15 @@
      </div>
    </header>
    <main id="main">
-   <div class="dash_par1" style="background:white;">
+    {% include 'pi_header.html'%}
 
-    <i class="fa-regular fa-bell"></i>
-
-  <div class="dash_brd_img1">
-   <img src="/media/images//girl1.png">
-   <i class="fa-solid fa-caret-down"></i>
-   </div>
 
 </div>
   <div class="container">
       <section>
         <div class="row">
             <div class="col-md-12 mb-3 mt-3">
-                <h5><a href="/pi_client_list/gj"><span class="text-muted">Client Details ></span></a><span class="detai"> Details</span></h5>
+                <h5><a href="/pi_client_list/{{key.uid}}"><span class="text-muted">Client Details ></span></a><span class="detai"> Details</span></h5>
             </div>
         </div>
     </section>
@@ -81,7 +75,7 @@
           <div class="main text-center mb-4 ">
             <h5 class="head text-center">Ariene McCoy</h5>
             <p class="text-center mb-4">Dubal, United Arab Emirators</p>
-            <a href="/pi_subscription/jjbh"><button class="Pending" style="background-image: linear-gradient(14deg,#002cff, #bd00dc);">Send Request</button></a>
+            <a href="/pi_subscription/{{key.uid}}"><button class="Pending" style="background-image: linear-gradient(14deg,#002cff, #bd00dc);">Send Request</button></a>
       
           </div>
       </div>
@@ -113,9 +107,9 @@
           <div class="col-md-9 mt-3">
             <h5>Where is the San Sebastian home? and she completed here graduation?</h5>
           </div>
-          <div class="col-md-2 text-center">
+          {% comment %} <div class="col-md-2 text-center">
             <button class="more pe-3 ps-3 p-1 mt-3 mb-3" type="button" data-bs-toggle="modal" data-bs-target="#myModal1">View answer</button>
-          </div> 
+          </div>  {% endcomment %}
        </div>
 
 
@@ -126,10 +120,10 @@
         <div class="col-md-9 mt-3">
           <h5>Any other relation she having?</h5>
         </div>
-        <div class="col-md-2 text-center">
+        {% comment %} <div class="col-md-2 text-center">
           <button class="more pe-3 ps-3 p-1 mt-3 mb-3" type="button"data-bs-toggle="modal" data-bs-target="#myModal2">View answer</button>
 
-        </div> 
+        </div>  {% endcomment %}
      </div>
 
 
@@ -140,9 +134,9 @@
       <div class="col-md-9 mt-3">
         <h5>Who is her best friend?</h5>
       </div>
-      <div class="col-md-2 text-center">
+      {% comment %} <div class="col-md-2 text-center">
         <button class="more pe-3 ps-3 p-1 mt-3 mb-3" type="button"data-bs-toggle="modal" data-bs-target="#myModal3">View answer</button>
-      </div> 
+      </div>  {% endcomment %}
    </div>
 
    <div class="row content mt-3  mb-3" >

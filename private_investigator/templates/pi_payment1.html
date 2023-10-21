@@ -42,21 +42,13 @@
    </div>
  </header>
  <main id="main">
-    <div class="dash_par1" style="background:white;">
+  {% include 'pi_header.html'%}
 
-        <i class="fa-regular fa-bell"></i>
-
-      <div class="dash_brd_img1">
-       <img src="/media/images//girl1.png">
-       <i class="fa-solid fa-caret-down"></i>
-       </div>
-
-  </div>
     <div class="row">
         <div class="col-md-12 mt-3 mb-2" style="
         margin-left: 20px;
     ">
-                 <h5><a href="/pi_client_list/jhgvh" style="text-decoration: none;"><span class="text-muted">Client Details ></span></a><span class="text-primary"> Details</span></h5>
+                 <h5><a href="/pi_client_list/{{key.uid}}" style="text-decoration: none;"><span class="text-muted">Client Details ></span></a><span class="text-primary"> Details</span></h5>
 
         </div>
       </div>

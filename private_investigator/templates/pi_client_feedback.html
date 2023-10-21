@@ -54,21 +54,13 @@
      </div>
    </header>
    <main id="main">
-   <div class="dash_par1" style="background:white;">
+    {% include 'pi_header.html'%}
 
-    <i class="fa-regular fa-bell"></i>
-
-  <div class="dash_brd_img1">
-   <img src="/media/images//girl1.png">
-   <i class="fa-solid fa-caret-down"></i>
-   </div>
-
-</div>
   <div class="container">
       <section>
         <div class="row">
             <div class="col-md-12 mb-3 mt-3">
-                <h5><a href="/pi_add_client/gj"><span class="text-muted">Client Details ></span></a><span class="detai"> Details</span></h5>
+                <h5><a href="/pi_add_client/{{key.uid}}"><span class="text-muted">Client Details ></span></a><span class="detai"> Details</span></h5>
             </div>
         </div>
     </section>
@@ -88,12 +80,25 @@
           </div>
       </div>
       
+      {% comment %} <div class="pay  mt-2  img-thumbnail ">
+        <h5 class="mt-4 mb-4 ms-4">Client Feedback</h5>
+        <h3 class="ratingvalue ms-4">4.2</h3>
+        <div class="ratings mt-3 mb-3 ms-4">
+          <i class="fa fa-star rating-color"></i>
+          <i class="fa fa-star rating-color"></i>
+          <i class="fa fa-star rating-color"></i>
+          <i class="fa fa-star rating-color"></i>
+          <i class="fa fa-star"></i>
+      </div>
+        <p class="notavailable mb-5 pe-3 ps-3 pt-2 pb-2 ms-2  ">The Investigator is very quick and collect all details what I request him. thanks a lot for helping such a great job</p>
     
-  <!-- <div class="pay  mt-2  img-thumbnail ">
+      </div> {% endcomment %}
+    
+  <div class="pay  mt-2  img-thumbnail ">
     <h5 class="mt-4 mb-4 ms-4  ">Client Feedback</h5>
     <p class="notavailable mb-5 mb-5 pe-3 ps-3 pt-2 pb-2 ms-2">Not available,need to complete your task first</p>
 
-  </div> -->
+  </div> 
 
 </div>
 <!-- ... (rest of the code) ... -->
@@ -109,14 +114,17 @@
         <div class="row content mt-3 mb-3 " >
 
           <div class=" col-md-1 text-center text-success  mt-3">
+           {% comment %} #uncheck {% endcomment %}
+            {% comment %} <i class='bi bi-check-circle-fill uncheck' style="font-size: 25px;"></i> {% endcomment %}
 
+{% comment %} #check {% endcomment %}
           <i class='bi bi-check-circle-fill' style="font-size: 25px;"></i>
           </div>
           <div class="col-md-9 mt-3">
             <h5>Where is the San Sebastian home? and she completed here graduation?</h5>
           </div>
           <div class="col-md-2 text-center">
-            <button class="more pe-3 ps-3 p-1 mt-3 mb-3" type="button" data-bs-toggle="modal" data-bs-target="#myModal1">View answer</button>
+            <button class="more pe-3 ps-3 p-1 mt-3 mb-3" type="button" data-bs-toggle="modal" data-bs-target="#myModal1">Add answer</button>
           </div> 
        </div>
 
@@ -129,7 +137,7 @@
           <h5>Any other relation she having?</h5>
         </div>
         <div class="col-md-2 text-center">
-          <button class="more pe-3 ps-3 p-1 mt-3 mb-3" type="button"data-bs-toggle="modal" data-bs-target="#myModal2">View answer</button>
+          <button class="more pe-3 ps-3 p-1 mt-3 mb-3" type="button"data-bs-toggle="modal" data-bs-target="#myModal2">Add answer</button>
 
         </div> 
      </div>
@@ -143,7 +151,7 @@
         <h5>Who is her best friend?</h5>
       </div>
       <div class="col-md-2 text-center">
-        <button class="more pe-3 ps-3 p-1 mt-3 mb-3" type="button"data-bs-toggle="modal" data-bs-target="#myModal3">View answer</button>
+        <button class="more pe-3 ps-3 p-1 mt-3 mb-3" type="button"data-bs-toggle="modal" data-bs-target="#myModal3">Add answer</button>
       </div> 
    </div>
 
@@ -155,7 +163,7 @@
       <h5>Where she studied her higher secondary school?</h5>
     </div>
     <div class="col-md-2 text-center">
-      <button class="more pe-3 ps-3 p-1 mt-3 mb-3" type="button"data-bs-toggle="modal" data-bs-target="#myModal3">View answer</button>
+      <button class="more pe-3 ps-3 p-1 mt-3 mb-3" type="button"data-bs-toggle="modal" data-bs-target="#myModal3">Add answer</button>
     </div> 
  </div>
 
@@ -167,7 +175,7 @@
     <h5>Her Father have any bad habits?</h5>
   </div>
   <div class="col-md-2 text-center">
-    <button class="more pe-3 ps-3 p-1 mt-3 mb-3" type="button"data-bs-toggle="modal" data-bs-target="#myModal3">View answer</button>
+    <button class="more pe-3 ps-3 p-1 mt-3 mb-3" type="button"data-bs-toggle="modal" data-bs-target="#myModal3">Add answer</button>
   </div> 
 </div>
 
@@ -179,7 +187,7 @@
     <h5>Is it true the family is very Orthodox?</h5>
   </div>
   <div class="col-md-2 text-center">
-    <button class="more pe-3 ps-3 p-1 mt-3 mb-3" type="button"data-bs-toggle="modal" data-bs-target="#myModal3">View answer</button>
+    <button class="more pe-3 ps-3 p-1 mt-3 mb-3" type="button"data-bs-toggle="modal" data-bs-target="#myModal3">Add answer</button>
   </div> 
 </div>
 
@@ -191,7 +199,7 @@
     <h5>Whats the neighbour assessment on here?</h5>
   </div>
   <div class="col-md-2 text-center">
-    <button class="more pe-3 ps-3 p-1 mt-3 mb-3" type="button"data-bs-toggle="modal" data-bs-target="#myModal3">View answer</button>
+    <button class="more pe-3 ps-3 p-1 mt-3 mb-3" type="button"data-bs-toggle="modal" data-bs-target="#myModal3">Add answer</button>
   </div> 
   
 </div>
@@ -204,7 +212,7 @@
     <h5>She is excessively present day or typical?</h5>
   </div>
   <div class="col-md-2 text-center">
-    <button class="more pe-3 ps-3 p-1 mt-3 mb-3" type="button"data-bs-toggle="modal" data-bs-target="#myModal3">View answer</button>
+    <button class="more pe-3 ps-3 p-1 mt-3 mb-3" type="button"data-bs-toggle="modal" data-bs-target="#myModal3">Add answer</button>
   </div> 
    
 </div>
@@ -217,7 +225,7 @@
     <h5>What her brother doing? can you find for me his details?</h5>
   </div>
   <div class="col-md-2 text-center">
-    <button class="more pe-3 ps-3 p-1 mt-3 mb-3" type="button"data-bs-toggle="modal" data-bs-target="#myModal3">View answer</button>
+    <button class="more pe-3 ps-3 p-1 mt-3 mb-3" type="button"data-bs-toggle="modal" data-bs-target="#myModal3">Add answer</button>
   </div> 
 </div>
 
@@ -229,7 +237,7 @@
     <h5> I heard she is good dancer is that correct?</h5>
   </div>
   <div class="col-md-2 text-center">
-    <button class="more pe-3 ps-3 p-1 mt-3 mb-3" type="button"data-bs-toggle="modal" data-bs-target="#myModal3">View answer</button>
+    <button class="more pe-3 ps-3 p-1 mt-3 mb-3" type="button"data-bs-toggle="modal" data-bs-target="#myModal3">Add answer</button>
   </div> 
 </div>
 
@@ -269,7 +277,7 @@
                       <p>Question</p>
                       <h5 class="head5">Where is the San Sebastian home? and she completed her graduation?</h5>
                       <p>Answer</p>
-                      <p class="par">Yes, she completed her graduation last year, and her home is in the same place as mentioned in her profile.</p>
+                      <p class="par"><textarea type="text" style="width: 100%;height: 6rem;"></textarea ></p>
                   </div>
               </div>
               <div class="modal-footer">

@@ -42,14 +42,8 @@
 
   <!-- End Header -->
   <main id="main">
-    <div class="dash_par1" style="background:white;">
+    {% include 'pi_header.html'%}
 
-      <i class="fa-regular fa-bell"></i>
-
-    <div class="dash_brd_img1">
-     <img src="/media/images//girl1.png">
-     <i class="fa-solid fa-caret-down"></i>
-     </div>
 
 </div>
     <!-- ======= Breadcrumbs ======= -->
@@ -90,7 +84,7 @@
 
        <!--Client images-->
        <div class="row ClientImages">
-<a href="/pi_client_details/ogigu" style="display: contents;">
+<a href="/pi_client_details/{{key.uid}}" style="display: contents;">
         <div class="col-md-6 col-lg-3  client-container">
           <img src="/media/images/man2.webp" alt="" class="clientimg">
           <div class="client-details">

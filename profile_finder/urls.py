@@ -76,7 +76,6 @@ urlpatterns = [
     path('hire_investigator/<id>', views.hire_investigator),
     path('my_investigator/<id>', views.my_investigator),
     path('my_investigator_question/<id>', views.my_investigator_question),
-
     path('pi_payment/<id>', views.pi_payment),
 
 
@@ -96,7 +95,7 @@ urlpatterns = [
     path('pi_admin_dashboard/<id>', pi_views.admin_dashboard),
     path('pi_profile/<id>', pi_views.profile),
     path('edit_profile/<id>', pi_views.edit_profile),
-    path('pi_payment/<id>', pi_views.payment),
+    path('pi_payment_screen/<id>', pi_views.payment),
     path('pi_client_list/<id>', pi_views.client_list),
     path('pi_client_details/<id>', pi_views.client_details),
     path('pi_subscription/<id>', pi_views.subscription),
@@ -104,6 +103,7 @@ urlpatterns = [
     path('pi_add_client/<id>', pi_views.add_client),
     path('pi_client_feedback/<id>', pi_views.client_feedback),
     path('pi_setting/<id>', pi_views.setting),
+
 
 
 

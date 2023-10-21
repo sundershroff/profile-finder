@@ -1,7 +1,7 @@
 from django.shortcuts import render , redirect
 from django.http import HttpResponse
 # from .forms import *
-from .models import *
+from private_investigator.models import *
 from chat.models import Thread
 from django.core.files.storage import FileSystemStorage
 from django.core.files.storage import default_storage
@@ -27,6 +27,9 @@ from django.core import serializers
 from django.http import HttpResponse
 
 all_url = "http://127.0.0.1:3000/"
+
+
+      
 def signin(request):
     error = ""
     if request.method == "POST":
@@ -138,38 +141,98 @@ def complete_profile(request,id):
     return render(request,"uploadprofile.html")
 
 def admin_dashboard(request,id):
-        return render(request,"admin_dashboard.html")
+        my = requests.get(f"http://127.0.0.1:3000/pi_my_data/{id}").json()[0]
+        pf_users = requests.get("http://127.0.0.1:3000/alluserdata/").json()
+        # print(pf_users)
+        context={'key':my,
+                 'current_path':request.get_full_path(),
+                 'profile_finder':pf_users,
+                 }
+        return render(request,"admin_dashboard.html",context)
 
 def profile(request,id):
-        return render(request,"profile.html")
+        my = requests.get(f"http://127.0.0.1:3000/pi_my_data/{id}").json()[0]
+        print(my)
+        context={'key':my,
+                 'current_path':request.get_full_path()
+                 }
+        return render(request,"profile.html",context)
 
 def edit_profile(request,id):
-        return render(request,"edit_profile.html")
+        my = requests.get(f"http://127.0.0.1:3000/pi_my_data/{id}").json()[0]
+        print(my)
+        context={'key':my,
+                 'current_path':request.get_full_path()
+                 }
+        return render(request,"edit_profile.html",context)
 
 def payment(request,id):
-        return render(request,"pi_payment1.html")
+        my = requests.get(f"http://127.0.0.1:3000/pi_my_data/{id}").json()[0]
+        print(my)
+        context={'key':my,
+                 'current_path':request.get_full_path()
+                 }
+        return render(request,"pi_payment1.html",context)
 
 def client_list(request,id):
-        return render(request,"client_list.html")
+        my = requests.get(f"http://127.0.0.1:3000/pi_my_data/{id}").json()[0]
+        print(my)
+        context={'key':my,
+                 'current_path':request.get_full_path()
+                 }
+        return render(request,"Client_list.html",context)
 
 def client_details(request,id):
-        return render(request,"client_details.html")
+        my = requests.get(f"http://127.0.0.1:3000/pi_my_data/{id}").json()[0]
+        print(my)
+        context={'key':my,
+                 'current_path':request.get_full_path()
+                 }
+        return render(request,"client_details.html",context)
 
 
 def subscription(request,id):
-        return render(request,"pi_subscription.html")
+        my = requests.get(f"http://127.0.0.1:3000/pi_my_data/{id}").json()[0]
+        print(my)
+        context={'key':my,
+                 'current_path':request.get_full_path()
+                 }
+        return render(request,"pi_subscription.html",context)
 
 def payment_table(request,id):
-        return render(request,"pi_payment_table.html")
+        my = requests.get(f"http://127.0.0.1:3000/pi_my_data/{id}").json()[0]
+        print(my)
+        context={'key':my,
+                 'current_path':request.get_full_path()
+                 }
+        return render(request,"pi_payment_table.html",context)
 
 
 def add_client(request,id):
-        return render(request,"pi_add_new_client.html")
+        my = requests.get(f"http://127.0.0.1:3000/pi_my_data/{id}").json()[0]
+        # print(my)
+        my_client = requests.get(f"http://127.0.0.1:3000/pi_my_clients/{id}").json()[id]
+        print(my_client)
+        context={'key':my,
+                 'current_path':request.get_full_path(),
+                 'my_client':my_client,
+                 }
+        return render(request,"pi_add_new_client.html",context)
 
 
 def client_feedback(request,id):
-        return render(request,"pi_client_feedback.html")
+        my = requests.get(f"http://127.0.0.1:3000/pi_my_data/{id}").json()[0]
+        print(my)
+        context={'key':my,
+                 'current_path':request.get_full_path()
+                 }
+        return render(request,"pi_client_feedback.html",context)
 
 def setting(request,id):
-        return render(request,"pi_Account_Settings.html")
+        my = requests.get(f"http://127.0.0.1:3000/pi_my_data/{id}").json()[0]
+        print(my)
+        context={'key':my,
+                 'current_path':request.get_full_path()
+                 }
+        return render(request,"pi_Account_Settings.html",context)
 

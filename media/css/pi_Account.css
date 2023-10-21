@@ -277,8 +277,8 @@ body{
             background-color:#f5f3fe;
         }
         img.src {
-    width: 110%;
-    height: 165px;
+    width: 100%;
+    /* height: 165px; */
     border-radius: 30px;
     object-fit: cover;
 }

@@ -43,16 +43,8 @@
 
   <!-- End Header -->
   <main id="main">
-    <div class="dash_par1" style="background:white;">
+    {% include 'pi_header.html'%}
 
-        <i class="fa-regular fa-bell"></i>
-    
-      <div class="dash_brd_img1">
-       <img src="/media/images//girl1.png">
-       <i class="fa-solid fa-caret-down"></i>
-       </div>
-    
-    </div>
     <!-- ======= Breadcrumbs ======= -->
     <!-- <section id="breadcrumbs" class="breadcrumbs">
      <div class="container">
@@ -68,9 +60,9 @@
        <div class="row">
          <div class="col-md-12 mt-3 mb-3">
             <h5 class="accsett">
-                <a href="/pi_profile/jh" style="text-decoration: none;"><span class="Account " style="color: #121b9c;"> Account </span></a>
-                <a href="/pi_payment_table/jh" style="text-decoration: none;">  <span class="Payment text-muted ms-2"> Payment History </span></a>
-                <a href="/edit_profile/jh" style="text-decoration: none;"><span class="Accountsett ms-2" style="color: grey;">Account Settings</span></a>
+                <a href="/pi_profile/{{key.uid}}" style="text-decoration: none;"><span class="Account " style="color: #121b9c;"> Account </span></a>
+                <a href="/pi_payment_table/{{key.uid}}" style="text-decoration: none;">  <span class="Payment text-muted ms-2"> Payment History </span></a>
+                <a href="/edit_profile/{{key.uid}}" style="text-decoration: none;"><span class="Accountsett ms-2" style="color: grey;">Account Settings</span></a>
               </h5>         </div>
     
        </div>
@@ -80,16 +72,16 @@
             <div class=" bg-white m3">
                 <div class="row">
                     <div class="col-md-4 ">
-                        <img src="/media/images/testimonials-1.jpg" alt="" class="src pt-3 pb-3 ps-3">
+                        <img src="{{key.profile_picture}}" alt="" class="src pt-3 pb-3 ps-3">
                     </div>
                     <div class="col-md-8 firstbox">
                         <div class="pra1 pro mt-3 ps-3">
-                            <h6 class="candi ">Alice McCoy</h6>
+                            <h6 class="candi ">{{key.first_name}} {{key.lasr_name}}</h6>
                             <p class="pra1 text-muted">Private Investigator</p>
                             <p class="pra3 text-muted">Created on:<span class="sp1 ps-1">20 January,2022</span></p>
                           </div>
                           <div class="but ps-3">
-                           <a href="/edit_profile/jhv" style="text-decoration: none;"><button class="btn" type="button">Edit Profile</button></a> 
+                           <a href="/edit_profile/{{key.uid}}" style="text-decoration: none;"><button class="btn" type="button">Edit Profile</button></a> 
                           </div>
                     </div>
                 </div>
@@ -120,7 +112,7 @@
     <div class="row mt-3">
         <div class=" col-md-7 pe-md-0 u2 ">
             <div class=" bg-white">
-               <h6 class="win pb-4 pt-4 ps-3 pe-3 ">I will do for best service for you,I will do for the all kind of private investigations about your partners with in a week </h6>
+               <h6 class="win pb-4 pt-4 ps-3 pe-3 ">{{key.tagline}}</h6>
             </div>
         </div>
         <div class=" col-md-5  pe-md-0  month">
@@ -147,11 +139,11 @@
                             <div class="deal pt-2">Address:</div>
                         </div>
                         <div class="col-7 y2">
-                            <div class="deal">ABCD associate</div>
-                            <div class="deal pt-2">+932 7653421211</div>
-                            <div class="deal pt-2">jacob@gmail.com</div>
-                            <div class="deal pt-2">Kochi India</div>
-                            <div class="deal pt-2">Building 304, office 12, Palarivattom, Kochi</div>
+                            <div class="deal">{{key.office_name}}</div>
+                            <div class="deal pt-2">+91 {{key.mobile}}</div>
+                            <div class="deal pt-2">{{key.email}}</div>
+                            <div class="deal pt-2">{{key.office_city}} {{key.office_country}}</div>
+                            <div class="deal pt-2">{{key.office_address}}</div>
                         </div>
                     </div>
                 </div>
@@ -172,11 +164,11 @@
                             <div class="deal pt-2">Address:</div>
                         </div>
                         <div class="col-7 y2">
-                            <div class="deal">Jacob</div>
-                            <div class="deal pt-2">+932 7653421211</div>
-                            <div class="deal pt-2">jacob@gmail.com</div>
-                            <div class="deal pt-2">Kochi India</div>
-                            <div class="deal pt-2">Building 304, office 12, Palarivattom, Kochi</div>
+                            <div class="deal">{{key.first_name}} {{key.last_name}}</div>
+                            <div class="deal pt-2">+91 {{key.mobile}}</div>
+                            <div class="deal pt-2">{{key.email}}</div>
+                            <div class="deal pt-2">{{key.personal_city}} {{key.personal_country}}</div>
+                            <div class="deal pt-2">{{key.personal_address}}</div>
                         </div>
                     </div>
                 </div>

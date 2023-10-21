@@ -42,16 +42,8 @@
 
   <!-- End Header -->
   <main id="main">
-    <div class="dash_par1" style="background:white;">
+    {% include 'pi_header.html'%}
 
-      <i class="fa-regular fa-bell"></i>
-
-    <div class="dash_brd_img1">
-     <img src="/media/images//girl1.png">
-     <i class="fa-solid fa-caret-down"></i>
-     </div>
-
-</div>
     <!-- ======= Breadcrumbs ======= -->
     <section id="breadcrumbs" class="breadcrumbs">
      <div class="container">
@@ -90,19 +82,28 @@
 
        <!--Client images-->
        <div class="row ClientImages">
-<a href="/pi_client_feedback/jhv" style="display: contents;">
+        {% for i in my_client %}
+
+
         <div class="col-md-6 col-lg-3  client-container">
+          <a href="/pi_client_feedback/{{key.uid}}" style="display: contents;">
+
           <img src="/media/images/man2.webp" alt="" class="clientimg">
           <button class="Pending fixed-pending-button">Complete</button>
+          {% comment %} <button class="Pendings fixed-pending-button">Pending</button> {% endcomment %}
+
           <div class="client-details">
-              <span class="clientname mb-2">Cameron Williamson</span>
-              <span class="clientID mb-1">ID :#123AD</span>
+              <span class="clientname mb-2">{{i.name}}</span>
+              <span class="clientID mb-1">ID :#{{i.uid}}</span>
               <span class="clientpalce mb-2">Dubai, United Arab Emirates</span>
               <i class="clientquotes mb-2">"Life is full of possibility"</i>
               <i class="bi bi-circle-fill me-3 mb-3"><span class="online ms-1">Online</span>  </i>
           </div>
+        </a>
+
       </div>
-    </a>
+    {% endfor %}
+
       <div class="col-md-6 col-lg-3  client-container">
         <img src="/media/images/man2.webp" alt="" class="clientimg">
         <button class="Pendings fixed-pending-button">Pending</button>
