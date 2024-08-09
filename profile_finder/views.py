@@ -1675,11 +1675,16 @@ def matching_list(request,id):
     # print(alluserdata)
     
     #my favorite list
-    sent = requests.get(f"http://127.0.0.1:3000/favorites/{id}").json()
-    # print(sent)
+    try:
+        sent = requests.get(f"http://127.0.0.1:3000/favorites/{id}").json()
+    except:
+        sent = []
     favoritemy=[]
-    for f in sent[id]:
-       favoritemy.append(f['uid'])
+    try:
+        for f in sent[id]:
+            favoritemy.append(f['uid'])
+    except:
+        pass
 
     mydata = [my]
     my_preference="1"
@@ -1810,6 +1815,7 @@ def matching_list(request,id):
                }
     # print(context)
     return render(request,'matching_list.html',context)
+
 def match_list_person(request):
     # alluserdata_one =[]
     # alldata = requests.get("http://127.0.0.1:3000/alluserdata/").json()
